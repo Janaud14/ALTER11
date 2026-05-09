@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALTER11 — Talent Radar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #02040f;
+      --card: #060a1a;
+      --neon: #0066ff;
+      --neon-dim: rgba(0,102,255,0.10);
+      --neon-glow: 0 0 14px rgba(0,102,255,0.5);
+      --text: #e8eef5;
+      --muted: #3a5080;
+      --border: rgba(0,102,255,0.18);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); font-family: 'Oxanium', sans-serif; color: var(--text); min-height: 100vh; }
+    .root { max-width: 960px; margin: 0 auto; padding: 32px 20px; }
+
+    /* HEADER */
+    .header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 4px; }
+    .logo { font-size: 32px; font-weight: 800; letter-spacing: 6px; color: var(--neon); text-shadow: var(--neon-glow); }
+    .logo span { color: #fff; text-shadow: none; }
+    .season { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 2px; }
+    .tagline { font-size: 9px; font-weight: 500; color: var(--muted); letter-spacing: 2px; margin-bottom: 20px; border-left: 2px solid var(--neon); padding-left: 10px; text-transform: uppercase; }
+
+    /* FILTERS */
+    .filters { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+    .fbtn { font-family: 'Oxanium', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; padding: 5px 16px; border: 0.5px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; border-radius: 2px; transition: all .2s; text-transform: uppercase; }
+    .fbtn:hover, .fbtn.on { border-color: var(--neon); color: var(--neon); background: var(--neon-dim); text-shadow: var(--neon-glow); }
+
+    /* GRID */
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    @media (max-width: 600px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* CARD */
+    .card { background: var(--card); border: 0.5px solid var(--border); border-radius: 3px; overflow: hidden; cursor: pointer; transition: border-color .25s, transform .2s; position: relative; }
+    .card:hover { border-color: var(--neon); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,102,255,0.15); }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--neon), transparent); opacity: 0; transition: opacity .2s; z-index: 3; }
+    .card:hover::before { opacity: 1; }
+    .card.flipped .front { display: none; }
+    .card.flipped .back { display: flex; }
+
+    /* FRONT */
+    .front { display: block; }
+    .photo { width: 100%; aspect-ratio: 3/3.5; background: linear-gradient(170deg, #06102a, #02040f); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .photo-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,102,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,102,255,0.04) 1px, transparent 1px); background-size: 18px 18px; z-index: 0; }
+    .avatar { font-family: 'Oxanium', sans-serif; font-size: 38px; font-weight: 800; color: var(--neon); opacity: 0.10; letter-spacing: 3px; user-select: none; position: relative; z-index: 1; }
+    .player-img { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); height: 92%; object-fit: cover; object-position: top; z-index: 2; filter: contrast(1.05); }
+    .photo-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 45%; background: linear-gradient(to bottom, transparent, var(--card)); z-index: 3; pointer-events: none; }
+    .rank { position: absolute; top: 8px; left: 10px; font-size: 9px; font-weight: 600; color: var(--muted); letter-spacing: 1px; z-index: 4; }
+    .score-badge { position: absolute; top: 8px; right: 8px; background: rgba(2,4,15,0.92); border: 0.5px solid var(--neon); border-radius: 2px; padding: 3px 8px; z-index: 4; text-align: center; }
+    .score-lbl { font-size: 6px; font-weight: 600; letter-spacing: 1.5px; color: var(--muted); display: block; margin-bottom: 1px; text-transform: uppercase; }
+    .score-num { font-size: 14px; font-weight: 700; color: var(--neon); text-shadow: var(--neon-glow); }
+    .pos-tag { position: absolute; bottom: 46px; left: 8px; font-size: 8px; font-weight: 600; color: var(--neon); letter-spacing: 1px; background: rgba(2,4,15,0.8); padding: 2px 6px; border-left: 2px solid var(--neon); z-index: 4; text-transform: uppercase; }
+    .info { padding: 8px 10px 10px; border-top: 0.5px solid var(--border); }
+    .name { font-size: 13px; font-weight: 700; letter-spacing: .5px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .club { font-size: 9px; font-weight: 500; color: var(--muted); letter-spacing: 1px; margin-top: 2px; text-transform: uppercase; }
+
+    /* BACK */
+    .back { display: none; flex-direction: column; padding: 12px; background: var(--card); position: relative; min-height: 220px; }
+    .back-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 0.5px solid var(--border); }
+    .back-name { font-size: 13px; font-weight: 700; color: #fff; line-height: 1.1; }
+    .back-sub { font-size: 8px; font-weight: 500; color: var(--muted); letter-spacing: 1px; margin-top: 3px; text-transform: uppercase; }
+    .big-score .num { font-size: 32px; font-weight: 800; color: var(--neon); text-shadow: var(--neon-glow); line-height: 1; }
+    .big-score .lbl { font-size: 6px; font-weight: 600; letter-spacing: 2px; color: var(--muted); display: block; text-align: right; text-transform: uppercase; }
+    .stat { display: flex; align-items: center; gap: 8px; margin-bottom: 7px; }
+    .stat-lbl { font-size: 8px; font-weight: 600; color: var(--muted); letter-spacing: 1px; width: 76px; flex-shrink: 0; text-transform: uppercase; }
+    .bar { flex: 1; height: 2px; background: rgba(0,102,255,0.08); border-radius: 1px; overflow: hidden; }
+    .fill { height: 100%; background: var(--neon); border-radius: 1px; }
+    .stat-val { font-size: 10px; font-weight: 600; color: var(--text); width: 36px; text-align: right; flex-shrink: 0; }
+    .close-btn { position: absolute; top: 8px; right: 8px; font-size: 9px; color: var(--muted); background: none; border: none; cursor: pointer; padding: 2px 4px; font-family: 'Oxanium', sans-serif; }
+    .close-btn:hover { color: var(--neon); }
+
+    /* VOIR PLUS */
+    .voir-plus { margin-top: 14px; }
+    .voir-plus-btn { font-family: 'Oxanium', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 2px; padding: 10px 24px; border: 0.5px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; border-radius: 2px; transition: all .2s; text-transform: uppercase; width: 100%; }
+    .voir-plus-btn:hover { border-color: var(--neon); color: var(--neon); background: var(--neon-dim); }
+
+    /* FOOTER */
+    .footer { margin-top: 20px; font-size: 8px; font-weight: 500; color: var(--muted); letter-spacing: 2px; border-top: 0.5px solid var(--border); padding-top: 12px; display: flex; justify-content: space-between; text-transform: uppercase; }
+  </style>
+</head>
+<body>
+<div class="root">
+  <div class="header">
+    <div class="logo">ALTER<span>11</span></div>
+    <div class="season">2025/2026</div>
+  </div>
+  <div class="tagline">Talent Radar · U20 · 5 Grands Championnats</div>
+
+  <div class="filters">
+    <button class="fbtn on" onclick="filter('ALL',this)">Tous</button>
+    <button class="fbtn" onclick="filter('FW',this)">Attaquants</button>
+    <button class="fbtn" onclick="filter('MF',this)">Milieux</button>
+    <button class="fbtn" onclick="filter('DF',this)">Défenseurs</button>
+    <button class="fbtn" onclick="filter('U19',this)">U19</button>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <div class="voir-plus" id="vp" style="display:none">
+    <button class="voir-plus-btn" onclick="showMore()">▼ Voir Plus</button>
+  </div>
+
+  <div class="footer">
+    <span>Source · FBref 2025/2026</span>
+    <span id="count"></span>
+  </div>
+</div>
+
+<script>
+const players = [
+  { name:"Endrick", age:19, pos:"FW", team:"Lyon", ligue:"Ligue 1", score:28.6, rank:1,
+    photo:"https://s3.eu-west-3.amazonaws.com/ligue1.image/players/2025/all/player_official_2025_143_577107-400x300.png",
+    stats:[{l:"Impact Off/90",v:"0.94",p:63},{l:"Tirs /90",v:"3.42",p:86},{l:"Min%",v:"36.6%",p:37},{l:"Act. Déf/90",v:"0.85",p:11}]},
+  { name:"Senny Mayulu", age:19, pos:"MF", team:"Paris SG", ligue:"Ligue 1", score:27.4, rank:2, photo:null,
+    stats:[{l:"Impact Off/90",v:"0.49",p:33},{l:"Tirs /90",v:"1.21",p:30},{l:"Min%",v:"52.3%",p:52},{l:"Act. Déf/90",v:"2.04",p:26}]},
+  { name:"Ayyoub Bouaddi", age:18, pos:"MF", team:"Lille", ligue:"Ligue 1", score:26.8, rank:3, photo:null,
+    stats:[{l:"Impact Off/90",v:"0.04",p:3},{l:"Tirs /90",v:"0.18",p:5},{l:"Min%",v:"75.9%",p:76},{l:"Act. Déf/90",v:"2.55",p:32}]},
+  { name:"Warren Zaïre-Emery", age:20, pos:"MF", team:"Paris SG", ligue:"Ligue 1", score:26.1, rank:4, photo:null,
+    stats:[{l:"Impact Off/90",v:"0.26",p:17},{l:"Tirs /90",v:"0.63",p:16},{l:"Min%",v:"85.7%",p:86},{l:"Act. Déf/90",v:"1.50",p:19}]},
+  { name:"Prosper Peter", age:18, pos:"FW", team:"Angers", ligue:"Ligue 1", score:25.3, rank:5, photo:null,
+    stats:[{l:"Impact Off/90",v:"0.37",p:25},{l:"Tirs /90",v:"1.69",p:42},{l:"Min%",v:"42.6%",p:43},{l:"Act. Déf/90",v:"0.51",p:6}]},
+  { name:"Désiré Doué", age:20, pos:"FW", team:"Paris SG", ligue:"Ligue 1", score:24.9, rank:6, photo:null,
+    stats:[{l:"Impact Off/90",v:"0.66",p:44},{l:"Tirs /90",v:"3.60",p:90},{l:"Min%",v:"43.7%",p:44},{l:"Act. Déf/90",v:"1.99",p:25}]},
+  { name:"Lamine Yamal", age:17, pos:"FW", team:"Barcelona", ligue:"La Liga", score:24.1, rank:7, photo:null,
+    stats:[{l:"Impact Off/90",v:"0.82",p:55},{l:"Tirs /90",v:"2.88",p:72},{l:"Min%",v:"71.2%",p:71},{l:"Act. Déf/90",v:"0.62",p:8}]},
+  { name:"Alejandro Garnacho", age:20, pos:"FW", team:"Man United", ligue:"Premier League", score:23.5, rank:8, photo:null,
+    stats:[{l:"Impact Off/90",v:"0.71",p:47},{l:"Tirs /90",v:"2.95",p:74},{l:"Min%",v:"58.4%",p:58},{l:"Act. Déf/90",v:"0.74",p:9}]},
+  { name:"Mathys Tel", age:19, pos:"FW", team:"Bayern Munich", ligue:"Bundesliga", score:22.8, rank:9, photo:null,
+    stats:[{l:"Impact Off/90",v:"0.68",p:45},{l:"Tirs /90",v:"2.61",p:65},{l:"Min%",v:"41.3%",p:41},{l:"Act. Déf/90",v:"0.55",p:7}]},
+];
+
+const PAGE=6; let current='ALL'; let showing=PAGE;
+
+function initials(n){return n.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase()}
+
+function buildCard(p,idx){
+  const photoHtml = p.photo ? `<img class="player-img" src="${p.photo}" alt="${p.name}" onerror="this.style.display='none'">` : '';
+  const statsHtml = p.stats.map(s=>`
+    <div class="stat">
+      <span class="stat-lbl">${s.l}</span>
+      <div class="bar"><div class="fill" style="width:${s.p}%"></div></div>
+      <span class="stat-val">${s.v}</span>
+    </div>`).join('');
+  return `
+  <div class="card" data-pos="${p.pos}" data-age="${p.age}" data-idx="${idx}">
+    <div class="front">
+      <div class="photo">
+        <div class="photo-grid"></div>
+        <div class="avatar">${initials(p.name)}</div>
+        ${photoHtml}
+        <div class="photo-fade"></div>
+        <div class="rank">#${p.rank}</div>
+        <div class="score-badge"><span class="score-lbl">Alter</span><span class="score-num">${p.score}</span></div>
+        <div class="pos-tag">${p.pos} · ${p.ligue}</div>
+      </div>
+      <div class="info">
+        <div class="name">${p.name}</div>
+        <div class="club">${p.team} · ${p.age} ans</div>
+      </div>
+    </div>
+    <div class="back">
+      <button class="close-btn" onclick="unflip(event,${idx})">✕</button>
+      <div class="back-top">
+        <div>
+          <div class="back-name">${p.name}</div>
+          <div class="back-sub">${p.team} · ${p.pos} · ${p.age} ans</div>
+        </div>
+        <div class="big-score">
+          <span class="num">${p.score}</span>
+          <span class="lbl">Alter Score</span>
+        </div>
+      </div>
+      ${statsHtml}
+    </div>
+  </div>`;
+}
+
+function render(f){
+  const grid=document.getElementById('grid');
+  const vp=document.getElementById('vp');
+  const filtered=players.filter(p=>{
+    if(f==='ALL') return true;
+    if(f==='U19') return p.age<=19;
+    return p.pos===f;
+  });
+  const visible=filtered.slice(0,showing);
+  grid.innerHTML=visible.map(p=>buildCard(p,players.indexOf(p))).join('');
+  document.getElementById('count').textContent=`${visible.length}/${filtered.length} Joueurs`;
+  vp.style.display=filtered.length>showing?'block':'none';
+  grid.querySelectorAll('.card').forEach(c=>{
+    c.addEventListener('click',()=>{if(!c.classList.contains('flipped'))c.classList.add('flipped')});
+  });
+}
+
+function filter(f,btn){
+  current=f; showing=PAGE;
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  render(f);
+}
+
+function showMore(){showing+=PAGE;render(current)}
+
+function unflip(e,idx){
+  e.stopPropagation();
+  document.querySelector(`.card[data-idx="${idx}"]`)?.classList.remove('flipped');
+}
+
+render('ALL');
+</script>
+</body>
+</html>
