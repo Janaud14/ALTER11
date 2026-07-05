@@ -1,0 +1,17 @@
+# ── Artefacts techniques (scraping, drivers navigateur) ──────
+downloaded_files/
+*.lock
+
+# ── Python ─────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ── Jupyter ──────────────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── OS / éditeurs ────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/

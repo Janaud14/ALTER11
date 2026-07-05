@@ -1,6 +1,18 @@
-conn = sqlite3.connect(r"C:\Users\Jean Lavital\ALTER11\alter11.db")
+-- ============================================================
+-- ALTERSCORE — Scoring des U20 par poste (5 grands championnats)
+-- ============================================================
+-- Logique :
+--   1. base    : agrégation des stats par 90 minutes + coefficients
+--                (bonus âge, coef de fiabilité, malus club)
+--   2. scored  : calcul du score brut, formule différenciée par poste
+--                (FW / MF avec split défensif-offensif / DF)
+--   3. final   : score brut pondéré par la fiabilité et le coef club
+-- Sortie : top 10 U20 par poste, classés par ALTERSCORE.
+--
+-- Seuils de minutes minimum par poste (fiabilité statistique) :
+--   FW >= 300 min | MF >= 400 min | DF >= 500 min
+-- ============================================================
 
-q = """
 WITH base AS (
     SELECT
         p.player_name, p.age, p.position, t.team_name, t.competition,
@@ -16,21 +28,25 @@ WITH base AS (
         ROUND(f.crosses / NULLIF(f.nineties, 0), 2)            AS crs_p90,
         ROUND(f.points_per_match, 2)                           AS ppm,
         COALESCE(m.malus, 1.0)                                 AS coef_club,
-        CASE 
+
+        -- Bonus âge dégressif : plus le joueur est jeune, plus le bonus est fort
+        CASE
             WHEN p.age <= 17 THEN 2.0
             WHEN p.age <= 18 THEN 1.7
             WHEN p.age <= 19 THEN 1.4
             WHEN p.age = 20  THEN 1.1
             ELSE 0.8
         END AS bonus_age,
+
+        -- Coef de fiabilité : monte avec le volume de minutes jouées (plafond à 1.0)
         MIN(1.0, 0.5 + (f.minutes / 3000.0)) AS coef_fiab,
 
-        -- Fix 2 : cut MF def/off plus intelligent
-        CASE 
-            WHEN (f.tackles_won + f.interceptions) / NULLIF(f.nineties, 0) 
-               > (f.goals + f.assists) / NULLIF(f.nineties, 0) * 3 
-            THEN 'MF_DEF' 
-            ELSE 'MF_OFF' 
+        -- Split milieux offensifs / défensifs : ratio activité défensive vs offensive
+        CASE
+            WHEN (f.tackles_won + f.interceptions) / NULLIF(f.nineties, 0)
+               > (f.goals + f.assists) / NULLIF(f.nineties, 0) * 3
+            THEN 'MF_DEF'
+            ELSE 'MF_OFF'
         END AS mf_type
 
     FROM fact_stats f
@@ -39,7 +55,6 @@ WITH base AS (
     LEFT JOIN malus_clubs m ON t.team_name = m.team_name
     WHERE p.age <= 20
       AND p.position != 'GK'
-      AND p.player_name != 'Robinio Vaz'
 ),
 scored AS (
     SELECT *,
@@ -57,7 +72,7 @@ scored AS (
                   + (bonus_age * 0.15 * 10 / 2.0)
                 , 1) END
 
-            -- MILIEU (min 400 min)
+            -- MILIEU (min 400 min), formule différenciée selon le profil
             WHEN 'MF' THEN
                 CASE WHEN minutes < 400 THEN NULL ELSE
                 ROUND(
@@ -106,23 +121,13 @@ final AS (
     WHERE score_brut IS NOT NULL
 )
 
--- Fix 1 : Top par poste
+-- Top 10 par poste, classés par ALTERSCORE décroissant
 SELECT rang, player_name, age, position, mf_type, team_name, competition, minutes, alterscore
 FROM (
-    SELECT 
+    SELECT
         ROW_NUMBER() OVER (PARTITION BY position ORDER BY alterscore DESC) AS rang,
         *
     FROM final
 )
 WHERE rang <= 10
-ORDER BY position, rang
-"""
-
-top = pd.read_sql(q, conn)
-conn.close()
-print("🔵 ALTERSCORE V6 — Top 10 par poste — U20 — 5 ligues\n")
-for pos in ['FW', 'MF', 'DF']:
-    print(f"\n{'═'*60}")
-    print(f"  {pos}")
-    print('═'*60)
-    print(top[top['position']==pos].to_string(index=False))
+ORDER BY position, rang;
