@@ -35,6 +35,10 @@ ALTER11/
 │   ├── 01_schema.sql         # Création des tables
 │   ├── 02_kpi_u20.sql        # Requêtes analytiques KPI
 │   └── 03_alterscore.sql     # Calcul ALTERSCORE
+├── scripts/
+│   ├── find_similar_players.py   # Scoring de similarité entre joueurs (ACP)
+│   ├── scrape_2024_2025.py       # Scraping saison 2024-25 (validation)
+│   └── validate_alterscore.py    # Validation prédictive de l'ALTERSCORE
 ├── run_alterscore.py         # Exécute 03_alterscore.sql et affiche le top par poste
 ├── alter11.db                # Base SQLite
 └── index.html                 # Vitrine web ALTER11
@@ -117,8 +121,27 @@ volontairement documentés plutôt que masqués :
 - **8 variables seulement.** Le profil d'un joueur est réduit à 8 métriques par 90 minutes.
   C'est volontairement simple pour rester interprétable, mais ça laisse de côté beaucoup
   de dimensions du jeu (positionnement, passes progressives, duels aériens, etc.).
+- **Impossible d'enrichir ces variables pour l'instant — limite externe, pas un choix.**
+  J'ai identifié un cas concret où le scoring de similarité confond deux profils différents
+  (un dribbleur créatif et un pivot physique, tous deux avec un taux de fautes subies
+  similaire). La solution évidente — ajouter les dribbles réussis et les duels aériens
+  gagnés — est bloquée : **FBref a perdu l'accès à ses données avancées fournies par Opta
+  le 20 janvier 2026**, suite à une rupture de contrat avec Stats Perform
+  ([source](https://www.sports-reference.com/blog/2026/01/fbref-stathead-data-update/)).
+  Seules les stats basiques (standard, gardien, tirs, temps de jeu, quelques stats diverses)
+  restent publiques. J'ai vérifié les alternatives (Sofascore, WhoScored via `soccerdata`,
+  dataset Kaggle) : aucune n'expose ces variables au niveau saison via les outils gratuits
+  actuels.
 - **Malus club approximatif.** Le coefficient d'exposition médiatique est basé sur le
   nombre de points par match de l'équipe, avec des bornes (0.70–1.15) choisies à la main.
+- **Validation prédictive testée, résultat non significatif.** J'ai recalculé l'ALTERSCORE
+  (sans malus club) sur les U20 de la saison 2024-2025, puis regardé s'il prédisait un gain
+  de temps de jeu en 2025-2026. Résultat : aucune corrélation significative, ni globalement
+  (r=-0.10, p=0.29) ni par poste (FW, MF, DF testés séparément). Deux limites à cette
+  validation elle-même : biais de survie (18% des joueurs ont quitté les 5 championnats et
+  sortent de l'échantillon), et échantillon réduit par poste (13 attaquants seulement). Le
+  scoring de similarité entre joueurs (voir `scripts/find_similar_players.py`), en revanche,
+  fonctionne comme prévu.
 
 L'objectif de cette V1 est de poser une méthode explicite et discutable, pas de livrer
 un score définitif.
@@ -128,13 +151,20 @@ un score définitif.
 ```bash
 git clone https://github.com/Janaud14/ALTER11.git
 cd ALTER11
-pip install pandas jupyter ipykernel scikit-learn matplotlib beautifulsoup4 rapidfuzz
+pip install pandas jupyter ipykernel scikit-learn matplotlib beautifulsoup4 rapidfuzz scipy soccerdata
 
 # Pipeline complet (nettoyage, ACP, clustering, scoring) :
 jupyter notebook notebooks/01_analysis.ipynb
 
 # Ou juste le scoring final, si la base est déjà construite :
 python run_alterscore.py
+
+# Trouver des joueurs similaires à un profil donné :
+python scripts/find_similar_players.py "Lamine Yamal"
+
+# Validation prédictive de l'ALTERSCORE (2024-25 vs 2025-26) :
+python scripts/scrape_2024_2025.py
+python scripts/validate_alterscore.py
 ```
 
 ## 🌐 Vitrine web
