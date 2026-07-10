@@ -38,10 +38,13 @@ ALTER11/
 ├── scripts/
 │   ├── find_similar_players.py   # Scoring de similarité entre joueurs (ACP)
 │   ├── scrape_2024_2025.py       # Scraping saison 2024-25 (validation)
-│   └── validate_alterscore.py    # Validation prédictive de l'ALTERSCORE
+│   ├── validate_alterscore.py    # Validation prédictive de l'ALTERSCORE
+│   ├── export_vitrine_data.py    # Génère players.json depuis alter11.db (vitrine)
+│   └── generate_cards.py         # Récupère et détoure les photos joueurs (Transfermarkt)
 ├── run_alterscore.py         # Exécute 03_alterscore.sql et affiche le top par poste
 ├── alter11.db                # Base SQLite
-└── index.html                 # Vitrine web ALTER11
+├── players.json               # Données de la vitrine, généré depuis alter11.db
+└── index.html                 # Vitrine web ALTER11 (charge players.json en fetch())
 ```
 
 ## 📊 Modèle de données
@@ -170,6 +173,22 @@ python scripts/validate_alterscore.py
 ## 🌐 Vitrine web
 
 **[janaud14.github.io/ALTER11](https://janaud14.github.io/ALTER11)**
+
+`index.html` ne contient aucune donnée codée en dur — il charge `players.json`
+au démarrage, qui est généré à partir de la vraie base (mêmes calculs que
+`sql/03_alterscore.sql`), pour tous les U20 éligibles. Pour régénérer la
+vitrine après une mise à jour des stats ou des photos :
+
+```bash
+python scripts/export_vitrine_data.py   # génère players.json depuis alter11.db
+python scripts/generate_cards.py        # récupère les photos manquantes (Transfermarkt)
+python scripts/export_vitrine_data.py   # relance pour prendre en compte les nouvelles photos
+```
+
+Les photos sont récupérées sur Transfermarkt (photo de profil, pas la
+vignette de recherche) puis détourées en local avec `rembg`
+(modèle `u2net_human_seg`, spécialisé silhouettes humaines) — aucune clé API
+n'est nécessaire.
 
 ## 📡 Source des données
 

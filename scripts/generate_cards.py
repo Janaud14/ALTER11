@@ -1,50 +1,54 @@
 """
-Génère les cartes joueurs ALTER11 (design noir/bleu électrique).
+Récupère et détoure les photos joueurs ALTER11 depuis Transfermarkt.
 
 Pipeline par joueur :
-  1. Recherche sur Transfermarkt (nom + club) pour récupérer l'URL de la photo
+  1. Recherche sur Transfermarkt (nom + club) pour récupérer l'URL de la
+     photo en haute résolution (fiche profil, pas la vignette de recherche)
   2. Détourage local avec rembg (pas de clé API, tout tourne en local)
-  3. Composition de la carte : fond ALTER11, photo détourée, dégradé, textes
+  3. Sauvegarde de la photo seule (fond transparent) — la mise en forme
+     (grille, score, nom) est gérée par le CSS/HTML de la vitrine (index.html),
+     pas ici, pour éviter une carte-dans-la-carte.
 
 Usage :
     python scripts/generate_cards.py
 
 Prérequis :
-    pip install requests beautifulsoup4 rapidfuzz rembg pillow
+    pip install requests beautifulsoup4 rapidfuzz rembg pillow pandas
 """
 
-import os
 import time
 from io import BytesIO
 from pathlib import Path
 
-import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
 from rapidfuzz import fuzz
-from rembg import remove as rembg_remove
+from rembg import remove as rembg_remove, new_session
 
 # ── Chemins relatifs à la racine du projet ────────────────────────
 ROOT_DIR = Path(__file__).resolve().parent.parent
 PHOTOS_DIR = ROOT_DIR / "data" / "photos"
-CLUSTERS_CSV = ROOT_DIR / "clusters_u20.csv"  # source des joueurs à traiter
 
 PHOTOS_DIR.mkdir(parents=True, exist_ok=True)
+
+# Modèle spécialisé silhouettes humaines (plus précis que le modèle par
+# défaut "u2net" sur les cheveux/contours pour des portraits).
+# Session créée une seule fois et réutilisée (sinon rembg la recharge à
+# chaque appel, très lent). Le modèle se télécharge automatiquement au
+# premier lancement (~176 Mo).
+REMBG_SESSION = new_session("u2net_human_seg")
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
                   "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 }
 
-# Dimensions de la carte
-CARD_W, CARD_H = 400, 520
-PHOTO_SIZE = (180, 220)
-PHOTO_Y = 120
-
 
 def get_tm_photo_url(player_name: str, team_name: str, headers: dict = HEADERS):
-    """Cherche un joueur sur Transfermarkt et retourne l'URL de sa photo.
+    """Cherche un joueur sur Transfermarkt et retourne l'URL de sa photo en
+    haute résolution (récupérée sur sa fiche profil, pas la vignette de
+    recherche qui est trop petite et donne des cartes floues/déformées).
 
     Le matching combine similarité de nom (70%) et similarité de club (30%)
     pour limiter les faux positifs (homonymes dans d'autres championnats).
@@ -60,7 +64,7 @@ def get_tm_photo_url(player_name: str, team_name: str, headers: dict = HEADERS):
             return None, None
 
         rows = tables[0].find_all("tr", {"class": ["odd", "even"]})
-        best_img, best_score = None, 0
+        best_link, best_score = None, 0
 
         for row in rows:
             tds = row.find_all("td")
@@ -75,11 +79,32 @@ def get_tm_photo_url(player_name: str, team_name: str, headers: dict = HEADERS):
 
             if score_total > best_score:
                 best_score = score_total
-                img = row.find("img")
-                if img:
-                    best_img = img.get("data-src") or img.get("src")
+                lien_profil = None
+                for a in row.find_all("a", href=True):
+                    if "/profil/spieler/" in a["href"]:
+                        lien_profil = a["href"]
+                        break
+                if lien_profil:
+                    best_link = "https://www.transfermarkt.com" + lien_profil
 
-        return best_img, best_score
+        if not best_link:
+            return None, best_score
+
+        # Deuxième requête : la fiche joueur, pour la vraie photo (pas la vignette)
+        time.sleep(1.0)
+        r_profil = requests.get(best_link, headers=headers, timeout=10)
+        soup_profil = BeautifulSoup(r_profil.text, "lxml")
+        img_profil = soup_profil.find("img", {"class": "data-header__profile-image"})
+
+        if img_profil:
+            photo_url = img_profil.get("src") or img_profil.get("data-src")
+            # L'URL Transfermarkt encode la taille dans le chemin
+            # (small/medium/header) — on force la plus grande disponible.
+            if photo_url and "/small/" in photo_url:
+                photo_url = photo_url.replace("/small/", "/header/")
+            return photo_url, best_score
+
+        return None, best_score
 
     except requests.RequestException:
         return None, 0
@@ -87,7 +112,13 @@ def get_tm_photo_url(player_name: str, team_name: str, headers: dict = HEADERS):
 
 def generer_carte(player_name: str, team_name: str, age: int,
                    position: str, alterscore: float, img_url: str | None):
-    """Génère et sauvegarde une carte joueur ALTER11. Retourne le chemin du fichier."""
+    """Télécharge, détoure et sauvegarde la photo du joueur.
+
+    Ne génère QUE la photo (détourée, fond transparent) — pas de carte
+    complète avec nom/score/grille : ça, c'est déjà géré par le CSS/HTML
+    de la vitrine (index.html). Générer une carte complète ici créait un
+    effet de carte-dans-la-carte avec une photo minuscule au milieu.
+    """
     chemin = PHOTOS_DIR / f"{player_name.replace(' ', '_')}.png"
     if chemin.exists():
         print(f"⏭️  {player_name} — déjà générée")
@@ -104,71 +135,67 @@ def generer_carte(player_name: str, team_name: str, age: int,
         print(f"❌ {player_name} — téléchargement photo échoué")
         return None
 
-    # Détourage local (rembg, pas de clé API)
-    img_detoure = Image.open(BytesIO(rembg_remove(r_photo.content))).convert("RGBA")
-    img_detoure.thumbnail(PHOTO_SIZE)
+    # Détourage local (rembg, pas de clé API), fond transparent conservé.
+    # alpha_matting affine les bords (mèches de cheveux notamment) — sans ça,
+    # rembg a tendance à "manger" les cheveux fins en les traitant comme du fond.
+    img_bytes = rembg_remove(
+        r_photo.content,
+        session=REMBG_SESSION,
+        alpha_matting=True,
+        alpha_matting_foreground_threshold=240,
+        alpha_matting_background_threshold=10,
+        alpha_matting_erode_size=10,
+    )
+    img_detoure = Image.open(BytesIO(img_bytes)).convert("RGBA")
 
-    # Fond ALTER11 : noir + grille bleu électrique
-    fond = Image.new("RGBA", (CARD_W, CARD_H), (5, 5, 10, 255))
-    draw = ImageDraw.Draw(fond)
-    for x in range(0, CARD_W, 20):
-        draw.line([(x, 0), (x, CARD_H)], fill=(0, 102, 255, 12), width=1)
-    for y in range(0, CARD_H, 20):
-        draw.line([(0, y), (CARD_W, y)], fill=(0, 102, 255, 12), width=1)
+    # Recadre sur la zone réellement visible (bounding box du canal alpha),
+    # avec une marge de respiration autour (sinon le recadrage colle pile au
+    # visage façon photo d'identité).
+    bbox = img_detoure.getbbox()
+    if bbox:
+        left, top, right, bottom = bbox
+        marge_x = int((right - left) * 0.28)
+        marge_y = int((bottom - top) * 0.22)
+        left = max(0, left - marge_x)
+        top = max(0, top - marge_y)
+        right = min(img_detoure.width, right + marge_x)
+        bottom = min(img_detoure.height, bottom + marge_y)
+        img_detoure = img_detoure.crop((left, top, right, bottom))
 
-    # Photo joueur centrée
-    x = (CARD_W - img_detoure.width) // 2
-    fond.paste(img_detoure, (x, PHOTO_Y), img_detoure)
+    # Redimensionne en gardant une bonne résolution (pas de miniature 180px)
+    # — c'est la vitrine (CSS object-fit: cover) qui adapte l'affichage.
+    img_detoure.thumbnail((600, 700))
 
-    # Dégradé vers le bandeau d'infos
-    fondu = Image.new("RGBA", (CARD_W, 200), (0, 0, 0, 0))
-    draw_f = ImageDraw.Draw(fondu)
-    for i in range(200):
-        alpha = int((i / 200) ** 0.6 * 255)
-        draw_f.rectangle([(0, i), (CARD_W, i + 1)], fill=(5, 5, 10, alpha))
-    fond.paste(fondu, (0, 340), fondu)
-
-    # Ligne séparatrice bleu électrique
-    draw = ImageDraw.Draw(fond)
-    draw.rectangle([(0, 420), (CARD_W, 422)], fill=(0, 102, 255, 220))
-
-    # Textes (fallback police par défaut si Arial absent, ex. hors Windows)
-    try:
-        font_nom = ImageFont.truetype("arial.ttf", 22)
-        font_info = ImageFont.truetype("arial.ttf", 16)
-        font_score = ImageFont.truetype("arialbd.ttf", 28)
-    except OSError:
-        font_nom = font_info = font_score = ImageFont.load_default()
-
-    draw.text((20, 428), player_name.upper(), fill=(240, 240, 240, 255), font=font_nom)
-    draw.text((20, 458), f"{team_name}  •  {position}  •  {age} ans",
-              fill=(160, 160, 160, 255), font=font_info)
-    draw.text((320, 428), str(alterscore), fill=(0, 102, 255, 255), font=font_score)
-    draw.text((320, 462), "ALTER", fill=(120, 120, 120, 255), font=font_info)
-
-    fond.save(chemin)
+    img_detoure.save(chemin)
     print(f"✅ {player_name}")
     return chemin
 
 
 def main():
-    df = pd.read_csv(CLUSTERS_CSV)
-    resultats = []
+    players_json_path = ROOT_DIR / "players.json"
+    if not players_json_path.exists():
+        print("❌ players.json introuvable. Lance d'abord :")
+        print("   python scripts/export_vitrine_data.py")
+        return
 
-    for _, row in df.iterrows():
-        img_url, score = get_tm_photo_url(row["player_name"], row["team_name"])
+    import json
+    with open(players_json_path, encoding="utf-8") as f:
+        players = json.load(f)
+
+    resultats = []
+    for p in players:
+        img_url, score = get_tm_photo_url(p["name"], p["team"])
         chemin = generer_carte(
-            row["player_name"], row["team_name"],
-            row["age"], row.get("position_detail", row.get("position", "")),
-            row.get("alterscore", "—"),
-            img_url,
+            p["name"], p["team"], p["age"], p["pos"], p["score"], img_url,
         )
-        resultats.append({"player_name": row["player_name"], "chemin": chemin})
+        resultats.append({"player_name": p["name"], "chemin": chemin})
         time.sleep(1.5)  # politesse envers Transfermarkt
 
     ok = sum(1 for r in resultats if r["chemin"])
     print(f"\n✅ {ok} cartes générées")
     print(f"❌ {len(resultats) - ok} échecs")
+    print("\n⚠️  N'oublie pas de relancer 'python scripts/export_vitrine_data.py'")
+    print("   pour que players.json prenne en compte les nouvelles photos.")
 
 
 if __name__ == "__main__":
