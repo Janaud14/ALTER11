@@ -12,6 +12,15 @@ d'un joueur qui se procure vraiment de bonnes occasions. Complémentaire aux
 Ce script enrichit la base mais NE MODIFIE PAS la formule ALTERSCORE — c'est
 une décision à prendre à part, une fois les données vérifiées.
 
+Matching des noms : score de similarité calculé sur des noms normalisés
+(accents/diacritiques retirés : Yıldız -> Yildiz), seuil strict à 100 (donc
+correspondance exacte une fois les accents nettoyés). Un seuil plus souple
+avec partial_ratio a été testé et abandonné : il matche à tort des noms
+courts inclus dans un nom plus long sans lien réel (ex: "Francisco Perez"
+matché à tort avec "Isco", "Rayan Cherki" ET "Rayan Aït-Nouri" tous deux
+matchés avec un simple "Rayan"). Les ~130 cas restants après normalisation
+sont corrigés à la main par l'utilisateur.
+
 Usage :
     python scripts/scrape_understat.py
 
@@ -20,6 +29,7 @@ Prérequis :
 """
 
 import sqlite3
+import unicodedata
 from pathlib import Path
 
 import pandas as pd
@@ -36,6 +46,18 @@ LEAGUES = [
 SEASON = "2526"  # même convention que les autres scripts de cette saison
 
 
+def normalise(nom: str) -> str:
+    """Retire les accents/diacritiques (Yıldız -> Yildiz, Stanišić -> Stanisic)
+    pour que le matching ne rate pas des correspondances évidentes à cause
+    d'un accent — sans changer le sens du nom."""
+    nfkd = unicodedata.normalize("NFKD", nom)
+    sans_accents = "".join(c for c in nfkd if not unicodedata.combining(c))
+    remplacements = {"ı": "i", "İ": "I", "ł": "l", "Ł": "L", "đ": "d", "Đ": "D"}
+    for old, new in remplacements.items():
+        sans_accents = sans_accents.replace(old, new)
+    return sans_accents.lower()
+
+
 def scrape_understat() -> pd.DataFrame:
     print("Scraping Understat (xG/xA)...")
     understat = sd.Understat(leagues=LEAGUES, seasons=[SEASON])
@@ -48,7 +70,7 @@ def scrape_understat() -> pd.DataFrame:
 def update_db(df_understat: pd.DataFrame, db_path: Path):
     with sqlite3.connect(db_path) as conn:
         cur = conn.cursor()
-        for col in ["xg", "xa", "npxg"]:
+        for col in ["xg", "xa", "npxg", "np_goals", "xg_buildup"]:
             try:
                 cur.execute(f"ALTER TABLE fact_stats ADD COLUMN {col} REAL")
             except sqlite3.OperationalError:
@@ -63,6 +85,8 @@ def update_db(df_understat: pd.DataFrame, db_path: Path):
         col_xg = next((c for c in df_understat.columns if c.lower() == "xg"), None)
         col_xa = next((c for c in df_understat.columns if c.lower() == "xa"), None)
         col_npxg = next((c for c in df_understat.columns if c.lower() in ("npxg", "np_xg")), None)
+        col_np_goals = next((c for c in df_understat.columns if c.lower() in ("np_goals", "npg")), None)
+        col_xg_buildup = next((c for c in df_understat.columns if c.lower() in ("xg_buildup", "xgbuildup")), None)
 
         if not col_player or not col_xg:
             raise KeyError(
@@ -73,22 +97,30 @@ def update_db(df_understat: pd.DataFrame, db_path: Path):
         matched, non_matched = 0, 0
         for _, row in df_understat.iterrows():
             nom = row[col_player]
+            nom_norm = normalise(str(nom))
             best_name, best_score = None, 0
             for candidat in noms_db:
-                score = fuzz.ratio(str(nom).lower(), candidat.lower())
+                score = fuzz.ratio(nom_norm, normalise(candidat))
                 if score > best_score:
                     best_name, best_score = candidat, score
-            if best_score < 88:
+            # Seuil strict à 100 : correspondance exacte une fois les accents
+            # retirés uniquement. Volontairement pas de partial_ratio ici
+            # (testé et abandonné — trop de faux positifs sur noms courts,
+            # voir docstring en tête de fichier).
+            if best_score < 100:
                 non_matched += 1
                 continue
 
             player_id = dim_player.loc[dim_player["player_name"] == best_name, "player_id"].iloc[0]
             cur.execute(
-                "UPDATE fact_stats SET xg = ?, xa = ?, npxg = ? WHERE player_id = ?",
+                "UPDATE fact_stats SET xg = ?, xa = ?, npxg = ?, np_goals = ?, xg_buildup = ? "
+                "WHERE player_id = ?",
                 (
                     row[col_xg],
                     row[col_xa] if col_xa else None,
                     row[col_npxg] if col_npxg else None,
+                    row[col_np_goals] if col_np_goals else None,
+                    row[col_xg_buildup] if col_xg_buildup else None,
                     int(player_id),
                 )
             )
