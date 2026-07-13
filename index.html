@@ -27,7 +27,23 @@ body { background: var(--bg); font-family: 'Oxanium', sans-serif; color: var(--t
 .season { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 2px; }
 .tagline { font-size: 9px; font-weight: 500; color: var(--muted); letter-spacing: 2px; margin-bottom: 20px; border-left: 2px solid var(--neon); padding-left: 10px; text-transform: uppercase; }
 /* FILTERS */
-.filters { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+.filters { display: flex; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+/* HELP BUTTON */
+.help-btn { margin-left: auto; font-family: 'Oxanium', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1px; padding: 5px 14px; border: 0.5px solid var(--border); background: transparent; color: var(--neon); cursor: pointer; border-radius: 2px; transition: all .2s; }
+.help-btn:hover { background: var(--neon-dim); box-shadow: var(--neon-glow); }
+/* HELP MODAL */
+.help-overlay { display: none; position: fixed; inset: 0; background: rgba(2,4,15,0.88); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
+.help-overlay.open { display: flex; }
+.help-modal { background: var(--card); border: 0.5px solid var(--neon); border-radius: 4px; max-width: 560px; max-height: 80vh; overflow-y: auto; padding: 24px; position: relative; }
+.help-modal h3 { font-size: 14px; color: var(--neon); letter-spacing: 1px; margin-bottom: 10px; margin-top: 18px; text-transform: uppercase; }
+.help-modal h3:first-child { margin-top: 0; }
+.help-modal p { font-size: 12px; color: var(--text); line-height: 1.6; margin-bottom: 8px; }
+.help-modal .muted-note { font-size: 10px; color: var(--muted); line-height: 1.5; }
+.help-close { position: absolute; top: 14px; right: 16px; font-size: 14px; color: var(--muted); background: none; border: none; cursor: pointer; }
+.help-close:hover { color: var(--neon); }
+/* STAT INFO ICON */
+.info-icon { display: inline-block; width: 12px; height: 12px; line-height: 12px; text-align: center; border-radius: 50%; border: 0.5px solid var(--muted); color: var(--muted); font-size: 8px; font-style: normal; margin-left: 4px; cursor: help; vertical-align: middle; }
+.info-icon:hover { border-color: var(--neon); color: var(--neon); }
 .fbtn { font-family: 'Oxanium', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; padding: 5px 16px; border: 0.5px solid var(--border); background: transparent; color: var(--muted); cursor: pointer; border-radius: 2px; transition: all .2s; text-transform: uppercase; }
 .fbtn:hover, .fbtn.on { border-color: var(--neon); color: var(--neon); background: var(--neon-dim); text-shadow: var(--neon-glow); }
 /* GRID */
@@ -92,6 +108,23 @@ body { background: var(--bg); font-family: 'Oxanium', sans-serif; color: var(--t
 <button class="fbtn" onclick="filter('MF',this)">Milieux</button>
 <button class="fbtn" onclick="filter('DF',this)">Défenseurs</button>
 <button class="fbtn" onclick="filter('U19',this)">U19</button>
+<button class="help-btn" onclick="document.getElementById('helpOverlay').classList.add('open')">? Comment ça marche</button>
+</div>
+<div class="help-overlay" id="helpOverlay">
+<div class="help-modal">
+<button class="help-close" onclick="document.getElementById('helpOverlay').classList.remove('open')">✕</button>
+<h3>C'est quoi l'ALTER SCORE ?</h3>
+<p>Un indice sur 10 qui évalue le potentiel d'un joueur U20, calculé différemment selon son poste (attaquant, milieu, défenseur). Il combine plusieurs métriques par 90 minutes, un bonus lié à l'âge, et un ajustement selon la force du club.</p>
+<h3>npxG / xG (expected goals)</h3>
+<p>La qualité statistique des occasions d'un joueur — pas juste s'il a marqué, mais si ses tirs avaient de bonnes chances de finir au fond, en moyenne sur des tirs similaires historiquement. "np" = hors penalty, pour ne pas gonfler artificiellement le score d'un tireur attitré.</p>
+<h3>PPM équipe</h3>
+<p>Points par match de l'équipe cette saison. Sert à ajuster le score : un même niveau de performance vaut statistiquement plus dans un club modeste que dans une équipe qui écrase son championnat.</p>
+<h3>Bonus âge</h3>
+<p>Plus un joueur est jeune, plus le même niveau de performance est valorisé — un joueur de 17 ans qui performe comme un joueur de 20 ans a démontré plus de précocité.</p>
+<h3>Min%</h3>
+<p>Pourcentage du temps de jeu disponible que le joueur a effectivement joué cette saison — un indicateur de régularité et de confiance du club envers lui.</p>
+<p class="muted-note">Méthodologie complète, limites assumées et code source sur <a href="https://github.com/Janaud14/ALTER11" style="color:var(--neon)">GitHub</a>.</p>
+</div>
 </div>
 <div class="grid" id="grid"><div class="status-msg">Chargement des données...</div></div>
 <div class="voir-plus" id="vp" style="display:none">
@@ -111,14 +144,28 @@ const PAGE=6; let current='ALL'; let showing=PAGE;
 
 function initials(n){return n.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase()}
 
+// Glossaire des termes techniques — affiché en info-bulle au survol de l'icône (i)
+const GLOSSAIRE = {
+"npxG/90": "Qualité statistique des occasions de tir par 90 min, hors penalty. Ne dépend pas de si le tir est rentré, juste de sa position/situation.",
+"Buts hors pen./90": "Buts marqués en jeu ouvert par 90 min, penalties exclus (pour ne pas avantager un tireur attitré).",
+"Précision tir": "Pourcentage de tirs cadrés parmi tous les tirs tentés.",
+"Impact Off/90": "Buts + passes décisives par 90 min.",
+"Act. Déf/90": "Tacles + interceptions par 90 min.",
+"PPM équipe": "Points par match de l'équipe cette saison — sert à ajuster le score selon la force du club.",
+"Min%": "Pourcentage du temps de jeu disponible effectivement joué cette saison.",
+};
+
 function buildCard(p,idx){
 const photoHtml = p.photo ? `<img class="player-img" src="${p.photo}" alt="${p.name}" onerror="this.style.display='none'">` : '';
-const statsHtml = p.stats.map(s=>`
+const statsHtml = p.stats.map(s=>{
+const info = GLOSSAIRE[s.l] ? `<i class="info-icon" title="${GLOSSAIRE[s.l]}">i</i>` : '';
+return `
 <div class="stat">
-<span class="stat-lbl">${s.l}</span>
+<span class="stat-lbl">${s.l}${info}</span>
 <div class="bar"><div class="fill" style="width:${s.p}%"></div></div>
 <span class="stat-val">${s.v}</span>
-</div>`).join('');
+</div>`;
+}).join('');
 return `
 <div class="card" data-pos="${p.pos}" data-age="${p.age}" data-idx="${idx}">
 <div class="front">

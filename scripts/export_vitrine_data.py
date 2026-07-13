@@ -50,6 +50,11 @@ def load_scored_players(db_path: Path) -> pd.DataFrame:
                 ROUND(f.crosses / NULLIF(f.nineties, 0), 2)            AS crs_p90,
                 ROUND(f.points_per_match, 2)                           AS ppm,
                 COALESCE(m.malus, 1.0)                                 AS coef_club,
+                -- Variables Understat, protégées par COALESCE (voir sql/03_alterscore.sql
+                -- pour l'explication détaillée du risque d'exclusion silencieuse)
+                ROUND(COALESCE(f.np_goals, f.goals) / NULLIF(f.nineties, 0), 2) AS np_goals_p90,
+                ROUND(COALESCE(f.npxg, 0) / NULLIF(f.nineties, 0), 2)           AS npxg_p90,
+                ROUND(COALESCE(f.shots_on_target, 0) * 1.0 / NULLIF(f.shots, 0), 3) AS precision_tir,
                 CASE
                     WHEN p.age <= 17 THEN 2.0 WHEN p.age <= 18 THEN 1.7
                     WHEN p.age <= 19 THEN 1.4 WHEN p.age = 20  THEN 1.1
@@ -71,8 +76,10 @@ def load_scored_players(db_path: Path) -> pd.DataFrame:
             SELECT *,
                 CASE position
                     WHEN 'FW' THEN CASE WHEN minutes < 300 THEN NULL ELSE ROUND(
-                        (MIN(tirs_p90, 5.0) / 5.0 * 10 * 0.25)
-                      + (MIN(buts_p90, 1.0) / 1.0 * 10 * 0.25)
+                        (MIN(np_goals_p90, 1.0) / 1.0 * 10 * 0.25)
+                      + (MIN(npxg_p90, 1.0) / 1.0 * 10 * 0.07)
+                      + (MIN(tirs_p90, 5.0) / 5.0 * 10 * 0.08)
+                      + (COALESCE(precision_tir, 0.35) * 10 * 0.10)
                       + (MIN(passes_p90, 0.8) / 0.8 * 10 * 0.15)
                       + (MIN(min_pct, 100) / 100.0 * 10 * 0.15)
                       + (MIN(ppm, 3.0) / 3.0 * 10 * 0.05)
@@ -142,8 +149,13 @@ def build_players_json(df: pd.DataFrame) -> list:
     df["tacles_p90"] = df["tacles_p90"].fillna(0)
     df["int_p90"] = df["int_p90"].fillna(0)
     df["fd_p90"] = df["fd_p90"].fillna(0)
+    df["fls_p90"] = df["fls_p90"].fillna(0)
     df["crs_p90"] = df["crs_p90"].fillna(0)
     df["min_pct"] = df["min_pct"].fillna(0)
+    df["ppm"] = df["ppm"].fillna(0)
+    df["np_goals_p90"] = df["np_goals_p90"].fillna(0)
+    df["npxg_p90"] = df["npxg_p90"].fillna(0)
+    df["precision_tir"] = df["precision_tir"].fillna(0.35)
     df["impact_off_p90"] = (df["buts_p90"] + df["passes_p90"]).round(2)
     df["act_def_p90"] = (df["tacles_p90"] + df["int_p90"]).round(2)
 
@@ -155,8 +167,9 @@ def build_players_json(df: pd.DataFrame) -> list:
     df.loc[is_mf, "groupe_pct"] = "MF_" + df.loc[is_mf, "mf_type"].astype(str)
 
     pct_cols = ["buts_p90", "passes_p90", "tirs_p90", "tacles_p90",
-                "int_p90", "fd_p90", "crs_p90", "min_pct",
-                "impact_off_p90", "act_def_p90"]
+                "int_p90", "fd_p90", "fls_p90", "crs_p90", "min_pct", "ppm",
+                "impact_off_p90", "act_def_p90",
+                "np_goals_p90", "npxg_p90", "precision_tir"]
     for col in pct_cols:
         df[f"pct_{col}"] = df.groupby("groupe_pct")[col].rank(pct=True).mul(100).round(0).astype(int)
 
@@ -168,8 +181,10 @@ def build_players_json(df: pd.DataFrame) -> list:
         réellement utilisées dans la formule ALTERSCORE pour ce poste/profil."""
         if row["position"] == "FW":
             return [
-                {"l": "Buts/90", "v": f"{row['buts_p90']:.2f}", "p": int(row["pct_buts_p90"])},
+                {"l": "Buts hors pen./90", "v": f"{row['np_goals_p90']:.2f}", "p": int(row["pct_np_goals_p90"])},
+                {"l": "npxG/90", "v": f"{row['npxg_p90']:.2f}", "p": int(row["pct_npxg_p90"])},
                 {"l": "Tirs/90", "v": f"{row['tirs_p90']:.2f}", "p": int(row["pct_tirs_p90"])},
+                {"l": "Précision tir", "v": f"{row['precision_tir']*100:.0f}%", "p": int(row["pct_precision_tir"])},
                 {"l": "Passes déc/90", "v": f"{row['passes_p90']:.2f}", "p": int(row["pct_passes_p90"])},
                 {"l": "Min%", "v": f"{row['min_pct']:.1f}%", "p": int(row["pct_min_pct"])},
             ]
@@ -179,12 +194,16 @@ def build_players_json(df: pd.DataFrame) -> list:
                     {"l": "Tacles/90", "v": f"{row['tacles_p90']:.2f}", "p": int(row["pct_tacles_p90"])},
                     {"l": "Interceptions/90", "v": f"{row['int_p90']:.2f}", "p": int(row["pct_int_p90"])},
                     {"l": "Fautes subies/90", "v": f"{row['fd_p90']:.2f}", "p": int(row["pct_fd_p90"])},
+                    {"l": "Fautes commises/90", "v": f"{row['fls_p90']:.2f}", "p": int(row["pct_fls_p90"])},
+                    {"l": "PPM équipe", "v": f"{row['ppm']:.2f}", "p": int(row["pct_ppm"])},
                     {"l": "Min%", "v": f"{row['min_pct']:.1f}%", "p": int(row["pct_min_pct"])},
                 ]
             return [
                 {"l": "Impact Off/90", "v": f"{row['impact_off_p90']:.2f}", "p": int(row["pct_impact_off_p90"])},
                 {"l": "Tirs/90", "v": f"{row['tirs_p90']:.2f}", "p": int(row["pct_tirs_p90"])},
                 {"l": "Act. Déf/90", "v": f"{row['act_def_p90']:.2f}", "p": int(row["pct_act_def_p90"])},
+                {"l": "Fautes subies/90", "v": f"{row['fd_p90']:.2f}", "p": int(row["pct_fd_p90"])},
+                {"l": "PPM équipe", "v": f"{row['ppm']:.2f}", "p": int(row["pct_ppm"])},
                 {"l": "Min%", "v": f"{row['min_pct']:.1f}%", "p": int(row["pct_min_pct"])},
             ]
         # DF
@@ -192,6 +211,8 @@ def build_players_json(df: pd.DataFrame) -> list:
             {"l": "Tacles/90", "v": f"{row['tacles_p90']:.2f}", "p": int(row["pct_tacles_p90"])},
             {"l": "Interceptions/90", "v": f"{row['int_p90']:.2f}", "p": int(row["pct_int_p90"])},
             {"l": "Centres/90", "v": f"{row['crs_p90']:.2f}", "p": int(row["pct_crs_p90"])},
+            {"l": "Fautes subies/90", "v": f"{row['fd_p90']:.2f}", "p": int(row["pct_fd_p90"])},
+            {"l": "PPM équipe", "v": f"{row['ppm']:.2f}", "p": int(row["pct_ppm"])},
             {"l": "Min%", "v": f"{row['min_pct']:.1f}%", "p": int(row["pct_min_pct"])},
         ]
 

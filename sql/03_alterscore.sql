@@ -29,6 +29,18 @@ WITH base AS (
         ROUND(f.points_per_match, 2)                           AS ppm,
         COALESCE(m.malus, 1.0)                                 AS coef_club,
 
+        -- Variables Understat (np_goals, npxg) : ~90% de couverture
+        -- (matching par nom, pas parfait). COALESCE à 0 pour un joueur non
+        -- matché plutôt que NULL, sinon toute la formule FW deviendrait
+        -- NULL pour lui et il disparaîtrait silencieusement du classement
+        -- (même piège que les bugs positions/âge corrigés précédemment).
+        ROUND(COALESCE(f.np_goals, f.goals) / NULLIF(f.nineties, 0), 2) AS np_goals_p90,
+        ROUND(COALESCE(f.npxg, 0) / NULLIF(f.nineties, 0), 2)           AS npxg_p90,
+
+        -- Précision de tir : tirs cadrés / tirs tentés. NULLIF évite une
+        -- division par zéro pour un joueur qui n'a tenté aucun tir.
+        ROUND(COALESCE(f.shots_on_target, 0) * 1.0 / NULLIF(f.shots, 0), 3) AS precision_tir,
+
         -- Bonus âge dégressif : plus le joueur est jeune, plus le bonus est fort
         CASE
             WHEN p.age <= 17 THEN 2.0
@@ -61,11 +73,19 @@ scored AS (
         CASE position
 
             -- ATTAQUANT (min 300 min)
+            -- Cluster tir/finition (50% au total, redécoupé en 4) :
+            --   np_goals 25% (remplace buts brut, sans biais penalty)
+            --   npxg 7% (bonus qualité, poids faible car corrélé à 0.83 avec np_goals)
+            --   tirs 8% (volume, réduit car la précision prend le relais)
+            --   précision de tir 10% (nouveau : tirs cadrés / tirs tentés)
+            -- Le reste (passes, min%, ppm, bonus âge) est inchangé.
             WHEN 'FW' THEN
                 CASE WHEN minutes < 300 THEN NULL ELSE
                 ROUND(
-                    (MIN(tirs_p90, 5.0) / 5.0 * 10 * 0.25)
-                  + (MIN(buts_p90, 1.0) / 1.0 * 10 * 0.25)
+                    (MIN(np_goals_p90, 1.0) / 1.0 * 10 * 0.25)
+                  + (MIN(npxg_p90, 1.0) / 1.0 * 10 * 0.07)
+                  + (MIN(tirs_p90, 5.0) / 5.0 * 10 * 0.08)
+                  + (COALESCE(precision_tir, 0.35) * 10 * 0.10)
                   + (MIN(passes_p90, 0.8) / 0.8 * 10 * 0.15)
                   + (MIN(min_pct, 100) / 100.0 * 10 * 0.15)
                   + (MIN(ppm, 3.0) / 3.0 * 10 * 0.05)

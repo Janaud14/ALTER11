@@ -171,6 +171,16 @@ def generer_carte(player_name: str, team_name: str, age: int,
     return chemin
 
 
+# Alias manuels : nom dans notre base -> nom exact utilisé par Transfermarkt.
+# Certains changements de prénom (pas juste un accent) ne peuvent pas être
+# devinés par le matching flou — identifiés à la main au fil des échecs.
+ALIAS_RECHERCHE = {
+    "Eli Junior Kroupi": "Junior Kroupi",
+    "Hannes Behrens": "Hennes Behrens",
+    "Jean Mattéo Bahoya": "Jean-Mattéo Bahoya",
+}
+
+
 def main():
     players_json_path = ROOT_DIR / "players.json"
     if not players_json_path.exists():
@@ -184,7 +194,8 @@ def main():
 
     resultats = []
     for p in players:
-        img_url, score = get_tm_photo_url(p["name"], p["team"])
+        nom_recherche = ALIAS_RECHERCHE.get(p["name"], p["name"])
+        img_url, score = get_tm_photo_url(nom_recherche, p["team"])
         chemin = generer_carte(
             p["name"], p["team"], p["age"], p["pos"], p["score"], img_url,
         )
