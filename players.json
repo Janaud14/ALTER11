@@ -1,45 +1,13 @@
 [
   {
-    "name": "Lamine Yamal",
-    "age": 18,
-    "pos": "MF",
-    "team": "Barcelona",
-    "ligue": "La Liga",
-    "score": 5.8,
-    "rank": 1,
-    "photo": "data/photos/Lamine_Yamal.png",
-    "stats": [
-      {
-        "l": "Impact Off/90",
-        "v": "1.08",
-        "p": 100
-      },
-      {
-        "l": "Tirs/90",
-        "v": "4.66",
-        "p": 100
-      },
-      {
-        "l": "Act. Déf/90",
-        "v": "1.12",
-        "p": 73
-      },
-      {
-        "l": "Min%",
-        "v": "89.8%",
-        "p": 100
-      }
-    ]
-  },
-  {
     "name": "Said El Mala",
     "age": 18,
     "pos": "FW",
     "team": "Köln",
     "ligue": "Bundesliga",
-    "score": 5.5,
-    "rank": 2,
-    "photo": null,
+    "score": 6.8,
+    "rank": 1,
+    "photo": "data/photos/Said_El_Mala.png",
     "stats": [
       {
         "l": "Buts/90",
@@ -64,45 +32,13 @@
     ]
   },
   {
-    "name": "Can Uzun",
-    "age": 19,
-    "pos": "MF",
-    "team": "Frankfurt",
-    "ligue": "Bundesliga",
-    "score": 5.2,
-    "rank": 3,
-    "photo": "data/photos/Can_Uzun.png",
-    "stats": [
-      {
-        "l": "Impact Off/90",
-        "v": "0.93",
-        "p": 96
-      },
-      {
-        "l": "Tirs/90",
-        "v": "3.19",
-        "p": 96
-      },
-      {
-        "l": "Act. Déf/90",
-        "v": "0.93",
-        "p": 46
-      },
-      {
-        "l": "Min%",
-        "v": "61.2%",
-        "p": 58
-      }
-    ]
-  },
-  {
     "name": "Jesus Rodríguez",
     "age": 19,
     "pos": "MF",
     "team": "Como",
     "ligue": "Serie A",
-    "score": 5.0,
-    "rank": 4,
+    "score": 6.0,
+    "rank": 2,
     "photo": "data/photos/Jesus_Rodríguez.png",
     "stats": [
       {
@@ -128,66 +64,66 @@
     ]
   },
   {
-    "name": "Eli Junior Kroupi",
-    "age": 19,
+    "name": "Lamine Yamal",
+    "age": 18,
     "pos": "MF",
-    "team": "Bournemouth",
-    "ligue": "Premier League",
-    "score": 4.8,
-    "rank": 5,
-    "photo": null,
+    "team": "Barcelona",
+    "ligue": "La Liga",
+    "score": 5.9,
+    "rank": 3,
+    "photo": "data/photos/Lamine_Yamal.png",
     "stats": [
       {
         "l": "Impact Off/90",
-        "v": "0.73",
-        "p": 85
+        "v": "1.08",
+        "p": 100
       },
       {
         "l": "Tirs/90",
-        "v": "2.59",
-        "p": 65
+        "v": "4.66",
+        "p": 100
       },
       {
         "l": "Act. Déf/90",
-        "v": "0.79",
-        "p": 23
+        "v": "1.12",
+        "p": 73
       },
       {
         "l": "Min%",
-        "v": "55.6%",
-        "p": 54
+        "v": "89.8%",
+        "p": 100
       }
     ]
   },
   {
-    "name": "Santiago Hidalgo",
-    "age": 20,
+    "name": "Can Uzun",
+    "age": 19,
     "pos": "MF",
-    "team": "Toulouse",
-    "ligue": "Ligue 1",
-    "score": 4.8,
-    "rank": 6,
-    "photo": null,
+    "team": "Frankfurt",
+    "ligue": "Bundesliga",
+    "score": 5.8,
+    "rank": 4,
+    "photo": "data/photos/Can_Uzun.png",
     "stats": [
       {
         "l": "Impact Off/90",
-        "v": "0.69",
-        "p": 77
+        "v": "0.93",
+        "p": 96
       },
       {
         "l": "Tirs/90",
-        "v": "2.27",
-        "p": 42
+        "v": "3.19",
+        "p": 96
       },
       {
         "l": "Act. Déf/90",
-        "v": "1.93",
-        "p": 100
+        "v": "0.93",
+        "p": 46
       },
       {
         "l": "Min%",
-        "v": "51.8%",
-        "p": 42
+        "v": "61.2%",
+        "p": 58
       }
     ]
   },
@@ -197,8 +133,8 @@
     "pos": "FW",
     "team": "Levante",
     "ligue": "La Liga",
-    "score": 4.7,
-    "rank": 7,
+    "score": 5.7,
+    "rank": 5,
     "photo": "data/photos/Carlos_Espí.png",
     "stats": [
       {
@@ -224,98 +160,66 @@
     ]
   },
   {
-    "name": "Lennart Karl",
-    "age": 17,
+    "name": "Santiago Hidalgo",
+    "age": 20,
     "pos": "MF",
-    "team": "Bayern Munich",
-    "ligue": "Bundesliga",
-    "score": 4.7,
-    "rank": 8,
-    "photo": "data/photos/Lennart_Karl.png",
+    "team": "Toulouse",
+    "ligue": "Ligue 1",
+    "score": 5.6,
+    "rank": 6,
+    "photo": "data/photos/Santiago_Hidalgo.png",
     "stats": [
       {
         "l": "Impact Off/90",
-        "v": "0.70",
-        "p": 81
-      },
-      {
-        "l": "Tirs/90",
-        "v": "2.95",
+        "v": "0.69",
         "p": 77
       },
       {
-        "l": "Act. Déf/90",
-        "v": "1.82",
-        "p": 96
-      },
-      {
-        "l": "Min%",
-        "v": "54.7%",
-        "p": 46
-      }
-    ]
-  },
-  {
-    "name": "Kenan Yıldız",
-    "age": 20,
-    "pos": "MF",
-    "team": "Juventus",
-    "ligue": "Serie A",
-    "score": 4.7,
-    "rank": 9,
-    "photo": "data/photos/Kenan_Yıldız.png",
-    "stats": [
-      {
-        "l": "Impact Off/90",
-        "v": "0.51",
+        "l": "Tirs/90",
+        "v": "2.27",
         "p": 42
       },
       {
-        "l": "Tirs/90",
-        "v": "3.09",
-        "p": 92
-      },
-      {
         "l": "Act. Déf/90",
-        "v": "0.67",
-        "p": 12
+        "v": "1.93",
+        "p": 100
       },
       {
         "l": "Min%",
-        "v": "87.2%",
-        "p": 96
+        "v": "51.8%",
+        "p": 42
       }
     ]
   },
   {
-    "name": "Bazoumana Touré",
+    "name": "Eli Junior Kroupi",
     "age": 19,
     "pos": "MF",
-    "team": "Hoffenheim",
-    "ligue": "Bundesliga",
-    "score": 4.6,
-    "rank": 10,
-    "photo": "data/photos/Bazoumana_Touré.png",
+    "team": "Bournemouth",
+    "ligue": "Premier League",
+    "score": 5.4,
+    "rank": 7,
+    "photo": null,
     "stats": [
       {
         "l": "Impact Off/90",
-        "v": "0.55",
-        "p": 52
+        "v": "0.73",
+        "p": 85
       },
       {
         "l": "Tirs/90",
-        "v": "1.87",
-        "p": 27
+        "v": "2.59",
+        "p": 65
       },
       {
         "l": "Act. Déf/90",
-        "v": "1.09",
-        "p": 67
+        "v": "0.79",
+        "p": 23
       },
       {
         "l": "Min%",
-        "v": "85.5%",
-        "p": 92
+        "v": "55.6%",
+        "p": 54
       }
     ]
   },
@@ -325,8 +229,8 @@
     "pos": "MF",
     "team": "Pisa",
     "ligue": "Serie A",
-    "score": 4.4,
-    "rank": 11,
+    "score": 5.4,
+    "rank": 8,
     "photo": "data/photos/Ebenezer_Akinsanmiro.png",
     "stats": [
       {
@@ -352,130 +256,34 @@
     ]
   },
   {
-    "name": "Arda Güler",
-    "age": 20,
+    "name": "Bazoumana Touré",
+    "age": 19,
     "pos": "MF",
-    "team": "Real Madrid",
-    "ligue": "La Liga",
-    "score": 4.3,
-    "rank": 12,
-    "photo": "data/photos/Arda_Güler.png",
+    "team": "Hoffenheim",
+    "ligue": "Bundesliga",
+    "score": 5.3,
+    "rank": 9,
+    "photo": "data/photos/Bazoumana_Touré.png",
     "stats": [
       {
         "l": "Impact Off/90",
-        "v": "0.58",
-        "p": 62
+        "v": "0.55",
+        "p": 52
       },
       {
         "l": "Tirs/90",
-        "v": "2.19",
-        "p": 31
+        "v": "1.87",
+        "p": 27
       },
       {
         "l": "Act. Déf/90",
-        "v": "1.61",
+        "v": "1.09",
+        "p": 67
+      },
+      {
+        "l": "Min%",
+        "v": "85.5%",
         "p": 92
-      },
-      {
-        "l": "Min%",
-        "v": "67.8%",
-        "p": 77
-      }
-    ]
-  },
-  {
-    "name": "Endrick",
-    "age": 19,
-    "pos": "FW",
-    "team": "Real Madrid",
-    "ligue": "La Liga",
-    "score": 4.3,
-    "rank": 13,
-    "photo": "data/photos/Endrick.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.37",
-        "p": 63
-      },
-      {
-        "l": "Tirs/90",
-        "v": "3.67",
-        "p": 82
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.51",
-        "p": 100
-      },
-      {
-        "l": "Min%",
-        "v": "80.2%",
-        "p": 95
-      }
-    ]
-  },
-  {
-    "name": "Yan Diomandé",
-    "age": 18,
-    "pos": "FW",
-    "team": "RB Leipzig",
-    "ligue": "Bundesliga",
-    "score": 4.3,
-    "rank": 14,
-    "photo": "data/photos/Yan_Diomandé.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.44",
-        "p": 71
-      },
-      {
-        "l": "Tirs/90",
-        "v": "1.93",
-        "p": 26
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.29",
-        "p": 90
-      },
-      {
-        "l": "Min%",
-        "v": "83.2%",
-        "p": 98
-      }
-    ]
-  },
-  {
-    "name": "Hannes Behrens",
-    "age": 20,
-    "pos": "DF",
-    "team": "Heidenheim",
-    "ligue": "Bundesliga",
-    "score": 4.2,
-    "rank": 15,
-    "photo": null,
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.23",
-        "p": 60
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.23",
-        "p": 62
-      },
-      {
-        "l": "Centres/90",
-        "v": "4.03",
-        "p": 96
-      },
-      {
-        "l": "Min%",
-        "v": "91.5%",
-        "p": 79
       }
     ]
   },
@@ -485,8 +293,8 @@
     "pos": "MF",
     "team": "Como",
     "ligue": "Serie A",
-    "score": 4.2,
-    "rank": 16,
+    "score": 5.1,
+    "rank": 10,
     "photo": "data/photos/Assane_Diao.png",
     "stats": [
       {
@@ -512,130 +320,66 @@
     ]
   },
   {
-    "name": "Ayyoub Bouaddi",
-    "age": 17,
-    "pos": "MF",
-    "team": "Lille",
-    "ligue": "Ligue 1",
-    "score": 4.1,
-    "rank": 17,
-    "photo": "data/photos/Ayyoub_Bouaddi.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.55",
-        "p": 80
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.05",
-        "p": 74
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "0.93",
-        "p": 31
-      },
-      {
-        "l": "Min%",
-        "v": "86.0%",
-        "p": 95
-      }
-    ]
-  },
-  {
-    "name": "Jobe Bellingham",
-    "age": 19,
-    "pos": "MF",
-    "team": "Dortmund",
-    "ligue": "Bundesliga",
-    "score": 4.1,
-    "rank": 18,
-    "photo": "data/photos/Jobe_Bellingham.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.16",
-        "p": 51
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "2.07",
-        "p": 99
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.01",
-        "p": 36
-      },
-      {
-        "l": "Min%",
-        "v": "62.0%",
-        "p": 63
-      }
-    ]
-  },
-  {
-    "name": "Honest Ahanor",
-    "age": 17,
+    "name": "Hannes Behrens",
+    "age": 20,
     "pos": "DF",
-    "team": "Atalanta",
-    "ligue": "Serie A",
-    "score": 4.1,
-    "rank": 19,
-    "photo": "data/photos/Honest_Ahanor.png",
+    "team": "Heidenheim",
+    "ligue": "Bundesliga",
+    "score": 5.0,
+    "rank": 11,
+    "photo": null,
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "1.31",
-        "p": 69
+        "v": "1.23",
+        "p": 60
       },
       {
         "l": "Interceptions/90",
-        "v": "1.57",
-        "p": 86
+        "v": "1.23",
+        "p": 62
       },
       {
         "l": "Centres/90",
-        "v": "0.13",
-        "p": 38
+        "v": "4.03",
+        "p": 96
       },
       {
         "l": "Min%",
-        "v": "69.5%",
-        "p": 31
+        "v": "91.5%",
+        "p": 79
       }
     ]
   },
   {
-    "name": "Rayan",
-    "age": 19,
+    "name": "Kenan Yıldız",
+    "age": 20,
     "pos": "MF",
-    "team": "Bournemouth",
-    "ligue": "Premier League",
-    "score": 4.0,
-    "rank": 20,
-    "photo": "data/photos/Rayan.png",
+    "team": "Juventus",
+    "ligue": "Serie A",
+    "score": 5.0,
+    "rank": 12,
+    "photo": "data/photos/Kenan_Yıldız.png",
     "stats": [
       {
         "l": "Impact Off/90",
-        "v": "0.60",
-        "p": 65
+        "v": "0.51",
+        "p": 42
       },
       {
         "l": "Tirs/90",
-        "v": "2.34",
-        "p": 52
+        "v": "3.09",
+        "p": 92
       },
       {
         "l": "Act. Déf/90",
-        "v": "1.04",
-        "p": 54
+        "v": "0.67",
+        "p": 12
       },
       {
         "l": "Min%",
-        "v": "82.5%",
-        "p": 88
+        "v": "87.2%",
+        "p": 96
       }
     ]
   },
@@ -645,8 +389,8 @@
     "pos": "DF",
     "team": "Lorient",
     "ligue": "Ligue 1",
-    "score": 4.0,
-    "rank": 21,
+    "score": 4.9,
+    "rank": 13,
     "photo": "data/photos/Abdoulaye_Faye.png",
     "stats": [
       {
@@ -672,77 +416,13 @@
     ]
   },
   {
-    "name": "Johan Manzambi",
-    "age": 19,
-    "pos": "MF",
-    "team": "Freiburg",
-    "ligue": "Bundesliga",
-    "score": 4.0,
-    "rank": 22,
-    "photo": "data/photos/Johan_Manzambi.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.61",
-        "p": 8
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.17",
-        "p": 84
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "3.38",
-        "p": 99
-      },
-      {
-        "l": "Min%",
-        "v": "85.5%",
-        "p": 94
-      }
-    ]
-  },
-  {
-    "name": "Assan Ouédraogo",
-    "age": 19,
-    "pos": "MF",
-    "team": "RB Leipzig",
-    "ligue": "Bundesliga",
-    "score": 4.0,
-    "rank": 23,
-    "photo": "data/photos/Assan_Ouédraogo.png",
-    "stats": [
-      {
-        "l": "Impact Off/90",
-        "v": "0.66",
-        "p": 73
-      },
-      {
-        "l": "Tirs/90",
-        "v": "2.56",
-        "p": 58
-      },
-      {
-        "l": "Act. Déf/90",
-        "v": "0.85",
-        "p": 37
-      },
-      {
-        "l": "Min%",
-        "v": "55.4%",
-        "p": 50
-      }
-    ]
-  },
-  {
     "name": "Nicolás Paz",
     "age": 20,
     "pos": "MF",
     "team": "Como",
     "ligue": "Serie A",
-    "score": 4.0,
-    "rank": 24,
+    "score": 4.9,
+    "rank": 14,
     "photo": "data/photos/Nicolás_Paz.png",
     "stats": [
       {
@@ -768,13 +448,141 @@
     ]
   },
   {
+    "name": "Arthur Avom",
+    "age": 20,
+    "pos": "MF",
+    "team": "Lorient",
+    "ligue": "Ligue 1",
+    "score": 4.8,
+    "rank": 15,
+    "photo": "data/photos/Arthur_Avom.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.32",
+        "p": 63
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.19",
+        "p": 85
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.61",
+        "p": 67
+      },
+      {
+        "l": "Min%",
+        "v": "75.9%",
+        "p": 87
+      }
+    ]
+  },
+  {
+    "name": "Lennart Karl",
+    "age": 17,
+    "pos": "MF",
+    "team": "Bayern Munich",
+    "ligue": "Bundesliga",
+    "score": 4.8,
+    "rank": 16,
+    "photo": "data/photos/Lennart_Karl.png",
+    "stats": [
+      {
+        "l": "Impact Off/90",
+        "v": "0.70",
+        "p": 81
+      },
+      {
+        "l": "Tirs/90",
+        "v": "2.95",
+        "p": 77
+      },
+      {
+        "l": "Act. Déf/90",
+        "v": "1.82",
+        "p": 96
+      },
+      {
+        "l": "Min%",
+        "v": "54.7%",
+        "p": 46
+      }
+    ]
+  },
+  {
+    "name": "Luka Vušković",
+    "age": 18,
+    "pos": "DF",
+    "team": "Hamburger SV",
+    "ligue": "Bundesliga",
+    "score": 4.8,
+    "rank": 17,
+    "photo": "data/photos/Luka_Vušković.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.63",
+        "p": 8
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.47",
+        "p": 83
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.07",
+        "p": 31
+      },
+      {
+        "l": "Min%",
+        "v": "96.9%",
+        "p": 92
+      }
+    ]
+  },
+  {
+    "name": "Yan Diomandé",
+    "age": 18,
+    "pos": "FW",
+    "team": "RB Leipzig",
+    "ligue": "Bundesliga",
+    "score": 4.8,
+    "rank": 18,
+    "photo": "data/photos/Yan_Diomandé.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.44",
+        "p": 71
+      },
+      {
+        "l": "Tirs/90",
+        "v": "1.93",
+        "p": 26
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.29",
+        "p": 90
+      },
+      {
+        "l": "Min%",
+        "v": "83.2%",
+        "p": 98
+      }
+    ]
+  },
+  {
     "name": "Jan Virgili",
     "age": 19,
     "pos": "MF",
     "team": "Mallorca",
     "ligue": "La Liga",
-    "score": 3.9,
-    "rank": 25,
+    "score": 4.7,
+    "rank": 19,
     "photo": "data/photos/Jan_Virgili.png",
     "stats": [
       {
@@ -805,8 +613,8 @@
     "pos": "MF",
     "team": "Auxerre",
     "ligue": "Ligue 1",
-    "score": 3.9,
-    "rank": 26,
+    "score": 4.6,
+    "rank": 20,
     "photo": "data/photos/Rudy_Matondo.png",
     "stats": [
       {
@@ -832,45 +640,13 @@
     ]
   },
   {
-    "name": "Arthur Avom",
-    "age": 20,
-    "pos": "MF",
-    "team": "Lorient",
-    "ligue": "Ligue 1",
-    "score": 3.9,
-    "rank": 27,
-    "photo": "data/photos/Arthur_Avom.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.32",
-        "p": 63
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.19",
-        "p": 85
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.61",
-        "p": 67
-      },
-      {
-        "l": "Min%",
-        "v": "75.9%",
-        "p": 87
-      }
-    ]
-  },
-  {
     "name": "Nathan Mbala",
     "age": 17,
     "pos": "MF",
     "team": "Metz",
     "ligue": "Ligue 1",
-    "score": 3.9,
-    "rank": 28,
+    "score": 4.6,
+    "rank": 21,
     "photo": "data/photos/Nathan_Mbala.png",
     "stats": [
       {
@@ -896,45 +672,13 @@
     ]
   },
   {
-    "name": "Samir El Mourabet",
-    "age": 19,
-    "pos": "MF",
-    "team": "Strasbourg",
-    "ligue": "Ligue 1",
-    "score": 3.9,
-    "rank": 29,
-    "photo": "data/photos/Samir_El_Mourabet.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.57",
-        "p": 82
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.14",
-        "p": 82
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.10",
-        "p": 43
-      },
-      {
-        "l": "Min%",
-        "v": "71.6%",
-        "p": 79
-      }
-    ]
-  },
-  {
     "name": "Dayann Methalie",
     "age": 19,
     "pos": "MF",
     "team": "Toulouse",
     "ligue": "Ligue 1",
-    "score": 3.9,
-    "rank": 30,
+    "score": 4.6,
+    "rank": 22,
     "photo": "data/photos/Dayann_Methalie.png",
     "stats": [
       {
@@ -960,66 +704,162 @@
     ]
   },
   {
-    "name": "Luka Vušković",
-    "age": 18,
-    "pos": "DF",
-    "team": "Hamburger SV",
+    "name": "Johan Manzambi",
+    "age": 19,
+    "pos": "MF",
+    "team": "Freiburg",
     "ligue": "Bundesliga",
-    "score": 3.9,
-    "rank": 31,
-    "photo": "data/photos/Luka_Vušković.png",
+    "score": 4.6,
+    "rank": 23,
+    "photo": "data/photos/Johan_Manzambi.png",
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "0.63",
+        "v": "0.61",
         "p": 8
       },
       {
         "l": "Interceptions/90",
-        "v": "1.47",
-        "p": 83
+        "v": "1.17",
+        "p": 84
       },
       {
-        "l": "Centres/90",
-        "v": "0.07",
-        "p": 31
+        "l": "Fautes subies/90",
+        "v": "3.38",
+        "p": 99
       },
       {
         "l": "Min%",
-        "v": "96.9%",
-        "p": 92
+        "v": "85.5%",
+        "p": 94
       }
     ]
   },
   {
-    "name": "Dženan Pejčinović",
-    "age": 20,
-    "pos": "FW",
-    "team": "Wolfsburg",
-    "ligue": "Bundesliga",
-    "score": 3.9,
-    "rank": 32,
-    "photo": "data/photos/Dženan_Pejčinović.png",
+    "name": "Honest Ahanor",
+    "age": 17,
+    "pos": "DF",
+    "team": "Atalanta",
+    "ligue": "Serie A",
+    "score": 4.6,
+    "rank": 24,
+    "photo": "data/photos/Honest_Ahanor.png",
     "stats": [
       {
-        "l": "Buts/90",
-        "v": "0.49",
-        "p": 79
+        "l": "Tacles/90",
+        "v": "1.31",
+        "p": 69
       },
       {
-        "l": "Tirs/90",
-        "v": "3.14",
-        "p": 65
+        "l": "Interceptions/90",
+        "v": "1.57",
+        "p": 86
       },
       {
-        "l": "Passes déc/90",
-        "v": "0.00",
-        "p": 26
+        "l": "Centres/90",
+        "v": "0.13",
+        "p": 38
       },
       {
         "l": "Min%",
-        "v": "54.1%",
-        "p": 76
+        "v": "69.5%",
+        "p": 31
+      }
+    ]
+  },
+  {
+    "name": "Rayan",
+    "age": 19,
+    "pos": "MF",
+    "team": "Bournemouth",
+    "ligue": "Premier League",
+    "score": 4.5,
+    "rank": 25,
+    "photo": "data/photos/Rayan.png",
+    "stats": [
+      {
+        "l": "Impact Off/90",
+        "v": "0.60",
+        "p": 65
+      },
+      {
+        "l": "Tirs/90",
+        "v": "2.34",
+        "p": 52
+      },
+      {
+        "l": "Act. Déf/90",
+        "v": "1.04",
+        "p": 54
+      },
+      {
+        "l": "Min%",
+        "v": "82.5%",
+        "p": 88
+      }
+    ]
+  },
+  {
+    "name": "Arda Güler",
+    "age": 20,
+    "pos": "MF",
+    "team": "Real Madrid",
+    "ligue": "La Liga",
+    "score": 4.5,
+    "rank": 26,
+    "photo": "data/photos/Arda_Güler.png",
+    "stats": [
+      {
+        "l": "Impact Off/90",
+        "v": "0.58",
+        "p": 62
+      },
+      {
+        "l": "Tirs/90",
+        "v": "2.19",
+        "p": 31
+      },
+      {
+        "l": "Act. Déf/90",
+        "v": "1.61",
+        "p": 92
+      },
+      {
+        "l": "Min%",
+        "v": "67.8%",
+        "p": 77
+      }
+    ]
+  },
+  {
+    "name": "Endrick",
+    "age": 19,
+    "pos": "FW",
+    "team": "Real Madrid",
+    "ligue": "La Liga",
+    "score": 4.5,
+    "rank": 27,
+    "photo": "data/photos/Endrick.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.37",
+        "p": 63
+      },
+      {
+        "l": "Tirs/90",
+        "v": "3.67",
+        "p": 82
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.51",
+        "p": 100
+      },
+      {
+        "l": "Min%",
+        "v": "80.2%",
+        "p": 95
       }
     ]
   },
@@ -1029,8 +869,8 @@
     "pos": "MF",
     "team": "Real Sociedad",
     "ligue": "La Liga",
-    "score": 3.8,
-    "rank": 33,
+    "score": 4.5,
+    "rank": 28,
     "photo": "data/photos/Wesley.png",
     "stats": [
       {
@@ -1061,8 +901,8 @@
     "pos": "MF",
     "team": "Le Havre",
     "ligue": "Ligue 1",
-    "score": 3.8,
-    "rank": 34,
+    "score": 4.5,
+    "rank": 29,
     "photo": "data/photos/Simon_Ebonog.png",
     "stats": [
       {
@@ -1088,258 +928,34 @@
     ]
   },
   {
-    "name": "Matias Fernandez-Pardo",
-    "age": 20,
-    "pos": "FW",
+    "name": "Ayyoub Bouaddi",
+    "age": 17,
+    "pos": "MF",
     "team": "Lille",
     "ligue": "Ligue 1",
-    "score": 3.8,
-    "rank": 35,
-    "photo": "data/photos/Matias_Fernandez-Pardo.png",
+    "score": 4.5,
+    "rank": 30,
+    "photo": "data/photos/Ayyoub_Bouaddi.png",
     "stats": [
       {
-        "l": "Buts/90",
-        "v": "0.30",
-        "p": 50
+        "l": "Tacles/90",
+        "v": "1.55",
+        "p": 80
       },
       {
-        "l": "Tirs/90",
-        "v": "2.58",
-        "p": 52
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.19",
+        "l": "Interceptions/90",
+        "v": "1.05",
         "p": 74
       },
       {
-        "l": "Min%",
-        "v": "90.8%",
-        "p": 100
-      }
-    ]
-  },
-  {
-    "name": "Désiré Doué",
-    "age": 20,
-    "pos": "FW",
-    "team": "PSG",
-    "ligue": "Ligue 1",
-    "score": 3.8,
-    "rank": 36,
-    "photo": "data/photos/Désiré_Doué.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.47",
-        "p": 75
-      },
-      {
-        "l": "Tirs/90",
-        "v": "3.67",
-        "p": 82
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.27",
-        "p": 82
-      },
-      {
-        "l": "Min%",
-        "v": "65.1%",
-        "p": 83
-      }
-    ]
-  },
-  {
-    "name": "Noahkai Banks",
-    "age": 18,
-    "pos": "DF",
-    "team": "Augsburg",
-    "ligue": "Bundesliga",
-    "score": 3.8,
-    "rank": 37,
-    "photo": "data/photos/Noahkai_Banks.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.51",
-        "p": 79
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.94",
+        "l": "Fautes subies/90",
+        "v": "0.93",
         "p": 31
       },
       {
-        "l": "Centres/90",
-        "v": "0.21",
-        "p": 53
-      },
-      {
         "l": "Min%",
-        "v": "83.3%",
-        "p": 63
-      }
-    ]
-  },
-  {
-    "name": "Chema",
-    "age": 20,
-    "pos": "MF",
-    "team": "Stuttgart",
-    "ligue": "Bundesliga",
-    "score": 3.8,
-    "rank": 38,
-    "photo": "data/photos/Chema.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.10",
-        "p": 46
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "2.13",
-        "p": 100
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "0.55",
-        "p": 15
-      },
-      {
-        "l": "Min%",
-        "v": "58.2%",
-        "p": 58
-      }
-    ]
-  },
-  {
-    "name": "Marco Palestra",
-    "age": 20,
-    "pos": "MF",
-    "team": "Cagliari",
-    "ligue": "Serie A",
-    "score": 3.8,
-    "rank": 39,
-    "photo": "data/photos/Marco_Palestra.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.02",
-        "p": 37
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.56",
-        "p": 28
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "3.16",
-        "p": 96
-      },
-      {
-        "l": "Min%",
-        "v": "92.5%",
-        "p": 99
-      }
-    ]
-  },
-  {
-    "name": "Orri Steinn Óskarsson",
-    "age": 20,
-    "pos": "FW",
-    "team": "Real Sociedad",
-    "ligue": "La Liga",
-    "score": 3.7,
-    "rank": 40,
-    "photo": "data/photos/Orri_Steinn_Óskarsson.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.97",
-        "p": 100
-      },
-      {
-        "l": "Tirs/90",
-        "v": "2.91",
-        "p": 62
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.00",
-        "p": 26
-      },
-      {
-        "l": "Min%",
-        "v": "46.4%",
-        "p": 55
-      }
-    ]
-  },
-  {
-    "name": "Ismaëlo Ganiou",
-    "age": 20,
-    "pos": "DF",
-    "team": "Lens",
-    "ligue": "Ligue 1",
-    "score": 3.7,
-    "rank": 41,
-    "photo": "data/photos/Ismaëlo_Ganiou.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.21",
-        "p": 56
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.30",
-        "p": 71
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.76",
-        "p": 79
-      },
-      {
-        "l": "Min%",
-        "v": "97.3%",
-        "p": 96
-      }
-    ]
-  },
-  {
-    "name": "Sael Kumbedi",
-    "age": 20,
-    "pos": "DF",
-    "team": "Lyon",
-    "ligue": "Ligue 1",
-    "score": 3.7,
-    "rank": 42,
-    "photo": "data/photos/Sael_Kumbedi.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.59",
-        "p": 83
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.72",
-        "p": 17
-      },
-      {
-        "l": "Centres/90",
-        "v": "2.02",
-        "p": 88
-      },
-      {
-        "l": "Min%",
-        "v": "83.1%",
-        "p": 60
+        "v": "86.0%",
+        "p": 95
       }
     ]
   },
@@ -1349,8 +965,8 @@
     "pos": "DF",
     "team": "Paris FC",
     "ligue": "Ligue 1",
-    "score": 3.7,
-    "rank": 43,
+    "score": 4.5,
+    "rank": 31,
     "photo": "data/photos/Nhoa_Sangui.png",
     "stats": [
       {
@@ -1376,13 +992,173 @@
     ]
   },
   {
+    "name": "Samir El Mourabet",
+    "age": 19,
+    "pos": "MF",
+    "team": "Strasbourg",
+    "ligue": "Ligue 1",
+    "score": 4.5,
+    "rank": 32,
+    "photo": "data/photos/Samir_El_Mourabet.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.57",
+        "p": 82
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.14",
+        "p": 82
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.10",
+        "p": 43
+      },
+      {
+        "l": "Min%",
+        "v": "71.6%",
+        "p": 79
+      }
+    ]
+  },
+  {
+    "name": "Noahkai Banks",
+    "age": 18,
+    "pos": "DF",
+    "team": "Augsburg",
+    "ligue": "Bundesliga",
+    "score": 4.5,
+    "rank": 33,
+    "photo": "data/photos/Noahkai_Banks.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.51",
+        "p": 79
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.94",
+        "p": 31
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.21",
+        "p": 53
+      },
+      {
+        "l": "Min%",
+        "v": "83.3%",
+        "p": 63
+      }
+    ]
+  },
+  {
+    "name": "Jobe Bellingham",
+    "age": 19,
+    "pos": "MF",
+    "team": "Dortmund",
+    "ligue": "Bundesliga",
+    "score": 4.5,
+    "rank": 34,
+    "photo": "data/photos/Jobe_Bellingham.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.16",
+        "p": 51
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "2.07",
+        "p": 99
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.01",
+        "p": 36
+      },
+      {
+        "l": "Min%",
+        "v": "62.0%",
+        "p": 63
+      }
+    ]
+  },
+  {
+    "name": "Assan Ouédraogo",
+    "age": 19,
+    "pos": "MF",
+    "team": "RB Leipzig",
+    "ligue": "Bundesliga",
+    "score": 4.5,
+    "rank": 35,
+    "photo": "data/photos/Assan_Ouédraogo.png",
+    "stats": [
+      {
+        "l": "Impact Off/90",
+        "v": "0.66",
+        "p": 73
+      },
+      {
+        "l": "Tirs/90",
+        "v": "2.56",
+        "p": 58
+      },
+      {
+        "l": "Act. Déf/90",
+        "v": "0.85",
+        "p": 37
+      },
+      {
+        "l": "Min%",
+        "v": "55.4%",
+        "p": 50
+      }
+    ]
+  },
+  {
+    "name": "Chema",
+    "age": 20,
+    "pos": "MF",
+    "team": "Stuttgart",
+    "ligue": "Bundesliga",
+    "score": 4.5,
+    "rank": 36,
+    "photo": "data/photos/Chema.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.10",
+        "p": 46
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "2.13",
+        "p": 100
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "0.55",
+        "p": 15
+      },
+      {
+        "l": "Min%",
+        "v": "58.2%",
+        "p": 58
+      }
+    ]
+  },
+  {
     "name": "Ilyas Ansah",
     "age": 20,
     "pos": "MF",
     "team": "Union Berlin",
     "ligue": "Bundesliga",
-    "score": 3.7,
-    "rank": 44,
+    "score": 4.5,
+    "rank": 37,
     "photo": "data/photos/Ilyas_Ansah.png",
     "stats": [
       {
@@ -1408,13 +1184,109 @@
     ]
   },
   {
+    "name": "Marco Palestra",
+    "age": 20,
+    "pos": "MF",
+    "team": "Cagliari",
+    "ligue": "Serie A",
+    "score": 4.5,
+    "rank": 38,
+    "photo": "data/photos/Marco_Palestra.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.02",
+        "p": 37
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.56",
+        "p": 28
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "3.16",
+        "p": 96
+      },
+      {
+        "l": "Min%",
+        "v": "92.5%",
+        "p": 99
+      }
+    ]
+  },
+  {
+    "name": "Mateus Mane",
+    "age": 18,
+    "pos": "MF",
+    "team": "Wolves",
+    "ligue": "Premier League",
+    "score": 4.4,
+    "rank": 39,
+    "photo": "data/photos/Mateus_Mane.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.69",
+        "p": 14
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.21",
+        "p": 4
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "2.38",
+        "p": 87
+      },
+      {
+        "l": "Min%",
+        "v": "72.9%",
+        "p": 84
+      }
+    ]
+  },
+  {
+    "name": "Dženan Pejčinović",
+    "age": 20,
+    "pos": "FW",
+    "team": "Wolfsburg",
+    "ligue": "Bundesliga",
+    "score": 4.4,
+    "rank": 40,
+    "photo": "data/photos/Dženan_Pejčinović.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.49",
+        "p": 79
+      },
+      {
+        "l": "Tirs/90",
+        "v": "3.14",
+        "p": 65
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.00",
+        "p": 26
+      },
+      {
+        "l": "Min%",
+        "v": "54.1%",
+        "p": 76
+      }
+    ]
+  },
+  {
     "name": "Oliver Scarles",
     "age": 20,
     "pos": "DF",
     "team": "West Ham United",
     "ligue": "Premier League",
-    "score": 3.6,
-    "rank": 45,
+    "score": 4.3,
+    "rank": 41,
     "photo": "data/photos/Oliver_Scarles.png",
     "stats": [
       {
@@ -1440,13 +1312,45 @@
     ]
   },
   {
+    "name": "Orri Steinn Óskarsson",
+    "age": 20,
+    "pos": "FW",
+    "team": "Real Sociedad",
+    "ligue": "La Liga",
+    "score": 4.3,
+    "rank": 42,
+    "photo": "data/photos/Orri_Steinn_Óskarsson.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.97",
+        "p": 100
+      },
+      {
+        "l": "Tirs/90",
+        "v": "2.91",
+        "p": 62
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.00",
+        "p": 26
+      },
+      {
+        "l": "Min%",
+        "v": "46.4%",
+        "p": 55
+      }
+    ]
+  },
+  {
     "name": "Youssef Lekhedim",
     "age": 19,
     "pos": "DF",
     "team": "Alavés",
     "ligue": "La Liga",
-    "score": 3.6,
-    "rank": 46,
+    "score": 4.2,
+    "rank": 43,
     "photo": "data/photos/Youssef_Lekhedim.png",
     "stats": [
       {
@@ -1472,66 +1376,162 @@
     ]
   },
   {
-    "name": "Afonso Moreira",
-    "age": 20,
-    "pos": "MF",
-    "team": "Lyon",
-    "ligue": "Ligue 1",
-    "score": 3.6,
-    "rank": 47,
-    "photo": "data/photos/Afonso_Moreira.png",
+    "name": "Vitor Reis",
+    "age": 19,
+    "pos": "DF",
+    "team": "Girona",
+    "ligue": "La Liga",
+    "score": 4.2,
+    "rank": 44,
+    "photo": "data/photos/Vitor_Reis.png",
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "1.15",
-        "p": 49
+        "v": "0.92",
+        "p": 38
       },
       {
         "l": "Interceptions/90",
-        "v": "0.63",
-        "p": 37
+        "v": "1.00",
+        "p": 38
       },
       {
-        "l": "Fautes subies/90",
-        "v": "2.98",
-        "p": 94
+        "l": "Centres/90",
+        "v": "0.00",
+        "p": 12
       },
       {
         "l": "Min%",
-        "v": "70.9%",
-        "p": 75
+        "v": "96.9%",
+        "p": 92
       }
     ]
   },
   {
-    "name": "Christian Kofane",
-    "age": 19,
-    "pos": "FW",
-    "team": "Leverkusen",
-    "ligue": "Bundesliga",
-    "score": 3.6,
-    "rank": 48,
-    "photo": "data/photos/Christian_Kofane.png",
+    "name": "Ismaëlo Ganiou",
+    "age": 20,
+    "pos": "DF",
+    "team": "Lens",
+    "ligue": "Ligue 1",
+    "score": 4.2,
+    "rank": 45,
+    "photo": "data/photos/Ismaëlo_Ganiou.png",
     "stats": [
       {
-        "l": "Buts/90",
-        "v": "0.36",
-        "p": 60
+        "l": "Tacles/90",
+        "v": "1.21",
+        "p": 56
       },
       {
-        "l": "Tirs/90",
-        "v": "3.34",
+        "l": "Interceptions/90",
+        "v": "1.30",
         "p": 71
       },
       {
-        "l": "Passes déc/90",
-        "v": "0.29",
-        "p": 90
+        "l": "Centres/90",
+        "v": "0.76",
+        "p": 79
       },
       {
         "l": "Min%",
-        "v": "47.5%",
+        "v": "97.3%",
+        "p": 96
+      }
+    ]
+  },
+  {
+    "name": "Matias Fernandez-Pardo",
+    "age": 20,
+    "pos": "FW",
+    "team": "Lille",
+    "ligue": "Ligue 1",
+    "score": 4.2,
+    "rank": 46,
+    "photo": "data/photos/Matias_Fernandez-Pardo.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.30",
+        "p": 50
+      },
+      {
+        "l": "Tirs/90",
+        "v": "2.58",
+        "p": 52
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.19",
+        "p": 74
+      },
+      {
+        "l": "Min%",
+        "v": "90.8%",
+        "p": 100
+      }
+    ]
+  },
+  {
+    "name": "Alpha Touré",
+    "age": 19,
+    "pos": "MF",
+    "team": "Metz",
+    "ligue": "Ligue 1",
+    "score": 4.2,
+    "rank": 47,
+    "photo": "data/photos/Alpha_Touré.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.29",
+        "p": 58
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.56",
+        "p": 28
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.51",
         "p": 60
+      },
+      {
+        "l": "Min%",
+        "v": "59.5%",
+        "p": 59
+      }
+    ]
+  },
+  {
+    "name": "Tiago Gabriel",
+    "age": 20,
+    "pos": "DF",
+    "team": "Lecce",
+    "ligue": "Serie A",
+    "score": 4.2,
+    "rank": 48,
+    "photo": "data/photos/Tiago_Gabriel.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.12",
+        "p": 52
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.29",
+        "p": 69
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.06",
+        "p": 29
+      },
+      {
+        "l": "Min%",
+        "v": "96.7%",
+        "p": 88
       }
     ]
   },
@@ -1541,7 +1541,7 @@
     "pos": "MF",
     "team": "Chelsea",
     "ligue": "Premier League",
-    "score": 3.5,
+    "score": 4.1,
     "rank": 49,
     "photo": "data/photos/Estêvão_Willian.png",
     "stats": [
@@ -1568,45 +1568,13 @@
     ]
   },
   {
-    "name": "Mateus Mane",
-    "age": 18,
-    "pos": "MF",
-    "team": "Wolves",
-    "ligue": "Premier League",
-    "score": 3.5,
-    "rank": 50,
-    "photo": "data/photos/Mateus_Mane.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.69",
-        "p": 14
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.21",
-        "p": 4
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "2.38",
-        "p": 87
-      },
-      {
-        "l": "Min%",
-        "v": "72.9%",
-        "p": 84
-      }
-    ]
-  },
-  {
     "name": "Buba Sangaré",
     "age": 17,
     "pos": "DF",
     "team": "Elche",
     "ligue": "La Liga",
-    "score": 3.5,
-    "rank": 51,
+    "score": 4.1,
+    "rank": 50,
     "photo": "data/photos/Buba_Sangaré.png",
     "stats": [
       {
@@ -1632,333 +1600,13 @@
     ]
   },
   {
-    "name": "Davinchi",
-    "age": 17,
-    "pos": "DF",
-    "team": "Getafe",
-    "ligue": "La Liga",
-    "score": 3.5,
-    "rank": 52,
-    "photo": "data/photos/Davinchi.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "2.19",
-        "p": 94
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.90",
-        "p": 29
-      },
-      {
-        "l": "Centres/90",
-        "v": "2.57",
-        "p": 94
-      },
-      {
-        "l": "Min%",
-        "v": "55.6%",
-        "p": 14
-      }
-    ]
-  },
-  {
-    "name": "Vitor Reis",
-    "age": 19,
-    "pos": "DF",
-    "team": "Girona",
-    "ligue": "La Liga",
-    "score": 3.5,
-    "rank": 53,
-    "photo": "data/photos/Vitor_Reis.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.92",
-        "p": 38
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.00",
-        "p": 38
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.00",
-        "p": 12
-      },
-      {
-        "l": "Min%",
-        "v": "96.9%",
-        "p": 92
-      }
-    ]
-  },
-  {
-    "name": "Andrija Bulatović",
-    "age": 18,
-    "pos": "MF",
-    "team": "Lens",
-    "ligue": "Ligue 1",
-    "score": 3.5,
-    "rank": 54,
-    "photo": "data/photos/Andrija_Bulatović.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "2.48",
-        "p": 100
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.94",
-        "p": 62
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "2.36",
-        "p": 86
-      },
-      {
-        "l": "Min%",
-        "v": "44.6%",
-        "p": 16
-      }
-    ]
-  },
-  {
-    "name": "Alpha Touré",
-    "age": 19,
-    "pos": "MF",
-    "team": "Metz",
-    "ligue": "Ligue 1",
-    "score": 3.5,
-    "rank": 55,
-    "photo": "data/photos/Alpha_Touré.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.29",
-        "p": 58
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.56",
-        "p": 28
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.51",
-        "p": 60
-      },
-      {
-        "l": "Min%",
-        "v": "59.5%",
-        "p": 59
-      }
-    ]
-  },
-  {
-    "name": "Tylel Tati",
-    "age": 17,
-    "pos": "DF",
-    "team": "Nantes",
-    "ligue": "Ligue 1",
-    "score": 3.5,
-    "rank": 56,
-    "photo": "data/photos/Tylel_Tati.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.68",
-        "p": 13
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.73",
-        "p": 19
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.05",
-        "p": 26
-      },
-      {
-        "l": "Min%",
-        "v": "95.6%",
-        "p": 87
-      }
-    ]
-  },
-  {
-    "name": "Kacper Potulski",
-    "age": 17,
-    "pos": "DF",
-    "team": "Mainz 05",
-    "ligue": "Bundesliga",
-    "score": 3.5,
-    "rank": 57,
-    "photo": "data/photos/Kacper_Potulski.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.27",
-        "p": 66
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.61",
-        "p": 88
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.17",
-        "p": 46
-      },
-      {
-        "l": "Min%",
-        "v": "78.9%",
-        "p": 52
-      }
-    ]
-  },
-  {
-    "name": "Santiago Castro",
-    "age": 20,
-    "pos": "FW",
-    "team": "Bologna",
-    "ligue": "Serie A",
-    "score": 3.5,
-    "rank": 58,
-    "photo": "data/photos/Santiago_Castro.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.27",
-        "p": 39
-      },
-      {
-        "l": "Tirs/90",
-        "v": "2.40",
-        "p": 48
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.08",
-        "p": 52
-      },
-      {
-        "l": "Min%",
-        "v": "74.9%",
-        "p": 93
-      }
-    ]
-  },
-  {
-    "name": "Francesco Esposito",
-    "age": 20,
-    "pos": "FW",
-    "team": "Inter",
-    "ligue": "Serie A",
-    "score": 3.5,
-    "rank": 59,
-    "photo": "data/photos/Francesco_Esposito.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.40",
-        "p": 67
-      },
-      {
-        "l": "Tirs/90",
-        "v": "3.26",
-        "p": 69
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.17",
-        "p": 63
-      },
-      {
-        "l": "Min%",
-        "v": "49.9%",
-        "p": 69
-      }
-    ]
-  },
-  {
-    "name": "Tiago Gabriel",
-    "age": 20,
-    "pos": "DF",
-    "team": "Lecce",
-    "ligue": "Serie A",
-    "score": 3.5,
-    "rank": 60,
-    "photo": "data/photos/Tiago_Gabriel.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.12",
-        "p": 52
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.29",
-        "p": 69
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.06",
-        "p": 29
-      },
-      {
-        "l": "Min%",
-        "v": "96.7%",
-        "p": 88
-      }
-    ]
-  },
-  {
-    "name": "Jon Martin",
-    "age": 19,
-    "pos": "DF",
-    "team": "Real Sociedad",
-    "ligue": "La Liga",
-    "score": 3.4,
-    "rank": 61,
-    "photo": "data/photos/Jon_Martin.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.64",
-        "p": 10
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.40",
-        "p": 81
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.00",
-        "p": 12
-      },
-      {
-        "l": "Min%",
-        "v": "100.0%",
-        "p": 100
-      }
-    ]
-  },
-  {
     "name": "Prosper Peter",
     "age": 17,
     "pos": "FW",
     "team": "Angers",
     "ligue": "Ligue 1",
-    "score": 3.4,
-    "rank": 62,
+    "score": 4.1,
+    "rank": 51,
     "photo": "data/photos/Prosper_Peter.png",
     "stats": [
       {
@@ -1989,8 +1637,8 @@
     "pos": "FW",
     "team": "Angers",
     "ligue": "Ligue 1",
-    "score": 3.4,
-    "rank": 63,
+    "score": 4.1,
+    "rank": 52,
     "photo": "data/photos/Sidiki_Cherif.png",
     "stats": [
       {
@@ -2021,8 +1669,8 @@
     "pos": "MF",
     "team": "Lorient",
     "ligue": "Ligue 1",
-    "score": 3.4,
-    "rank": 64,
+    "score": 4.1,
+    "rank": 53,
     "photo": "data/photos/Arsène_Kouassi.png",
     "stats": [
       {
@@ -2048,13 +1696,429 @@
     ]
   },
   {
+    "name": "Sael Kumbedi",
+    "age": 20,
+    "pos": "DF",
+    "team": "Lyon",
+    "ligue": "Ligue 1",
+    "score": 4.1,
+    "rank": 54,
+    "photo": "data/photos/Sael_Kumbedi.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.59",
+        "p": 83
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.72",
+        "p": 17
+      },
+      {
+        "l": "Centres/90",
+        "v": "2.02",
+        "p": 88
+      },
+      {
+        "l": "Min%",
+        "v": "83.1%",
+        "p": 60
+      }
+    ]
+  },
+  {
+    "name": "Tylel Tati",
+    "age": 17,
+    "pos": "DF",
+    "team": "Nantes",
+    "ligue": "Ligue 1",
+    "score": 4.1,
+    "rank": 55,
+    "photo": "data/photos/Tylel_Tati.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.68",
+        "p": 13
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.73",
+        "p": 19
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.05",
+        "p": 26
+      },
+      {
+        "l": "Min%",
+        "v": "95.6%",
+        "p": 87
+      }
+    ]
+  },
+  {
+    "name": "Kacper Potulski",
+    "age": 17,
+    "pos": "DF",
+    "team": "Mainz 05",
+    "ligue": "Bundesliga",
+    "score": 4.1,
+    "rank": 56,
+    "photo": "data/photos/Kacper_Potulski.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.27",
+        "p": 66
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.61",
+        "p": 88
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.17",
+        "p": 46
+      },
+      {
+        "l": "Min%",
+        "v": "78.9%",
+        "p": 52
+      }
+    ]
+  },
+  {
+    "name": "Jacobo Ramón",
+    "age": 20,
+    "pos": "DF",
+    "team": "Como",
+    "ligue": "Serie A",
+    "score": 4.1,
+    "rank": 57,
+    "photo": "data/photos/Jacobo_Ramón.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.05",
+        "p": 44
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.25",
+        "p": 64
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.36",
+        "p": 65
+      },
+      {
+        "l": "Min%",
+        "v": "95.2%",
+        "p": 85
+      }
+    ]
+  },
+  {
+    "name": "Davinchi",
+    "age": 17,
+    "pos": "DF",
+    "team": "Getafe",
+    "ligue": "La Liga",
+    "score": 4.0,
+    "rank": 58,
+    "photo": "data/photos/Davinchi.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "2.19",
+        "p": 94
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.90",
+        "p": 29
+      },
+      {
+        "l": "Centres/90",
+        "v": "2.57",
+        "p": 94
+      },
+      {
+        "l": "Min%",
+        "v": "55.6%",
+        "p": 14
+      }
+    ]
+  },
+  {
+    "name": "Jon Martin",
+    "age": 19,
+    "pos": "DF",
+    "team": "Real Sociedad",
+    "ligue": "La Liga",
+    "score": 4.0,
+    "rank": 59,
+    "photo": "data/photos/Jon_Martin.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.64",
+        "p": 10
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.40",
+        "p": 81
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.00",
+        "p": 12
+      },
+      {
+        "l": "Min%",
+        "v": "100.0%",
+        "p": 100
+      }
+    ]
+  },
+  {
+    "name": "Afonso Moreira",
+    "age": 20,
+    "pos": "MF",
+    "team": "Lyon",
+    "ligue": "Ligue 1",
+    "score": 4.0,
+    "rank": 60,
+    "photo": "data/photos/Afonso_Moreira.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.15",
+        "p": 49
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.63",
+        "p": 37
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "2.98",
+        "p": 94
+      },
+      {
+        "l": "Min%",
+        "v": "70.9%",
+        "p": 75
+      }
+    ]
+  },
+  {
+    "name": "Arijon Ibrahimović",
+    "age": 19,
+    "pos": "MF",
+    "team": "Heidenheim",
+    "ligue": "Bundesliga",
+    "score": 4.0,
+    "rank": 61,
+    "photo": "data/photos/Arijon_Ibrahimović.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.75",
+        "p": 16
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.95",
+        "p": 63
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.12",
+        "p": 46
+      },
+      {
+        "l": "Min%",
+        "v": "75.3%",
+        "p": 86
+      }
+    ]
+  },
+  {
+    "name": "Santiago Castro",
+    "age": 20,
+    "pos": "FW",
+    "team": "Bologna",
+    "ligue": "Serie A",
+    "score": 4.0,
+    "rank": 62,
+    "photo": "data/photos/Santiago_Castro.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.27",
+        "p": 39
+      },
+      {
+        "l": "Tirs/90",
+        "v": "2.40",
+        "p": 48
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.08",
+        "p": 52
+      },
+      {
+        "l": "Min%",
+        "v": "74.9%",
+        "p": 93
+      }
+    ]
+  },
+  {
+    "name": "Juan Rodríguez",
+    "age": 20,
+    "pos": "DF",
+    "team": "Cagliari",
+    "ligue": "Serie A",
+    "score": 4.0,
+    "rank": 63,
+    "photo": "data/photos/Juan_Rodríguez.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.85",
+        "p": 88
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.17",
+        "p": 56
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.34",
+        "p": 63
+      },
+      {
+        "l": "Min%",
+        "v": "85.6%",
+        "p": 70
+      }
+    ]
+  },
+  {
+    "name": "Kareem Tunde",
+    "age": 19,
+    "pos": "MF",
+    "team": "Levante",
+    "ligue": "La Liga",
+    "score": 3.9,
+    "rank": 64,
+    "photo": "data/photos/Kareem_Tunde.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.87",
+        "p": 24
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.11",
+        "p": 78
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.91",
+        "p": 76
+      },
+      {
+        "l": "Min%",
+        "v": "59.9%",
+        "p": 61
+      }
+    ]
+  },
+  {
+    "name": "Andrija Bulatović",
+    "age": 18,
+    "pos": "MF",
+    "team": "Lens",
+    "ligue": "Ligue 1",
+    "score": 3.9,
+    "rank": 65,
+    "photo": "data/photos/Andrija_Bulatović.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "2.48",
+        "p": 100
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.94",
+        "p": 62
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "2.36",
+        "p": 86
+      },
+      {
+        "l": "Min%",
+        "v": "44.6%",
+        "p": 16
+      }
+    ]
+  },
+  {
+    "name": "Dehmaine Assoumani",
+    "age": 20,
+    "pos": "MF",
+    "team": "Nantes",
+    "ligue": "Ligue 1",
+    "score": 3.9,
+    "rank": 66,
+    "photo": "data/photos/Dehmaine_Assoumani.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.27",
+        "p": 56
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.13",
+        "p": 80
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.41",
+        "p": 57
+      },
+      {
+        "l": "Min%",
+        "v": "52.5%",
+        "p": 37
+      }
+    ]
+  },
+  {
     "name": "Kader Meïté",
     "age": 17,
     "pos": "FW",
     "team": "Rennes",
     "ligue": "Ligue 1",
-    "score": 3.4,
-    "rank": 65,
+    "score": 3.9,
+    "rank": 67,
     "photo": "data/photos/Kader_Meïté.png",
     "stats": [
       {
@@ -2085,8 +2149,8 @@
     "pos": "DF",
     "team": "Rennes",
     "ligue": "Ligue 1",
-    "score": 3.4,
-    "rank": 66,
+    "score": 3.9,
+    "rank": 68,
     "photo": "data/photos/Mahamadou_Nagida.png",
     "stats": [
       {
@@ -2117,8 +2181,8 @@
     "pos": "MF",
     "team": "Strasbourg",
     "ligue": "Ligue 1",
-    "score": 3.4,
-    "rank": 67,
+    "score": 3.9,
+    "rank": 69,
     "photo": "data/photos/Diego_Moreira.png",
     "stats": [
       {
@@ -2144,397 +2208,13 @@
     ]
   },
   {
-    "name": "Ibrahim Maza",
-    "age": 19,
-    "pos": "MF",
-    "team": "Leverkusen",
-    "ligue": "Bundesliga",
-    "score": 3.4,
-    "rank": 68,
-    "photo": "data/photos/Ibrahim_Maza.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.17",
-        "p": 52
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.78",
-        "p": 44
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.75",
-        "p": 73
-      },
-      {
-        "l": "Min%",
-        "v": "73.4%",
-        "p": 85
-      }
-    ]
-  },
-  {
-    "name": "Abdoul Coulibaly",
-    "age": 18,
-    "pos": "DF",
-    "team": "Werder Bremen",
-    "ligue": "Bundesliga",
-    "score": 3.4,
-    "rank": 69,
-    "photo": "data/photos/Abdoul_Coulibaly.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.59",
-        "p": 4
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.02",
-        "p": 40
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.55",
-        "p": 74
-      },
-      {
-        "l": "Min%",
-        "v": "87.2%",
-        "p": 76
-      }
-    ]
-  },
-  {
-    "name": "Juan Rodríguez",
-    "age": 20,
-    "pos": "DF",
-    "team": "Cagliari",
-    "ligue": "Serie A",
-    "score": 3.4,
-    "rank": 70,
-    "photo": "data/photos/Juan_Rodríguez.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.85",
-        "p": 88
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.17",
-        "p": 56
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.34",
-        "p": 63
-      },
-      {
-        "l": "Min%",
-        "v": "85.6%",
-        "p": 70
-      }
-    ]
-  },
-  {
-    "name": "Jacobo Ramón",
-    "age": 20,
-    "pos": "DF",
-    "team": "Como",
-    "ligue": "Serie A",
-    "score": 3.4,
-    "rank": 71,
-    "photo": "data/photos/Jacobo_Ramón.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.05",
-        "p": 44
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.25",
-        "p": 64
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.36",
-        "p": 65
-      },
-      {
-        "l": "Min%",
-        "v": "95.2%",
-        "p": 85
-      }
-    ]
-  },
-  {
-    "name": "Rio Ngumoha",
-    "age": 17,
-    "pos": "MF",
-    "team": "Liverpool",
-    "ligue": "Premier League",
-    "score": 3.3,
-    "rank": 72,
-    "photo": "data/photos/Rio_Ngumoha.png",
-    "stats": [
-      {
-        "l": "Impact Off/90",
-        "v": "0.55",
-        "p": 52
-      },
-      {
-        "l": "Tirs/90",
-        "v": "2.58",
-        "p": 62
-      },
-      {
-        "l": "Act. Déf/90",
-        "v": "0.92",
-        "p": 42
-      },
-      {
-        "l": "Min%",
-        "v": "30.1%",
-        "p": 4
-      }
-    ]
-  },
-  {
-    "name": "Kareem Tunde",
-    "age": 19,
-    "pos": "MF",
-    "team": "Levante",
-    "ligue": "La Liga",
-    "score": 3.3,
-    "rank": 73,
-    "photo": "data/photos/Kareem_Tunde.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.87",
-        "p": 24
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.11",
-        "p": 78
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.91",
-        "p": 76
-      },
-      {
-        "l": "Min%",
-        "v": "59.9%",
-        "p": 61
-      }
-    ]
-  },
-  {
-    "name": "Pau Navarro",
-    "age": 20,
-    "pos": "DF",
-    "team": "Villarreal",
-    "ligue": "La Liga",
-    "score": 3.3,
-    "rank": 74,
-    "photo": "data/photos/Pau_Navarro.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.64",
-        "p": 85
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.84",
-        "p": 27
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.09",
-        "p": 33
-      },
-      {
-        "l": "Min%",
-        "v": "92.8%",
-        "p": 81
-      }
-    ]
-  },
-  {
-    "name": "Rayan Fofana",
-    "age": 19,
-    "pos": "FW",
-    "team": "Lens",
-    "ligue": "Ligue 1",
-    "score": 3.3,
-    "rank": 75,
-    "photo": "data/photos/Rayan_Fofana.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.56",
-        "p": 90
-      },
-      {
-        "l": "Tirs/90",
-        "v": "4.06",
-        "p": 98
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.00",
-        "p": 26
-      },
-      {
-        "l": "Min%",
-        "v": "35.5%",
-        "p": 33
-      }
-    ]
-  },
-  {
-    "name": "Kassoum Ouattara",
-    "age": 20,
-    "pos": "MF",
-    "team": "Monaco",
-    "ligue": "Ligue 1",
-    "score": 3.3,
-    "rank": 76,
-    "photo": "data/photos/Kassoum_Ouattara.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.77",
-        "p": 90
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.77",
-        "p": 96
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "0.93",
-        "p": 31
-      },
-      {
-        "l": "Min%",
-        "v": "71.6%",
-        "p": 79
-      }
-    ]
-  },
-  {
-    "name": "Dehmaine Assoumani",
-    "age": 20,
-    "pos": "MF",
-    "team": "Nantes",
-    "ligue": "Ligue 1",
-    "score": 3.3,
-    "rank": 77,
-    "photo": "data/photos/Dehmaine_Assoumani.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.27",
-        "p": 56
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.13",
-        "p": 80
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.41",
-        "p": 57
-      },
-      {
-        "l": "Min%",
-        "v": "52.5%",
-        "p": 37
-      }
-    ]
-  },
-  {
-    "name": "Abdulai Juma Bah",
-    "age": 19,
-    "pos": "DF",
-    "team": "Nice",
-    "ligue": "Ligue 1",
-    "score": 3.3,
-    "rank": 78,
-    "photo": "data/photos/Abdulai_Juma_Bah.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.83",
-        "p": 30
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.38",
-        "p": 79
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.00",
-        "p": 12
-      },
-      {
-        "l": "Min%",
-        "v": "83.7%",
-        "p": 65
-      }
-    ]
-  },
-  {
-    "name": "Senny Mayulu",
-    "age": 19,
-    "pos": "MF",
-    "team": "PSG",
-    "ligue": "Ligue 1",
-    "score": 3.3,
-    "rank": 79,
-    "photo": "data/photos/Senny_Mayulu.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.67",
-        "p": 86
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.65",
-        "p": 39
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.08",
-        "p": 41
-      },
-      {
-        "l": "Min%",
-        "v": "71.5%",
-        "p": 77
-      }
-    ]
-  },
-  {
     "name": "Wael Mohya",
     "age": 16,
     "pos": "MF",
     "team": "Gladbach",
     "ligue": "Bundesliga",
-    "score": 3.3,
-    "rank": 80,
+    "score": 3.9,
+    "rank": 70,
     "photo": "data/photos/Wael_Mohya.png",
     "stats": [
       {
@@ -2560,77 +2240,13 @@
     ]
   },
   {
-    "name": "Arijon Ibrahimović",
-    "age": 19,
-    "pos": "MF",
-    "team": "Heidenheim",
-    "ligue": "Bundesliga",
-    "score": 3.3,
-    "rank": 81,
-    "photo": "data/photos/Arijon_Ibrahimović.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.75",
-        "p": 16
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.95",
-        "p": 63
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.12",
-        "p": 46
-      },
-      {
-        "l": "Min%",
-        "v": "75.3%",
-        "p": 86
-      }
-    ]
-  },
-  {
-    "name": "Antonio Nusa",
-    "age": 20,
-    "pos": "FW",
-    "team": "RB Leipzig",
-    "ligue": "Bundesliga",
-    "score": 3.3,
-    "rank": 82,
-    "photo": "data/photos/Antonio_Nusa.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.18",
-        "p": 26
-      },
-      {
-        "l": "Tirs/90",
-        "v": "2.71",
-        "p": 60
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.13",
-        "p": 60
-      },
-      {
-        "l": "Min%",
-        "v": "72.7%",
-        "p": 90
-      }
-    ]
-  },
-  {
     "name": "Finn Jeltsch",
     "age": 19,
     "pos": "DF",
     "team": "Stuttgart",
     "ligue": "Bundesliga",
-    "score": 3.3,
-    "rank": 83,
+    "score": 3.9,
+    "rank": 71,
     "photo": "data/photos/Finn_Jeltsch.png",
     "stats": [
       {
@@ -2656,34 +2272,66 @@
     ]
   },
   {
-    "name": "Adam Daghim",
-    "age": 19,
+    "name": "Tom Rothe",
+    "age": 20,
     "pos": "MF",
-    "team": "Wolfsburg",
+    "team": "Union Berlin",
     "ligue": "Bundesliga",
-    "score": 3.3,
-    "rank": 84,
-    "photo": "data/photos/Adam_Daghim.png",
+    "score": 3.9,
+    "rank": 72,
+    "photo": "data/photos/Tom_Rothe.png",
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "1.32",
-        "p": 63
+        "v": "1.31",
+        "p": 60
       },
       {
         "l": "Interceptions/90",
-        "v": "0.73",
-        "p": 43
+        "v": "1.84",
+        "p": 97
       },
       {
         "l": "Fautes subies/90",
-        "v": "1.52",
-        "p": 62
+        "v": "0.52",
+        "p": 12
       },
       {
         "l": "Min%",
-        "v": "56.1%",
-        "p": 49
+        "v": "54.4%",
+        "p": 41
+      }
+    ]
+  },
+  {
+    "name": "Abdoul Coulibaly",
+    "age": 18,
+    "pos": "DF",
+    "team": "Werder Bremen",
+    "ligue": "Bundesliga",
+    "score": 3.9,
+    "rank": 73,
+    "photo": "data/photos/Abdoul_Coulibaly.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.59",
+        "p": 4
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.02",
+        "p": 40
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.55",
+        "p": 74
+      },
+      {
+        "l": "Min%",
+        "v": "87.2%",
+        "p": 76
       }
     ]
   },
@@ -2693,8 +2341,8 @@
     "pos": "DF",
     "team": "Crystal Palace",
     "ligue": "Premier League",
-    "score": 3.2,
-    "rank": 85,
+    "score": 3.8,
+    "rank": 74,
     "photo": "data/photos/Jaydee_Canvot.png",
     "stats": [
       {
@@ -2725,8 +2373,8 @@
     "pos": "MF",
     "team": "Newcastle United",
     "ligue": "Premier League",
-    "score": 3.2,
-    "rank": 86,
+    "score": 3.8,
+    "rank": 75,
     "photo": "data/photos/Lewis_Miley.png",
     "stats": [
       {
@@ -2752,120 +2400,88 @@
     ]
   },
   {
-    "name": "Ethan Mbappé",
-    "age": 18,
-    "pos": "MF",
-    "team": "Lille",
-    "ligue": "Ligue 1",
-    "score": 3.2,
-    "rank": 87,
-    "photo": "data/photos/Ethan_Mbappé.png",
-    "stats": [
-      {
-        "l": "Impact Off/90",
-        "v": "0.64",
-        "p": 69
-      },
-      {
-        "l": "Tirs/90",
-        "v": "2.22",
-        "p": 35
-      },
-      {
-        "l": "Act. Déf/90",
-        "v": "1.43",
-        "p": 85
-      },
-      {
-        "l": "Min%",
-        "v": "35.0%",
-        "p": 19
-      }
-    ]
-  },
-  {
-    "name": "Malick Fofana",
-    "age": 20,
-    "pos": "MF",
-    "team": "Lyon",
-    "ligue": "Ligue 1",
-    "score": 3.2,
-    "rank": 88,
-    "photo": "data/photos/Malick_Fofana.png",
-    "stats": [
-      {
-        "l": "Impact Off/90",
-        "v": "0.36",
-        "p": 23
-      },
-      {
-        "l": "Tirs/90",
-        "v": "2.28",
-        "p": 46
-      },
-      {
-        "l": "Act. Déf/90",
-        "v": "0.96",
-        "p": 50
-      },
-      {
-        "l": "Min%",
-        "v": "69.4%",
-        "p": 81
-      }
-    ]
-  },
-  {
-    "name": "Jérémy Jacquet",
-    "age": 20,
-    "pos": "DF",
-    "team": "Rennes",
-    "ligue": "Ligue 1",
-    "score": 3.2,
-    "rank": 89,
-    "photo": "data/photos/Jérémy_Jacquet.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.92",
-        "p": 38
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.18",
-        "p": 58
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.00",
-        "p": 12
-      },
-      {
-        "l": "Min%",
-        "v": "97.7%",
-        "p": 98
-      }
-    ]
-  },
-  {
-    "name": "Conrad Harder",
-    "age": 20,
+    "name": "Rayan Fofana",
+    "age": 19,
     "pos": "FW",
-    "team": "RB Leipzig",
-    "ligue": "Bundesliga",
-    "score": 3.2,
-    "rank": 90,
-    "photo": "data/photos/Conrad_Harder.png",
+    "team": "Lens",
+    "ligue": "Ligue 1",
+    "score": 3.8,
+    "rank": 76,
+    "photo": "data/photos/Rayan_Fofana.png",
     "stats": [
       {
         "l": "Buts/90",
-        "v": "0.29",
-        "p": 48
+        "v": "0.56",
+        "p": 90
       },
       {
         "l": "Tirs/90",
-        "v": "4.05",
-        "p": 95
+        "v": "4.06",
+        "p": 98
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.00",
+        "p": 26
+      },
+      {
+        "l": "Min%",
+        "v": "35.5%",
+        "p": 33
+      }
+    ]
+  },
+  {
+    "name": "Désiré Doué",
+    "age": 20,
+    "pos": "FW",
+    "team": "PSG",
+    "ligue": "Ligue 1",
+    "score": 3.8,
+    "rank": 77,
+    "photo": "data/photos/Désiré_Doué.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.47",
+        "p": 75
+      },
+      {
+        "l": "Tirs/90",
+        "v": "3.67",
+        "p": 82
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.27",
+        "p": 82
+      },
+      {
+        "l": "Min%",
+        "v": "65.1%",
+        "p": 83
+      }
+    ]
+  },
+  {
+    "name": "Christian Kofane",
+    "age": 19,
+    "pos": "FW",
+    "team": "Leverkusen",
+    "ligue": "Bundesliga",
+    "score": 3.8,
+    "rank": 78,
+    "photo": "data/photos/Christian_Kofane.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.36",
+        "p": 60
+      },
+      {
+        "l": "Tirs/90",
+        "v": "3.34",
+        "p": 71
       },
       {
         "l": "Passes déc/90",
@@ -2874,8 +2490,8 @@
       },
       {
         "l": "Min%",
-        "v": "35.7%",
-        "p": 36
+        "v": "47.5%",
+        "p": 60
       }
     ]
   },
@@ -2885,8 +2501,8 @@
     "pos": "MF",
     "team": "Union Berlin",
     "ligue": "Bundesliga",
-    "score": 3.2,
-    "rank": 91,
+    "score": 3.8,
+    "rank": 79,
     "photo": "data/photos/Aljoscha_Kemlein.png",
     "stats": [
       {
@@ -2912,482 +2528,34 @@
     ]
   },
   {
-    "name": "Tom Rothe",
-    "age": 20,
+    "name": "Adam Daghim",
+    "age": 19,
     "pos": "MF",
-    "team": "Union Berlin",
-    "ligue": "Bundesliga",
-    "score": 3.2,
-    "rank": 92,
-    "photo": "data/photos/Tom_Rothe.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.31",
-        "p": 60
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.84",
-        "p": 97
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "0.52",
-        "p": 12
-      },
-      {
-        "l": "Min%",
-        "v": "54.4%",
-        "p": 41
-      }
-    ]
-  },
-  {
-    "name": "Aaron Zehnter",
-    "age": 20,
-    "pos": "DF",
     "team": "Wolfsburg",
     "ligue": "Bundesliga",
-    "score": 3.2,
-    "rank": 93,
-    "photo": "data/photos/Aaron_Zehnter.png",
+    "score": 3.8,
+    "rank": 80,
+    "photo": "data/photos/Adam_Daghim.png",
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "0.62",
-        "p": 6
+        "v": "1.32",
+        "p": 63
       },
       {
         "l": "Interceptions/90",
-        "v": "0.99",
-        "p": 34
-      },
-      {
-        "l": "Centres/90",
-        "v": "2.22",
-        "p": 90
-      },
-      {
-        "l": "Min%",
-        "v": "80.9%",
-        "p": 56
-      }
-    ]
-  },
-  {
-    "name": "Davide Bartesaghi",
-    "age": 19,
-    "pos": "MF",
-    "team": "Milan",
-    "ligue": "Serie A",
-    "score": 3.2,
-    "rank": 94,
-    "photo": "data/photos/Davide_Bartesaghi.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.29",
-        "p": 58
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.55",
-        "p": 27
+        "v": "0.73",
+        "p": 43
       },
       {
         "l": "Fautes subies/90",
-        "v": "0.52",
-        "p": 12
-      },
-      {
-        "l": "Min%",
-        "v": "87.5%",
-        "p": 96
-      }
-    ]
-  },
-  {
-    "name": "Charalampos Kostoulas",
-    "age": 18,
-    "pos": "FW",
-    "team": "Brighton",
-    "ligue": "Premier League",
-    "score": 3.1,
-    "rank": 95,
-    "photo": "data/photos/Charalampos_Kostoulas.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.53",
-        "p": 83
-      },
-      {
-        "l": "Tirs/90",
-        "v": "4.81",
-        "p": 100
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.27",
-        "p": 82
-      },
-      {
-        "l": "Min%",
-        "v": "18.7%",
-        "p": 2
-      }
-    ]
-  },
-  {
-    "name": "Pau Cubarsí",
-    "age": 18,
-    "pos": "DF",
-    "team": "Barcelona",
-    "ligue": "La Liga",
-    "score": 3.1,
-    "rank": 96,
-    "photo": "data/photos/Pau_Cubarsí.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.93",
-        "p": 40
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.00",
-        "p": 38
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.00",
-        "p": 12
-      },
-      {
-        "l": "Min%",
-        "v": "96.9%",
-        "p": 92
-      }
-    ]
-  },
-  {
-    "name": "Nobel Mendy",
-    "age": 20,
-    "pos": "DF",
-    "team": "Rayo Vallecano",
-    "ligue": "La Liga",
-    "score": 3.1,
-    "rank": 97,
-    "photo": "data/photos/Nobel_Mendy.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.75",
-        "p": 21
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.15",
-        "p": 53
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.30",
-        "p": 61
-      },
-      {
-        "l": "Min%",
-        "v": "83.2%",
+        "v": "1.52",
         "p": 62
-      }
-    ]
-  },
-  {
-    "name": "Ngal'Ayel Mukau",
-    "age": 20,
-    "pos": "MF",
-    "team": "Lille",
-    "ligue": "Ligue 1",
-    "score": 3.1,
-    "rank": 98,
-    "photo": "data/photos/Ngal'Ayel_Mukau.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.06",
-        "p": 41
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.82",
-        "p": 51
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.35",
-        "p": 56
       },
       {
         "l": "Min%",
-        "v": "56.8%",
-        "p": 51
-      }
-    ]
-  },
-  {
-    "name": "Khalis Merah",
-    "age": 18,
-    "pos": "MF",
-    "team": "Lyon",
-    "ligue": "Ligue 1",
-    "score": 3.1,
-    "rank": 99,
-    "photo": "data/photos/Khalis_Merah.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.51",
-        "p": 75
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.48",
-        "p": 24
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.59",
-        "p": 66
-      },
-      {
-        "l": "Min%",
-        "v": "57.1%",
-        "p": 53
-      }
-    ]
-  },
-  {
-    "name": "Aladji Bamba",
-    "age": 19,
-    "pos": "MF",
-    "team": "Monaco",
-    "ligue": "Ligue 1",
-    "score": 3.1,
-    "rank": 100,
-    "photo": "data/photos/Aladji_Bamba.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "2.21",
-        "p": 96
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.88",
-        "p": 59
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.98",
-        "p": 78
-      },
-      {
-        "l": "Min%",
-        "v": "50.4%",
-        "p": 34
-      }
-    ]
-  },
-  {
-    "name": "Louis Leroux",
-    "age": 19,
-    "pos": "MF",
-    "team": "Nantes",
-    "ligue": "Ligue 1",
-    "score": 3.1,
-    "rank": 101,
-    "photo": "data/photos/Louis_Leroux.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.44",
-        "p": 69
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.31",
-        "p": 13
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "0.87",
-        "p": 27
-      },
-      {
-        "l": "Min%",
-        "v": "69.6%",
-        "p": 72
-      }
-    ]
-  },
-  {
-    "name": "Abdelhamid Ait Boudlal",
-    "age": 19,
-    "pos": "DF",
-    "team": "Rennes",
-    "ligue": "Ligue 1",
-    "score": 3.1,
-    "rank": 102,
-    "photo": "data/photos/Abdelhamid_Ait_Boudlal.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.71",
-        "p": 15
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.15",
-        "p": 53
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.13",
-        "p": 38
-      },
-      {
-        "l": "Min%",
-        "v": "77.9%",
-        "p": 48
-      }
-    ]
-  },
-  {
-    "name": "Abdoul Ouattara",
-    "age": 19,
-    "pos": "MF",
-    "team": "Strasbourg",
-    "ligue": "Ligue 1",
-    "score": 3.1,
-    "rank": 103,
-    "photo": "data/photos/Abdoul_Ouattara.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.66",
-        "p": 11
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.02",
-        "p": 69
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "0.56",
-        "p": 16
-      },
-      {
-        "l": "Min%",
-        "v": "70.2%",
-        "p": 73
-      }
-    ]
-  },
-  {
-    "name": "Jeanuël Belocian",
-    "age": 20,
-    "pos": "DF",
-    "team": "Leverkusen",
-    "ligue": "Bundesliga",
-    "score": 3.1,
-    "rank": 104,
-    "photo": "data/photos/Jeanuël_Belocian.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.11",
-        "p": 50
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.05",
-        "p": 44
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.47",
-        "p": 71
-      },
-      {
-        "l": "Min%",
-        "v": "78.1%",
-        "p": 50
-      }
-    ]
-  },
-  {
-    "name": "Montrell Culbreath",
-    "age": 17,
-    "pos": "MF",
-    "team": "Leverkusen",
-    "ligue": "Bundesliga",
-    "score": 3.1,
-    "rank": 105,
-    "photo": "data/photos/Montrell_Culbreath.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.96",
-        "p": 94
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.98",
-        "p": 66
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.34",
-        "p": 54
-      },
-      {
-        "l": "Min%",
-        "v": "68.1%",
-        "p": 69
-      }
-    ]
-  },
-  {
-    "name": "Jayden Addai",
-    "age": 19,
-    "pos": "MF",
-    "team": "Como",
-    "ligue": "Serie A",
-    "score": 3.1,
-    "rank": 106,
-    "photo": "data/photos/Jayden_Addai.png",
-    "stats": [
-      {
-        "l": "Impact Off/90",
-        "v": "0.39",
-        "p": 27
-      },
-      {
-        "l": "Tirs/90",
-        "v": "1.71",
-        "p": 15
-      },
-      {
-        "l": "Act. Déf/90",
-        "v": "0.52",
-        "p": 4
-      },
-      {
-        "l": "Min%",
-        "v": "63.5%",
-        "p": 65
+        "v": "56.1%",
+        "p": 49
       }
     ]
   },
@@ -3397,8 +2565,8 @@
     "pos": "MF",
     "team": "Parma",
     "ligue": "Serie A",
-    "score": 3.1,
-    "rank": 107,
+    "score": 3.8,
+    "rank": 81,
     "photo": "data/photos/Sascha_Britschgi.png",
     "stats": [
       {
@@ -3424,45 +2592,13 @@
     ]
   },
   {
-    "name": "Niccolò Pisilli",
-    "age": 20,
-    "pos": "MF",
-    "team": "Roma",
-    "ligue": "Serie A",
-    "score": 3.1,
-    "rank": 108,
-    "photo": "data/photos/Niccolò_Pisilli.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.90",
-        "p": 27
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.67",
-        "p": 94
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "0.28",
-        "p": 5
-      },
-      {
-        "l": "Min%",
-        "v": "57.6%",
-        "p": 54
-      }
-    ]
-  },
-  {
     "name": "Luca Lipani",
     "age": 20,
     "pos": "MF",
     "team": "Sassuolo",
     "ligue": "Serie A",
-    "score": 3.1,
-    "rank": 109,
+    "score": 3.8,
+    "rank": 82,
     "photo": "data/photos/Luca_Lipani.png",
     "stats": [
       {
@@ -3488,194 +2624,674 @@
     ]
   },
   {
-    "name": "Leny Yoro",
-    "age": 20,
-    "pos": "DF",
-    "team": "Manchester Utd",
-    "ligue": "Premier League",
-    "score": 3.0,
-    "rank": 110,
-    "photo": "data/photos/Leny_Yoro.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.99",
-        "p": 42
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.57",
-        "p": 86
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.16",
-        "p": 44
-      },
-      {
-        "l": "Min%",
-        "v": "61.8%",
-        "p": 25
-      }
-    ]
-  },
-  {
-    "name": "Marc Bernal",
-    "age": 18,
+    "name": "Rio Ngumoha",
+    "age": 17,
     "pos": "MF",
-    "team": "Barcelona",
-    "ligue": "La Liga",
-    "score": 3.0,
-    "rank": 111,
-    "photo": "data/photos/Marc_Bernal.png",
+    "team": "Liverpool",
+    "ligue": "Premier League",
+    "score": 3.7,
+    "rank": 83,
+    "photo": "data/photos/Rio_Ngumoha.png",
     "stats": [
       {
-        "l": "Tacles/90",
-        "v": "2.16",
-        "p": 95
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.37",
-        "p": 92
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.25",
-        "p": 51
-      },
-      {
-        "l": "Min%",
-        "v": "39.9%",
-        "p": 11
-      }
-    ]
-  },
-  {
-    "name": "Robinio Vaz",
-    "age": 18,
-    "pos": "FW",
-    "team": "Roma",
-    "ligue": "Serie A",
-    "score": 3.0,
-    "rank": 112,
-    "photo": "data/photos/Robinio_Vaz.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.76",
-        "p": 98
+        "l": "Impact Off/90",
+        "v": "0.55",
+        "p": 52
       },
       {
         "l": "Tirs/90",
-        "v": "1.97",
-        "p": 31
+        "v": "2.58",
+        "p": 62
       },
       {
-        "l": "Passes déc/90",
-        "v": "0.30",
-        "p": 95
+        "l": "Act. Déf/90",
+        "v": "0.92",
+        "p": 42
       },
       {
         "l": "Min%",
-        "v": "25.4%",
-        "p": 10
+        "v": "30.1%",
+        "p": 4
       }
     ]
   },
   {
-    "name": "Christian Mawissa",
+    "name": "Pau Navarro",
     "age": 20,
     "pos": "DF",
-    "team": "Monaco",
-    "ligue": "Ligue 1",
-    "score": 3.0,
-    "rank": 113,
-    "photo": "data/photos/Christian_Mawissa.png",
+    "team": "Villarreal",
+    "ligue": "La Liga",
+    "score": 3.7,
+    "rank": 84,
+    "photo": "data/photos/Pau_Navarro.png",
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "1.89",
+        "v": "1.64",
+        "p": 85
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.84",
+        "p": 27
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.09",
+        "p": 33
+      },
+      {
+        "l": "Min%",
+        "v": "92.8%",
+        "p": 81
+      }
+    ]
+  },
+  {
+    "name": "Louis Leroux",
+    "age": 19,
+    "pos": "MF",
+    "team": "Nantes",
+    "ligue": "Ligue 1",
+    "score": 3.7,
+    "rank": 85,
+    "photo": "data/photos/Louis_Leroux.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.44",
+        "p": 69
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.31",
+        "p": 13
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "0.87",
+        "p": 27
+      },
+      {
+        "l": "Min%",
+        "v": "69.6%",
+        "p": 72
+      }
+    ]
+  },
+  {
+    "name": "Abdulai Juma Bah",
+    "age": 19,
+    "pos": "DF",
+    "team": "Nice",
+    "ligue": "Ligue 1",
+    "score": 3.7,
+    "rank": 86,
+    "photo": "data/photos/Abdulai_Juma_Bah.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.83",
+        "p": 30
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.38",
+        "p": 79
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.00",
+        "p": 12
+      },
+      {
+        "l": "Min%",
+        "v": "83.7%",
+        "p": 65
+      }
+    ]
+  },
+  {
+    "name": "Jérémy Jacquet",
+    "age": 20,
+    "pos": "DF",
+    "team": "Rennes",
+    "ligue": "Ligue 1",
+    "score": 3.7,
+    "rank": 87,
+    "photo": "data/photos/Jérémy_Jacquet.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.92",
+        "p": 38
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.18",
+        "p": 58
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.00",
+        "p": 12
+      },
+      {
+        "l": "Min%",
+        "v": "97.7%",
+        "p": 98
+      }
+    ]
+  },
+  {
+    "name": "Ibrahim Maza",
+    "age": 19,
+    "pos": "MF",
+    "team": "Leverkusen",
+    "ligue": "Bundesliga",
+    "score": 3.7,
+    "rank": 88,
+    "photo": "data/photos/Ibrahim_Maza.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.17",
+        "p": 52
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.78",
+        "p": 44
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.75",
+        "p": 73
+      },
+      {
+        "l": "Min%",
+        "v": "73.4%",
+        "p": 85
+      }
+    ]
+  },
+  {
+    "name": "Antonio Nusa",
+    "age": 20,
+    "pos": "FW",
+    "team": "RB Leipzig",
+    "ligue": "Bundesliga",
+    "score": 3.7,
+    "rank": 89,
+    "photo": "data/photos/Antonio_Nusa.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.18",
+        "p": 26
+      },
+      {
+        "l": "Tirs/90",
+        "v": "2.71",
+        "p": 60
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.13",
+        "p": 60
+      },
+      {
+        "l": "Min%",
+        "v": "72.7%",
+        "p": 90
+      }
+    ]
+  },
+  {
+    "name": "Aaron Zehnter",
+    "age": 20,
+    "pos": "DF",
+    "team": "Wolfsburg",
+    "ligue": "Bundesliga",
+    "score": 3.7,
+    "rank": 90,
+    "photo": "data/photos/Aaron_Zehnter.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.62",
+        "p": 6
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.99",
+        "p": 34
+      },
+      {
+        "l": "Centres/90",
+        "v": "2.22",
+        "p": 90
+      },
+      {
+        "l": "Min%",
+        "v": "80.9%",
+        "p": 56
+      }
+    ]
+  },
+  {
+    "name": "Jayden Addai",
+    "age": 19,
+    "pos": "MF",
+    "team": "Como",
+    "ligue": "Serie A",
+    "score": 3.7,
+    "rank": 91,
+    "photo": "data/photos/Jayden_Addai.png",
+    "stats": [
+      {
+        "l": "Impact Off/90",
+        "v": "0.39",
+        "p": 27
+      },
+      {
+        "l": "Tirs/90",
+        "v": "1.71",
+        "p": 15
+      },
+      {
+        "l": "Act. Déf/90",
+        "v": "0.52",
+        "p": 4
+      },
+      {
+        "l": "Min%",
+        "v": "63.5%",
+        "p": 65
+      }
+    ]
+  },
+  {
+    "name": "Nobel Mendy",
+    "age": 20,
+    "pos": "DF",
+    "team": "Rayo Vallecano",
+    "ligue": "La Liga",
+    "score": 3.6,
+    "rank": 92,
+    "photo": "data/photos/Nobel_Mendy.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.75",
+        "p": 21
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.15",
+        "p": 53
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.30",
+        "p": 61
+      },
+      {
+        "l": "Min%",
+        "v": "83.2%",
+        "p": 62
+      }
+    ]
+  },
+  {
+    "name": "Malick Fofana",
+    "age": 20,
+    "pos": "MF",
+    "team": "Lyon",
+    "ligue": "Ligue 1",
+    "score": 3.6,
+    "rank": 93,
+    "photo": "data/photos/Malick_Fofana.png",
+    "stats": [
+      {
+        "l": "Impact Off/90",
+        "v": "0.36",
+        "p": 23
+      },
+      {
+        "l": "Tirs/90",
+        "v": "2.28",
+        "p": 46
+      },
+      {
+        "l": "Act. Déf/90",
+        "v": "0.96",
+        "p": 50
+      },
+      {
+        "l": "Min%",
+        "v": "69.4%",
+        "p": 81
+      }
+    ]
+  },
+  {
+    "name": "Abdoul Ouattara",
+    "age": 19,
+    "pos": "MF",
+    "team": "Strasbourg",
+    "ligue": "Ligue 1",
+    "score": 3.6,
+    "rank": 94,
+    "photo": "data/photos/Abdoul_Ouattara.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.66",
+        "p": 11
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.02",
+        "p": 69
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "0.56",
+        "p": 16
+      },
+      {
+        "l": "Min%",
+        "v": "70.2%",
+        "p": 73
+      }
+    ]
+  },
+  {
+    "name": "Francesco Esposito",
+    "age": 20,
+    "pos": "FW",
+    "team": "Inter",
+    "ligue": "Serie A",
+    "score": 3.6,
+    "rank": 95,
+    "photo": "data/photos/Francesco_Esposito.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.40",
+        "p": 67
+      },
+      {
+        "l": "Tirs/90",
+        "v": "3.26",
+        "p": 69
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.17",
+        "p": 63
+      },
+      {
+        "l": "Min%",
+        "v": "49.9%",
+        "p": 69
+      }
+    ]
+  },
+  {
+    "name": "Charalampos Kostoulas",
+    "age": 18,
+    "pos": "FW",
+    "team": "Brighton",
+    "ligue": "Premier League",
+    "score": 3.5,
+    "rank": 96,
+    "photo": "data/photos/Charalampos_Kostoulas.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.53",
+        "p": 83
+      },
+      {
+        "l": "Tirs/90",
+        "v": "4.81",
+        "p": 100
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.27",
+        "p": 82
+      },
+      {
+        "l": "Min%",
+        "v": "18.7%",
+        "p": 2
+      }
+    ]
+  },
+  {
+    "name": "Marius Louer",
+    "age": 18,
+    "pos": "DF",
+    "team": "Angers",
+    "ligue": "Ligue 1",
+    "score": 3.5,
+    "rank": 97,
+    "photo": "data/photos/Marius_Louer.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "2.65",
+        "p": 100
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.33",
+        "p": 4
+      },
+      {
+        "l": "Centres/90",
+        "v": "1.49",
+        "p": 81
+      },
+      {
+        "l": "Min%",
+        "v": "67.0%",
+        "p": 29
+      }
+    ]
+  },
+  {
+    "name": "Ethan Mbappé",
+    "age": 18,
+    "pos": "MF",
+    "team": "Lille",
+    "ligue": "Ligue 1",
+    "score": 3.5,
+    "rank": 98,
+    "photo": "data/photos/Ethan_Mbappé.png",
+    "stats": [
+      {
+        "l": "Impact Off/90",
+        "v": "0.64",
+        "p": 69
+      },
+      {
+        "l": "Tirs/90",
+        "v": "2.22",
+        "p": 35
+      },
+      {
+        "l": "Act. Déf/90",
+        "v": "1.43",
+        "p": 85
+      },
+      {
+        "l": "Min%",
+        "v": "35.0%",
+        "p": 19
+      }
+    ]
+  },
+  {
+    "name": "Kassoum Ouattara",
+    "age": 20,
+    "pos": "MF",
+    "team": "Monaco",
+    "ligue": "Ligue 1",
+    "score": 3.5,
+    "rank": 99,
+    "photo": "data/photos/Kassoum_Ouattara.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.77",
         "p": 90
       },
       {
         "l": "Interceptions/90",
-        "v": "1.13",
-        "p": 49
+        "v": "1.77",
+        "p": 96
       },
       {
-        "l": "Centres/90",
-        "v": "0.38",
-        "p": 67
+        "l": "Fautes subies/90",
+        "v": "0.93",
+        "p": 31
       },
       {
         "l": "Min%",
-        "v": "73.5%",
-        "p": 40
+        "v": "71.6%",
+        "p": 79
       }
     ]
   },
   {
-    "name": "Tom Bischof",
-    "age": 20,
+    "name": "Abdelhamid Ait Boudlal",
+    "age": 19,
     "pos": "DF",
-    "team": "Bayern Munich",
-    "ligue": "Bundesliga",
-    "score": 3.0,
-    "rank": 114,
-    "photo": null,
+    "team": "Rennes",
+    "ligue": "Ligue 1",
+    "score": 3.5,
+    "rank": 100,
+    "photo": "data/photos/Abdelhamid_Ait_Boudlal.png",
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "1.24",
-        "p": 62
+        "v": "0.71",
+        "p": 15
       },
       {
         "l": "Interceptions/90",
-        "v": "1.04",
-        "p": 42
+        "v": "1.15",
+        "p": 53
       },
       {
         "l": "Centres/90",
-        "v": "1.80",
-        "p": 83
+        "v": "0.13",
+        "p": 38
       },
       {
         "l": "Min%",
-        "v": "55.6%",
-        "p": 14
+        "v": "77.9%",
+        "p": 48
       }
     ]
   },
   {
-    "name": "Ayoube Amaimouni",
+    "name": "Conrad Harder",
     "age": 20,
-    "pos": "MF",
-    "team": "Frankfurt",
+    "pos": "FW",
+    "team": "RB Leipzig",
     "ligue": "Bundesliga",
-    "score": 3.0,
-    "rank": 115,
-    "photo": "data/photos/Ayoube_Amaimouni.png",
+    "score": 3.5,
+    "rank": 101,
+    "photo": "data/photos/Conrad_Harder.png",
     "stats": [
       {
-        "l": "Impact Off/90",
-        "v": "0.77",
-        "p": 88
+        "l": "Buts/90",
+        "v": "0.29",
+        "p": 48
       },
       {
         "l": "Tirs/90",
-        "v": "1.84",
-        "p": 23
+        "v": "4.05",
+        "p": 95
       },
       {
-        "l": "Act. Déf/90",
-        "v": "1.08",
-        "p": 62
+        "l": "Passes déc/90",
+        "v": "0.29",
+        "p": 90
       },
       {
         "l": "Min%",
-        "v": "38.3%",
-        "p": 31
+        "v": "35.7%",
+        "p": 36
+      }
+    ]
+  },
+  {
+    "name": "Davide Bartesaghi",
+    "age": 19,
+    "pos": "MF",
+    "team": "Milan",
+    "ligue": "Serie A",
+    "score": 3.5,
+    "rank": 102,
+    "photo": "data/photos/Davide_Bartesaghi.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.29",
+        "p": 58
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.55",
+        "p": 27
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "0.52",
+        "p": 12
+      },
+      {
+        "l": "Min%",
+        "v": "87.5%",
+        "p": 96
+      }
+    ]
+  },
+  {
+    "name": "Niccolò Pisilli",
+    "age": 20,
+    "pos": "MF",
+    "team": "Roma",
+    "ligue": "Serie A",
+    "score": 3.5,
+    "rank": 103,
+    "photo": "data/photos/Niccolò_Pisilli.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.90",
+        "p": 27
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.67",
+        "p": 94
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "0.28",
+        "p": 5
+      },
+      {
+        "l": "Min%",
+        "v": "57.6%",
+        "p": 54
       }
     ]
   },
@@ -3685,8 +3301,8 @@
     "pos": "MF",
     "team": "Udinese",
     "ligue": "Serie A",
-    "score": 3.0,
-    "rank": 116,
+    "score": 3.5,
+    "rank": 104,
     "photo": "data/photos/Lennon_Miller.png",
     "stats": [
       {
@@ -3717,8 +3333,8 @@
     "pos": "DF",
     "team": "Chelsea",
     "ligue": "Premier League",
-    "score": 2.9,
-    "rank": 117,
+    "score": 3.4,
+    "rank": 105,
     "photo": "data/photos/Jorrel_Hato.png",
     "stats": [
       {
@@ -3744,333 +3360,13 @@
     ]
   },
   {
-    "name": "Franco Mastantuono",
-    "age": 17,
-    "pos": "MF",
-    "team": "Real Madrid",
-    "ligue": "La Liga",
-    "score": 2.9,
-    "rank": 118,
-    "photo": "data/photos/Franco_Mastantuono.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.04",
-        "p": 39
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.26",
-        "p": 8
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "2.60",
-        "p": 89
-      },
-      {
-        "l": "Min%",
-        "v": "50.1%",
-        "p": 32
-      }
-    ]
-  },
-  {
-    "name": "Marius Louer",
-    "age": 18,
-    "pos": "DF",
-    "team": "Angers",
-    "ligue": "Ligue 1",
-    "score": 2.9,
-    "rank": 119,
-    "photo": "data/photos/Marius_Louer.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "2.65",
-        "p": 100
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.33",
-        "p": 4
-      },
-      {
-        "l": "Centres/90",
-        "v": "1.49",
-        "p": 81
-      },
-      {
-        "l": "Min%",
-        "v": "67.0%",
-        "p": 29
-      }
-    ]
-  },
-  {
-    "name": "Warren Zaïre-Emery",
-    "age": 19,
-    "pos": "DF",
-    "team": "PSG",
-    "ligue": "Ligue 1",
-    "score": 2.9,
-    "rank": 120,
-    "photo": "data/photos/Warren_Zaïre-Emery.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.07",
-        "p": 46
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.40",
-        "p": 10
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.55",
-        "p": 74
-      },
-      {
-        "l": "Min%",
-        "v": "85.0%",
-        "p": 67
-      }
-    ]
-  },
-  {
-    "name": "Jean Mattéo Bahoya",
-    "age": 20,
-    "pos": "MF",
-    "team": "Frankfurt",
-    "ligue": "Bundesliga",
-    "score": 2.9,
-    "rank": 121,
-    "photo": null,
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.95",
-        "p": 28
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.81",
-        "p": 48
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.49",
-        "p": 58
-      },
-      {
-        "l": "Min%",
-        "v": "54.8%",
-        "p": 43
-      }
-    ]
-  },
-  {
-    "name": "Ifechukwu Ogbus",
-    "age": 19,
-    "pos": "DF",
-    "team": "Freiburg",
-    "ligue": "Bundesliga",
-    "score": 2.9,
-    "rank": 122,
-    "photo": "data/photos/Ifechukwu_Ogbus.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.22",
-        "p": 58
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.99",
-        "p": 34
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.23",
-        "p": 56
-      },
-      {
-        "l": "Min%",
-        "v": "72.7%",
-        "p": 37
-      }
-    ]
-  },
-  {
-    "name": "Paul Mendy",
-    "age": 18,
-    "pos": "FW",
-    "team": "Cagliari",
-    "ligue": "Serie A",
-    "score": 2.9,
-    "rank": 123,
-    "photo": "data/photos/Paul_Mendy.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.54",
-        "p": 86
-      },
-      {
-        "l": "Tirs/90",
-        "v": "4.03",
-        "p": 93
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.00",
-        "p": 26
-      },
-      {
-        "l": "Min%",
-        "v": "41.4%",
-        "p": 45
-      }
-    ]
-  },
-  {
-    "name": "Pietro Comuzzo",
-    "age": 20,
-    "pos": "DF",
-    "team": "Fiorentina",
-    "ligue": "Serie A",
-    "score": 2.9,
-    "rank": 124,
-    "photo": "data/photos/Pietro_Comuzzo.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.85",
-        "p": 35
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.27",
-        "p": 67
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.05",
-        "p": 26
-      },
-      {
-        "l": "Min%",
-        "v": "69.8%",
-        "p": 33
-      }
-    ]
-  },
-  {
-    "name": "Evan Ferguson",
-    "age": 20,
-    "pos": "FW",
-    "team": "Roma",
-    "ligue": "Serie A",
-    "score": 2.9,
-    "rank": 125,
-    "photo": "data/photos/Evan_Ferguson.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.35",
-        "p": 56
-      },
-      {
-        "l": "Tirs/90",
-        "v": "3.14",
-        "p": 65
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.23",
-        "p": 79
-      },
-      {
-        "l": "Min%",
-        "v": "53.7%",
-        "p": 74
-      }
-    ]
-  },
-  {
-    "name": "Archie Gray",
-    "age": 20,
-    "pos": "MF",
-    "team": "Tottenham Hotspur",
-    "ligue": "Premier League",
-    "score": 2.8,
-    "rank": 126,
-    "photo": "data/photos/Archie_Gray.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.49",
-        "p": 3
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.04",
-        "p": 72
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "0.12",
-        "p": 3
-      },
-      {
-        "l": "Min%",
-        "v": "71.0%",
-        "p": 76
-      }
-    ]
-  },
-  {
-    "name": "Obed Vargas",
-    "age": 19,
-    "pos": "MF",
-    "team": "Atlético Madrid",
-    "ligue": "La Liga",
-    "score": 2.8,
-    "rank": 127,
-    "photo": "data/photos/Obed_Vargas.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.95",
-        "p": 92
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.97",
-        "p": 65
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.09",
-        "p": 42
-      },
-      {
-        "l": "Min%",
-        "v": "68.5%",
-        "p": 71
-      }
-    ]
-  },
-  {
     "name": "Joel Roca",
     "age": 20,
     "pos": "MF",
     "team": "Girona",
     "ligue": "La Liga",
-    "score": 2.8,
-    "rank": 128,
+    "score": 3.4,
+    "rank": 106,
     "photo": "data/photos/Joel_Roca.png",
     "stats": [
       {
@@ -4096,13 +3392,301 @@
     ]
   },
   {
+    "name": "Ngal'Ayel Mukau",
+    "age": 20,
+    "pos": "MF",
+    "team": "Lille",
+    "ligue": "Ligue 1",
+    "score": 3.4,
+    "rank": 107,
+    "photo": "data/photos/Ngal'Ayel_Mukau.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.06",
+        "p": 41
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.82",
+        "p": 51
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.35",
+        "p": 56
+      },
+      {
+        "l": "Min%",
+        "v": "56.8%",
+        "p": 51
+      }
+    ]
+  },
+  {
+    "name": "Khalis Merah",
+    "age": 18,
+    "pos": "MF",
+    "team": "Lyon",
+    "ligue": "Ligue 1",
+    "score": 3.4,
+    "rank": 108,
+    "photo": "data/photos/Khalis_Merah.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.51",
+        "p": 75
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.48",
+        "p": 24
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.59",
+        "p": 66
+      },
+      {
+        "l": "Min%",
+        "v": "57.1%",
+        "p": 53
+      }
+    ]
+  },
+  {
+    "name": "Robinio Vaz",
+    "age": 18,
+    "pos": "FW",
+    "team": "Roma",
+    "ligue": "Serie A",
+    "score": 3.4,
+    "rank": 109,
+    "photo": "data/photos/Robinio_Vaz.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.76",
+        "p": 98
+      },
+      {
+        "l": "Tirs/90",
+        "v": "1.97",
+        "p": 31
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.30",
+        "p": 95
+      },
+      {
+        "l": "Min%",
+        "v": "25.4%",
+        "p": 10
+      }
+    ]
+  },
+  {
+    "name": "Ayoube Amaimouni",
+    "age": 20,
+    "pos": "MF",
+    "team": "Frankfurt",
+    "ligue": "Bundesliga",
+    "score": 3.4,
+    "rank": 110,
+    "photo": "data/photos/Ayoube_Amaimouni.png",
+    "stats": [
+      {
+        "l": "Impact Off/90",
+        "v": "0.77",
+        "p": 88
+      },
+      {
+        "l": "Tirs/90",
+        "v": "1.84",
+        "p": 23
+      },
+      {
+        "l": "Act. Déf/90",
+        "v": "1.08",
+        "p": 62
+      },
+      {
+        "l": "Min%",
+        "v": "38.3%",
+        "p": 31
+      }
+    ]
+  },
+  {
+    "name": "Paul Mendy",
+    "age": 18,
+    "pos": "FW",
+    "team": "Cagliari",
+    "ligue": "Serie A",
+    "score": 3.4,
+    "rank": 111,
+    "photo": "data/photos/Paul_Mendy.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.54",
+        "p": 86
+      },
+      {
+        "l": "Tirs/90",
+        "v": "4.03",
+        "p": 93
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.00",
+        "p": 26
+      },
+      {
+        "l": "Min%",
+        "v": "41.4%",
+        "p": 45
+      }
+    ]
+  },
+  {
+    "name": "Leny Yoro",
+    "age": 20,
+    "pos": "DF",
+    "team": "Manchester Utd",
+    "ligue": "Premier League",
+    "score": 3.3,
+    "rank": 112,
+    "photo": "data/photos/Leny_Yoro.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.99",
+        "p": 42
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.57",
+        "p": 86
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.16",
+        "p": 44
+      },
+      {
+        "l": "Min%",
+        "v": "61.8%",
+        "p": 25
+      }
+    ]
+  },
+  {
+    "name": "Archie Gray",
+    "age": 20,
+    "pos": "MF",
+    "team": "Tottenham Hotspur",
+    "ligue": "Premier League",
+    "score": 3.3,
+    "rank": 113,
+    "photo": "data/photos/Archie_Gray.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.49",
+        "p": 3
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.04",
+        "p": 72
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "0.12",
+        "p": 3
+      },
+      {
+        "l": "Min%",
+        "v": "71.0%",
+        "p": 76
+      }
+    ]
+  },
+  {
+    "name": "Aladji Bamba",
+    "age": 19,
+    "pos": "MF",
+    "team": "Monaco",
+    "ligue": "Ligue 1",
+    "score": 3.3,
+    "rank": 114,
+    "photo": "data/photos/Aladji_Bamba.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "2.21",
+        "p": 96
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.88",
+        "p": 59
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.98",
+        "p": 78
+      },
+      {
+        "l": "Min%",
+        "v": "50.4%",
+        "p": 34
+      }
+    ]
+  },
+  {
+    "name": "Senny Mayulu",
+    "age": 19,
+    "pos": "MF",
+    "team": "PSG",
+    "ligue": "Ligue 1",
+    "score": 3.3,
+    "rank": 115,
+    "photo": "data/photos/Senny_Mayulu.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.67",
+        "p": 86
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.65",
+        "p": 39
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.08",
+        "p": 41
+      },
+      {
+        "l": "Min%",
+        "v": "71.5%",
+        "p": 77
+      }
+    ]
+  },
+  {
     "name": "Lucas Høgsberg",
     "age": 19,
     "pos": "DF",
     "team": "Strasbourg",
     "ligue": "Ligue 1",
-    "score": 2.8,
-    "rank": 129,
+    "score": 3.3,
+    "rank": 116,
     "photo": "data/photos/Lucas_Høgsberg.png",
     "stats": [
       {
@@ -4133,8 +3717,8 @@
     "pos": "MF",
     "team": "Augsburg",
     "ligue": "Bundesliga",
-    "score": 2.8,
-    "rank": 130,
+    "score": 3.3,
+    "rank": 117,
     "photo": "data/photos/Mert_Kömür.png",
     "stats": [
       {
@@ -4160,12 +3744,428 @@
     ]
   },
   {
+    "name": "Jean Mattéo Bahoya",
+    "age": 20,
+    "pos": "MF",
+    "team": "Frankfurt",
+    "ligue": "Bundesliga",
+    "score": 3.3,
+    "rank": 118,
+    "photo": null,
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.95",
+        "p": 28
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.81",
+        "p": 48
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.49",
+        "p": 58
+      },
+      {
+        "l": "Min%",
+        "v": "54.8%",
+        "p": 43
+      }
+    ]
+  },
+  {
+    "name": "Ifechukwu Ogbus",
+    "age": 19,
+    "pos": "DF",
+    "team": "Freiburg",
+    "ligue": "Bundesliga",
+    "score": 3.3,
+    "rank": 119,
+    "photo": "data/photos/Ifechukwu_Ogbus.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.22",
+        "p": 58
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.99",
+        "p": 34
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.23",
+        "p": 56
+      },
+      {
+        "l": "Min%",
+        "v": "72.7%",
+        "p": 37
+      }
+    ]
+  },
+  {
+    "name": "Jahmai Simpson-Pusey",
+    "age": 19,
+    "pos": "DF",
+    "team": "Köln",
+    "ligue": "Bundesliga",
+    "score": 3.3,
+    "rank": 120,
+    "photo": "data/photos/Jahmai_Simpson-Pusey.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.83",
+        "p": 30
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.25",
+        "p": 64
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.21",
+        "p": 53
+      },
+      {
+        "l": "Min%",
+        "v": "87.2%",
+        "p": 76
+      }
+    ]
+  },
+  {
+    "name": "Jeanuël Belocian",
+    "age": 20,
+    "pos": "DF",
+    "team": "Leverkusen",
+    "ligue": "Bundesliga",
+    "score": 3.3,
+    "rank": 121,
+    "photo": "data/photos/Jeanuël_Belocian.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.11",
+        "p": 50
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.05",
+        "p": 44
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.47",
+        "p": 71
+      },
+      {
+        "l": "Min%",
+        "v": "78.1%",
+        "p": 50
+      }
+    ]
+  },
+  {
+    "name": "Montrell Culbreath",
+    "age": 17,
+    "pos": "MF",
+    "team": "Leverkusen",
+    "ligue": "Bundesliga",
+    "score": 3.3,
+    "rank": 122,
+    "photo": "data/photos/Montrell_Culbreath.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.96",
+        "p": 94
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.98",
+        "p": 66
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.34",
+        "p": 54
+      },
+      {
+        "l": "Min%",
+        "v": "68.1%",
+        "p": 69
+      }
+    ]
+  },
+  {
+    "name": "Pietro Comuzzo",
+    "age": 20,
+    "pos": "DF",
+    "team": "Fiorentina",
+    "ligue": "Serie A",
+    "score": 3.3,
+    "rank": 123,
+    "photo": "data/photos/Pietro_Comuzzo.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.85",
+        "p": 35
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.27",
+        "p": 67
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.05",
+        "p": 26
+      },
+      {
+        "l": "Min%",
+        "v": "69.8%",
+        "p": 33
+      }
+    ]
+  },
+  {
+    "name": "Evan Ferguson",
+    "age": 20,
+    "pos": "FW",
+    "team": "Roma",
+    "ligue": "Serie A",
+    "score": 3.3,
+    "rank": 124,
+    "photo": "data/photos/Evan_Ferguson.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.35",
+        "p": 56
+      },
+      {
+        "l": "Tirs/90",
+        "v": "3.14",
+        "p": 65
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.23",
+        "p": 79
+      },
+      {
+        "l": "Min%",
+        "v": "53.7%",
+        "p": 74
+      }
+    ]
+  },
+  {
+    "name": "Obed Vargas",
+    "age": 19,
+    "pos": "MF",
+    "team": "Atlético Madrid",
+    "ligue": "La Liga",
+    "score": 3.2,
+    "rank": 125,
+    "photo": "data/photos/Obed_Vargas.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.95",
+        "p": 92
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.97",
+        "p": 65
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.09",
+        "p": 42
+      },
+      {
+        "l": "Min%",
+        "v": "68.5%",
+        "p": 71
+      }
+    ]
+  },
+  {
+    "name": "Pau Cubarsí",
+    "age": 18,
+    "pos": "DF",
+    "team": "Barcelona",
+    "ligue": "La Liga",
+    "score": 3.2,
+    "rank": 126,
+    "photo": "data/photos/Pau_Cubarsí.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.93",
+        "p": 40
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.00",
+        "p": 38
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.00",
+        "p": 12
+      },
+      {
+        "l": "Min%",
+        "v": "96.9%",
+        "p": 92
+      }
+    ]
+  },
+  {
+    "name": "Believe Munongo",
+    "age": 15,
+    "pos": "MF",
+    "team": "Metz",
+    "ligue": "Ligue 1",
+    "score": 3.2,
+    "rank": 127,
+    "photo": "data/photos/Believe_Munongo.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.46",
+        "p": 71
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.25",
+        "p": 90
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "0.42",
+        "p": 9
+      },
+      {
+        "l": "Min%",
+        "v": "43.5%",
+        "p": 14
+      }
+    ]
+  },
+  {
+    "name": "Christian Mawissa",
+    "age": 20,
+    "pos": "DF",
+    "team": "Monaco",
+    "ligue": "Ligue 1",
+    "score": 3.2,
+    "rank": 128,
+    "photo": "data/photos/Christian_Mawissa.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.89",
+        "p": 90
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.13",
+        "p": 49
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.38",
+        "p": 67
+      },
+      {
+        "l": "Min%",
+        "v": "73.5%",
+        "p": 40
+      }
+    ]
+  },
+  {
+    "name": "Alexis Vossah",
+    "age": 17,
+    "pos": "MF",
+    "team": "Toulouse",
+    "ligue": "Ligue 1",
+    "score": 3.2,
+    "rank": 129,
+    "photo": "data/photos/Alexis_Vossah.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.58",
+        "p": 6
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.58",
+        "p": 32
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "0.82",
+        "p": 25
+      },
+      {
+        "l": "Min%",
+        "v": "52.8%",
+        "p": 38
+      }
+    ]
+  },
+  {
+    "name": "İsak Vural",
+    "age": 19,
+    "pos": "MF",
+    "team": "Pisa",
+    "ligue": "Serie A",
+    "score": 3.2,
+    "rank": 130,
+    "photo": "data/photos/İsak_Vural.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.84",
+        "p": 22
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.24",
+        "p": 6
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "3.95",
+        "p": 100
+      },
+      {
+        "l": "Min%",
+        "v": "55.7%",
+        "p": 46
+      }
+    ]
+  },
+  {
     "name": "Harrison Armstrong",
     "age": 19,
     "pos": "MF",
     "team": "Everton",
     "ligue": "Premier League",
-    "score": 2.7,
+    "score": 3.1,
     "rank": 131,
     "photo": "data/photos/Harrison_Armstrong.png",
     "stats": [
@@ -4197,7 +4197,7 @@
     "pos": "MF",
     "team": "Fulham",
     "ligue": "Premier League",
-    "score": 2.7,
+    "score": 3.1,
     "rank": 132,
     "photo": "data/photos/Joshua_King.png",
     "stats": [
@@ -4224,34 +4224,34 @@
     ]
   },
   {
-    "name": "Rodrigo Mendoza",
-    "age": 20,
+    "name": "Marc Bernal",
+    "age": 18,
     "pos": "MF",
-    "team": "Atlético Madrid",
+    "team": "Barcelona",
     "ligue": "La Liga",
-    "score": 2.7,
+    "score": 3.1,
     "rank": 133,
-    "photo": "data/photos/Rodrigo_Mendoza.png",
+    "photo": "data/photos/Marc_Bernal.png",
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "0.88",
-        "p": 25
+        "v": "2.16",
+        "p": 95
       },
       {
         "l": "Interceptions/90",
-        "v": "0.37",
-        "p": 16
+        "v": "1.37",
+        "p": 92
       },
       {
         "l": "Fautes subies/90",
-        "v": "1.69",
-        "p": 68
+        "v": "1.25",
+        "p": 51
       },
       {
         "l": "Min%",
-        "v": "56.9%",
-        "p": 52
+        "v": "39.9%",
+        "p": 11
       }
     ]
   },
@@ -4261,7 +4261,7 @@
     "pos": "FW",
     "team": "Getafe",
     "ligue": "La Liga",
-    "score": 2.7,
+    "score": 3.1,
     "rank": 134,
     "photo": "data/photos/Adrián_Liso.png",
     "stats": [
@@ -4288,98 +4288,34 @@
     ]
   },
   {
-    "name": "Dean Huijsen",
-    "age": 20,
-    "pos": "DF",
+    "name": "Franco Mastantuono",
+    "age": 17,
+    "pos": "MF",
     "team": "Real Madrid",
     "ligue": "La Liga",
-    "score": 2.7,
+    "score": 3.1,
     "rank": 135,
-    "photo": "data/photos/Dean_Huijsen.png",
+    "photo": "data/photos/Franco_Mastantuono.png",
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "0.80",
-        "p": 23
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.80",
-        "p": 21
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.04",
-        "p": 23
-      },
-      {
-        "l": "Min%",
-        "v": "80.7%",
-        "p": 54
-      }
-    ]
-  },
-  {
-    "name": "Believe Munongo",
-    "age": 15,
-    "pos": "MF",
-    "team": "Metz",
-    "ligue": "Ligue 1",
-    "score": 2.7,
-    "rank": 136,
-    "photo": "data/photos/Believe_Munongo.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.46",
-        "p": 71
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.25",
-        "p": 90
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "0.42",
-        "p": 9
-      },
-      {
-        "l": "Min%",
-        "v": "43.5%",
-        "p": 14
-      }
-    ]
-  },
-  {
-    "name": "Ibrahim Mbaye",
-    "age": 17,
-    "pos": "FW",
-    "team": "PSG",
-    "ligue": "Ligue 1",
-    "score": 2.7,
-    "rank": 137,
-    "photo": "data/photos/Ibrahim_Mbaye.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.27",
+        "v": "1.04",
         "p": 39
       },
       {
-        "l": "Tirs/90",
-        "v": "2.15",
-        "p": 38
+        "l": "Interceptions/90",
+        "v": "0.26",
+        "p": 8
       },
       {
-        "l": "Passes déc/90",
-        "v": "0.18",
-        "p": 69
+        "l": "Fautes subies/90",
+        "v": "2.60",
+        "p": 89
       },
       {
         "l": "Min%",
-        "v": "46.6%",
-        "p": 57
+        "v": "50.1%",
+        "p": 32
       }
     ]
   },
@@ -4389,8 +4325,8 @@
     "pos": "MF",
     "team": "Strasbourg",
     "ligue": "Ligue 1",
-    "score": 2.7,
-    "rank": 138,
+    "score": 3.1,
+    "rank": 136,
     "photo": "data/photos/Samuel_Amo-Ameyaw.png",
     "stats": [
       {
@@ -4416,141 +4352,13 @@
     ]
   },
   {
-    "name": "Alexis Vossah",
-    "age": 17,
-    "pos": "MF",
-    "team": "Toulouse",
-    "ligue": "Ligue 1",
-    "score": 2.7,
-    "rank": 139,
-    "photo": "data/photos/Alexis_Vossah.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.58",
-        "p": 6
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.58",
-        "p": 32
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "0.82",
-        "p": 25
-      },
-      {
-        "l": "Min%",
-        "v": "52.8%",
-        "p": 38
-      }
-    ]
-  },
-  {
-    "name": "Amorim",
-    "age": 20,
-    "pos": "MF",
-    "team": "Genoa",
-    "ligue": "Serie A",
-    "score": 2.7,
-    "rank": 140,
-    "photo": "data/photos/Amorim.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.98",
-        "p": 32
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.14",
-        "p": 82
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "2.94",
-        "p": 92
-      },
-      {
-        "l": "Min%",
-        "v": "55.8%",
-        "p": 47
-      }
-    ]
-  },
-  {
-    "name": "Mamadou Sarr",
-    "age": 20,
-    "pos": "DF",
-    "team": "Chelsea",
-    "ligue": "Premier League",
-    "score": 2.6,
-    "rank": 141,
-    "photo": "data/photos/Mamadou_Sarr.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.83",
-        "p": 30
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.38",
-        "p": 8
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.00",
-        "p": 12
-      },
-      {
-        "l": "Min%",
-        "v": "86.9%",
-        "p": 73
-      }
-    ]
-  },
-  {
-    "name": "Roony Bardghji",
-    "age": 19,
-    "pos": "MF",
-    "team": "Barcelona",
-    "ligue": "La Liga",
-    "score": 2.6,
-    "rank": 142,
-    "photo": "data/photos/Roony_Bardghji.png",
-    "stats": [
-      {
-        "l": "Impact Off/90",
-        "v": "0.28",
-        "p": 12
-      },
-      {
-        "l": "Tirs/90",
-        "v": "3.06",
-        "p": 87
-      },
-      {
-        "l": "Act. Déf/90",
-        "v": "0.84",
-        "p": 31
-      },
-      {
-        "l": "Min%",
-        "v": "34.3%",
-        "p": 10
-      }
-    ]
-  },
-  {
     "name": "Rodrigo Ribeiro",
     "age": 20,
     "pos": "FW",
     "team": "Augsburg",
     "ligue": "Bundesliga",
-    "score": 2.6,
-    "rank": 143,
+    "score": 3.1,
+    "rank": 137,
     "photo": "data/photos/Rodrigo_Ribeiro.png",
     "stats": [
       {
@@ -4576,66 +4384,34 @@
     ]
   },
   {
-    "name": "Jahmai Simpson-Pusey",
-    "age": 19,
+    "name": "Tom Bischof",
+    "age": 20,
     "pos": "DF",
-    "team": "Köln",
+    "team": "Bayern Munich",
     "ligue": "Bundesliga",
-    "score": 2.6,
-    "rank": 144,
-    "photo": "data/photos/Jahmai_Simpson-Pusey.png",
+    "score": 3.1,
+    "rank": 138,
+    "photo": "data/photos/Tom_Bischof.png",
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "0.83",
-        "p": 30
+        "v": "1.24",
+        "p": 62
       },
       {
         "l": "Interceptions/90",
-        "v": "1.25",
-        "p": 64
+        "v": "1.04",
+        "p": 42
       },
       {
         "l": "Centres/90",
-        "v": "0.21",
-        "p": 53
+        "v": "1.80",
+        "p": 83
       },
       {
         "l": "Min%",
-        "v": "87.2%",
-        "p": 76
-      }
-    ]
-  },
-  {
-    "name": "Jovan Milošević",
-    "age": 20,
-    "pos": "FW",
-    "team": "Werder Bremen",
-    "ligue": "Bundesliga",
-    "score": 2.6,
-    "rank": 145,
-    "photo": "data/photos/Jovan_Milošević.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.55",
-        "p": 88
-      },
-      {
-        "l": "Tirs/90",
-        "v": "2.21",
-        "p": 43
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.18",
-        "p": 69
-      },
-      {
-        "l": "Min%",
-        "v": "41.7%",
-        "p": 48
+        "v": "55.6%",
+        "p": 14
       }
     ]
   },
@@ -4645,8 +4421,8 @@
     "pos": "MF",
     "team": "Cagliari",
     "ligue": "Serie A",
-    "score": 2.6,
-    "rank": 146,
+    "score": 3.1,
+    "rank": 139,
     "photo": "data/photos/Riyad_Idrissi.png",
     "stats": [
       {
@@ -4677,8 +4453,8 @@
     "pos": "FW",
     "team": "Cagliari",
     "ligue": "Serie A",
-    "score": 2.6,
-    "rank": 147,
+    "score": 3.1,
+    "rank": 140,
     "photo": "data/photos/Semih_Kılıçsoy.png",
     "stats": [
       {
@@ -4704,162 +4480,98 @@
     ]
   },
   {
-    "name": "Zachary Athekame",
+    "name": "Amorim",
     "age": 20,
     "pos": "MF",
-    "team": "Milan",
+    "team": "Genoa",
     "ligue": "Serie A",
-    "score": 2.6,
-    "rank": 148,
-    "photo": "data/photos/Zachary_Athekame.png",
-    "stats": [
-      {
-        "l": "Impact Off/90",
-        "v": "0.44",
-        "p": 35
-      },
-      {
-        "l": "Tirs/90",
-        "v": "1.40",
-        "p": 4
-      },
-      {
-        "l": "Act. Déf/90",
-        "v": "1.29",
-        "p": 77
-      },
-      {
-        "l": "Min%",
-        "v": "34.3%",
-        "p": 10
-      }
-    ]
-  },
-  {
-    "name": "İsak Vural",
-    "age": 19,
-    "pos": "MF",
-    "team": "Pisa",
-    "ligue": "Serie A",
-    "score": 2.6,
-    "rank": 149,
-    "photo": "data/photos/İsak_Vural.png",
+    "score": 3.1,
+    "rank": 141,
+    "photo": "data/photos/Amorim.png",
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "0.84",
-        "p": 22
+        "v": "0.98",
+        "p": 32
       },
       {
         "l": "Interceptions/90",
-        "v": "0.24",
-        "p": 6
+        "v": "1.14",
+        "p": 82
       },
       {
         "l": "Fautes subies/90",
-        "v": "3.95",
-        "p": 100
+        "v": "2.94",
+        "p": 92
       },
       {
         "l": "Min%",
-        "v": "55.7%",
-        "p": 46
+        "v": "55.8%",
+        "p": 47
       }
     ]
   },
   {
-    "name": "Ethan Nwaneri",
-    "age": 19,
-    "pos": "MF",
-    "team": "Arsenal",
+    "name": "Mamadou Sarr",
+    "age": 20,
+    "pos": "DF",
+    "team": "Chelsea",
     "ligue": "Premier League",
-    "score": 2.5,
-    "rank": 150,
-    "photo": "data/photos/Ethan_Nwaneri.png",
-    "stats": [
-      {
-        "l": "Impact Off/90",
-        "v": "0.54",
-        "p": 46
-      },
-      {
-        "l": "Tirs/90",
-        "v": "2.73",
-        "p": 73
-      },
-      {
-        "l": "Act. Déf/90",
-        "v": "0.73",
-        "p": 15
-      },
-      {
-        "l": "Min%",
-        "v": "36.7%",
-        "p": 23
-      }
-    ]
-  },
-  {
-    "name": "Dro Fernández",
-    "age": 17,
-    "pos": "MF",
-    "team": "Barcelona",
-    "ligue": "La Liga",
-    "score": 2.5,
-    "rank": 151,
-    "photo": "data/photos/Dro_Fernández.png",
+    "score": 3.0,
+    "rank": 142,
+    "photo": "data/photos/Mamadou_Sarr.png",
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "0.58",
-        "p": 6
+        "v": "0.83",
+        "p": 30
       },
       {
         "l": "Interceptions/90",
-        "v": "1.05",
-        "p": 74
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.51",
-        "p": 60
-      },
-      {
-        "l": "Min%",
-        "v": "53.8%",
-        "p": 39
-      }
-    ]
-  },
-  {
-    "name": "Jones El-Abdellaoui",
-    "age": 19,
-    "pos": "MF",
-    "team": "Celta Vigo",
-    "ligue": "La Liga",
-    "score": 2.5,
-    "rank": 152,
-    "photo": "data/photos/Jones_El-Abdellaoui.png",
-    "stats": [
-      {
-        "l": "Impact Off/90",
-        "v": "0.26",
+        "v": "0.38",
         "p": 8
       },
       {
-        "l": "Tirs/90",
-        "v": "2.25",
-        "p": 38
-      },
-      {
-        "l": "Act. Déf/90",
-        "v": "0.80",
-        "p": 27
+        "l": "Centres/90",
+        "v": "0.00",
+        "p": 12
       },
       {
         "l": "Min%",
-        "v": "34.4%",
-        "p": 15
+        "v": "86.9%",
+        "p": 73
+      }
+    ]
+  },
+  {
+    "name": "Rodrigo Mendoza",
+    "age": 20,
+    "pos": "MF",
+    "team": "Atlético Madrid",
+    "ligue": "La Liga",
+    "score": 3.0,
+    "rank": 143,
+    "photo": "data/photos/Rodrigo_Mendoza.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.88",
+        "p": 25
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.37",
+        "p": 16
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.69",
+        "p": 68
+      },
+      {
+        "l": "Min%",
+        "v": "56.9%",
+        "p": 52
       }
     ]
   },
@@ -4869,8 +4581,8 @@
     "pos": "FW",
     "team": "Girona",
     "ligue": "La Liga",
-    "score": 2.5,
-    "rank": 153,
+    "score": 3.0,
+    "rank": 144,
     "photo": "data/photos/Claudio_Echeverri.png",
     "stats": [
       {
@@ -4896,13 +4608,173 @@
     ]
   },
   {
+    "name": "Jovan Milošević",
+    "age": 20,
+    "pos": "FW",
+    "team": "Werder Bremen",
+    "ligue": "Bundesliga",
+    "score": 3.0,
+    "rank": 145,
+    "photo": "data/photos/Jovan_Milošević.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.55",
+        "p": 88
+      },
+      {
+        "l": "Tirs/90",
+        "v": "2.21",
+        "p": 43
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.18",
+        "p": 69
+      },
+      {
+        "l": "Min%",
+        "v": "41.7%",
+        "p": 48
+      }
+    ]
+  },
+  {
+    "name": "Jeff Ekhator",
+    "age": 18,
+    "pos": "FW",
+    "team": "Genoa",
+    "ligue": "Serie A",
+    "score": 3.0,
+    "rank": 146,
+    "photo": "data/photos/Jeff_Ekhator.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.28",
+        "p": 44
+      },
+      {
+        "l": "Tirs/90",
+        "v": "1.88",
+        "p": 24
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.00",
+        "p": 26
+      },
+      {
+        "l": "Min%",
+        "v": "35.4%",
+        "p": 31
+      }
+    ]
+  },
+  {
+    "name": "Rosen Bozhinov",
+    "age": 20,
+    "pos": "DF",
+    "team": "Pisa",
+    "ligue": "Serie A",
+    "score": 3.0,
+    "rank": 147,
+    "photo": "data/photos/Rosen_Bozhinov.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.74",
+        "p": 19
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.77",
+        "p": 96
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.44",
+        "p": 69
+      },
+      {
+        "l": "Min%",
+        "v": "75.3%",
+        "p": 44
+      }
+    ]
+  },
+  {
+    "name": "Jones El-Abdellaoui",
+    "age": 19,
+    "pos": "MF",
+    "team": "Celta Vigo",
+    "ligue": "La Liga",
+    "score": 2.9,
+    "rank": 148,
+    "photo": "data/photos/Jones_El-Abdellaoui.png",
+    "stats": [
+      {
+        "l": "Impact Off/90",
+        "v": "0.26",
+        "p": 8
+      },
+      {
+        "l": "Tirs/90",
+        "v": "2.25",
+        "p": 38
+      },
+      {
+        "l": "Act. Déf/90",
+        "v": "0.80",
+        "p": 27
+      },
+      {
+        "l": "Min%",
+        "v": "34.4%",
+        "p": 15
+      }
+    ]
+  },
+  {
+    "name": "Dean Huijsen",
+    "age": 20,
+    "pos": "DF",
+    "team": "Real Madrid",
+    "ligue": "La Liga",
+    "score": 2.9,
+    "rank": 149,
+    "photo": "data/photos/Dean_Huijsen.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.80",
+        "p": 23
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.80",
+        "p": 21
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.04",
+        "p": 23
+      },
+      {
+        "l": "Min%",
+        "v": "80.7%",
+        "p": 54
+      }
+    ]
+  },
+  {
     "name": "Nidal Čelik",
     "age": 19,
     "pos": "DF",
     "team": "Lens",
     "ligue": "Ligue 1",
-    "score": 2.5,
-    "rank": 154,
+    "score": 2.9,
+    "rank": 150,
     "photo": "data/photos/Nidal_Čelik.png",
     "stats": [
       {
@@ -4933,8 +4805,8 @@
     "pos": "FW",
     "team": "Metz",
     "ligue": "Ligue 1",
-    "score": 2.5,
-    "rank": 155,
+    "score": 2.9,
+    "rank": 151,
     "photo": "data/photos/Idrissa_Guèye.png",
     "stats": [
       {
@@ -4965,8 +4837,8 @@
     "pos": "FW",
     "team": "Nantes",
     "ligue": "Ligue 1",
-    "score": 2.5,
-    "rank": 156,
+    "score": 2.9,
+    "rank": 152,
     "photo": "data/photos/Bahereba_Guirassy.png",
     "stats": [
       {
@@ -4992,34 +4864,34 @@
     ]
   },
   {
-    "name": "Oscar Højlund",
-    "age": 20,
-    "pos": "MF",
-    "team": "Frankfurt",
-    "ligue": "Bundesliga",
-    "score": 2.5,
-    "rank": 157,
-    "photo": "data/photos/Oscar_Højlund.png",
+    "name": "Warren Zaïre-Emery",
+    "age": 19,
+    "pos": "DF",
+    "team": "PSG",
+    "ligue": "Ligue 1",
+    "score": 2.9,
+    "rank": 153,
+    "photo": "data/photos/Warren_Zaïre-Emery.png",
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "1.40",
-        "p": 66
+        "v": "1.07",
+        "p": 46
       },
       {
         "l": "Interceptions/90",
-        "v": "0.58",
-        "p": 32
+        "v": "0.40",
+        "p": 10
       },
       {
-        "l": "Fautes subies/90",
-        "v": "0.41",
-        "p": 8
+        "l": "Centres/90",
+        "v": "0.55",
+        "p": 74
       },
       {
         "l": "Min%",
-        "v": "50.4%",
-        "p": 34
+        "v": "85.0%",
+        "p": 67
       }
     ]
   },
@@ -5029,8 +4901,8 @@
     "pos": "MF",
     "team": "Fiorentina",
     "ligue": "Serie A",
-    "score": 2.5,
-    "rank": 158,
+    "score": 2.9,
+    "rank": 154,
     "photo": "data/photos/Niccolò_Fortini.png",
     "stats": [
       {
@@ -5056,45 +4928,13 @@
     ]
   },
   {
-    "name": "Jeff Ekhator",
-    "age": 18,
-    "pos": "FW",
-    "team": "Genoa",
-    "ligue": "Serie A",
-    "score": 2.5,
-    "rank": 159,
-    "photo": "data/photos/Jeff_Ekhator.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.28",
-        "p": 44
-      },
-      {
-        "l": "Tirs/90",
-        "v": "1.88",
-        "p": 24
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.00",
-        "p": 26
-      },
-      {
-        "l": "Min%",
-        "v": "35.4%",
-        "p": 31
-      }
-    ]
-  },
-  {
     "name": "Luca Koleosho",
     "age": 20,
     "pos": "MF",
     "team": "Espanyol",
     "ligue": "La Liga",
-    "score": 2.4,
-    "rank": 160,
+    "score": 2.8,
+    "rank": 155,
     "photo": "data/photos/Luca_Koleosho.png",
     "stats": [
       {
@@ -5120,98 +4960,34 @@
     ]
   },
   {
-    "name": "Thiago Pinar",
-    "age": 17,
-    "pos": "MF",
-    "team": "Real Madrid",
-    "ligue": "La Liga",
-    "score": 2.4,
-    "rank": 161,
-    "photo": "data/photos/Thiago_Pinar.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.61",
-        "p": 8
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.06",
-        "p": 76
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.06",
-        "p": 39
-      },
-      {
-        "l": "Min%",
-        "v": "65.8%",
-        "p": 66
-      }
-    ]
-  },
-  {
-    "name": "George Ilenikhena",
-    "age": 18,
-    "pos": "FW",
-    "team": "Monaco",
-    "ligue": "Ligue 1",
-    "score": 2.4,
-    "rank": 162,
-    "photo": "data/photos/George_Ilenikhena.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.47",
-        "p": 75
-      },
-      {
-        "l": "Tirs/90",
-        "v": "3.50",
-        "p": 76
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.00",
-        "p": 26
-      },
-      {
-        "l": "Min%",
-        "v": "28.5%",
-        "p": 21
-      }
-    ]
-  },
-  {
-    "name": "João Neves",
+    "name": "Ibrahim Osman",
     "age": 20,
     "pos": "MF",
-    "team": "PSG",
+    "team": "Auxerre",
     "ligue": "Ligue 1",
-    "score": 2.4,
-    "rank": 163,
-    "photo": "data/photos/João_Neves.png",
+    "score": 2.8,
+    "rank": 156,
+    "photo": "data/photos/Ibrahim_Osman.png",
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "0.98",
-        "p": 32
+        "v": "1.01",
+        "p": 35
       },
       {
         "l": "Interceptions/90",
-        "v": "0.42",
-        "p": 19
+        "v": "0.86",
+        "p": 57
       },
       {
         "l": "Fautes subies/90",
-        "v": "0.91",
-        "p": 29
+        "v": "2.02",
+        "p": 80
       },
       {
         "l": "Min%",
-        "v": "68.1%",
-        "p": 69
+        "v": "49.6%",
+        "p": 29
       }
     ]
   },
@@ -5221,8 +4997,8 @@
     "pos": "MF",
     "team": "Strasbourg",
     "ligue": "Ligue 1",
-    "score": 2.4,
-    "rank": 164,
+    "score": 2.8,
+    "rank": 157,
     "photo": "data/photos/Gessime_Yassine.png",
     "stats": [
       {
@@ -5253,8 +5029,8 @@
     "pos": "MF",
     "team": "Strasbourg",
     "ligue": "Ligue 1",
-    "score": 2.4,
-    "rank": 165,
+    "score": 2.8,
+    "rank": 158,
     "photo": "data/photos/Max_Oyedele.png",
     "stats": [
       {
@@ -5280,98 +5056,130 @@
     ]
   },
   {
-    "name": "Rosen Bozhinov",
+    "name": "Oscar Højlund",
     "age": 20,
-    "pos": "DF",
-    "team": "Pisa",
-    "ligue": "Serie A",
-    "score": 2.4,
-    "rank": 166,
-    "photo": "data/photos/Rosen_Bozhinov.png",
+    "pos": "MF",
+    "team": "Frankfurt",
+    "ligue": "Bundesliga",
+    "score": 2.8,
+    "rank": 159,
+    "photo": "data/photos/Oscar_Højlund.png",
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "0.74",
-        "p": 19
+        "v": "1.40",
+        "p": 66
       },
       {
         "l": "Interceptions/90",
-        "v": "1.77",
-        "p": 96
+        "v": "0.58",
+        "p": 32
       },
       {
-        "l": "Centres/90",
-        "v": "0.44",
-        "p": 69
+        "l": "Fautes subies/90",
+        "v": "0.41",
+        "p": 8
       },
       {
         "l": "Min%",
-        "v": "75.3%",
-        "p": 44
+        "v": "50.4%",
+        "p": 34
       }
     ]
   },
   {
-    "name": "Jan Ziółkowski",
-    "age": 20,
-    "pos": "DF",
-    "team": "Roma",
+    "name": "Francesco Camarda",
+    "age": 17,
+    "pos": "FW",
+    "team": "Lecce",
     "ligue": "Serie A",
-    "score": 2.4,
-    "rank": 167,
-    "photo": "data/photos/Jan_Ziółkowski.png",
+    "score": 2.8,
+    "rank": 160,
+    "photo": "data/photos/Francesco_Camarda.png",
     "stats": [
       {
-        "l": "Tacles/90",
-        "v": "2.44",
-        "p": 96
+        "l": "Buts/90",
+        "v": "0.13",
+        "p": 14
       },
       {
-        "l": "Interceptions/90",
-        "v": "1.22",
-        "p": 60
+        "l": "Tirs/90",
+        "v": "2.10",
+        "p": 35
       },
       {
-        "l": "Centres/90",
+        "l": "Passes déc/90",
         "v": "0.00",
-        "p": 12
+        "p": 26
       },
       {
         "l": "Min%",
-        "v": "31.9%",
-        "p": 2
+        "v": "36.3%",
+        "p": 38
       }
     ]
   },
   {
-    "name": "Joshua Acheampong",
+    "name": "Zachary Athekame",
     "age": 20,
-    "pos": "DF",
-    "team": "Chelsea",
-    "ligue": "Premier League",
-    "score": 2.3,
-    "rank": 168,
-    "photo": "data/photos/Joshua_Acheampong.png",
+    "pos": "MF",
+    "team": "Milan",
+    "ligue": "Serie A",
+    "score": 2.8,
+    "rank": 161,
+    "photo": "data/photos/Zachary_Athekame.png",
     "stats": [
       {
-        "l": "Tacles/90",
-        "v": "1.09",
-        "p": 48
+        "l": "Impact Off/90",
+        "v": "0.44",
+        "p": 35
       },
       {
-        "l": "Interceptions/90",
-        "v": "1.64",
-        "p": 90
+        "l": "Tirs/90",
+        "v": "1.40",
+        "p": 4
       },
       {
-        "l": "Centres/90",
-        "v": "0.14",
-        "p": 40
+        "l": "Act. Déf/90",
+        "v": "1.29",
+        "p": 77
       },
       {
         "l": "Min%",
-        "v": "45.8%",
-        "p": 4
+        "v": "34.3%",
+        "p": 10
+      }
+    ]
+  },
+  {
+    "name": "Ethan Nwaneri",
+    "age": 19,
+    "pos": "MF",
+    "team": "Arsenal",
+    "ligue": "Premier League",
+    "score": 2.7,
+    "rank": 162,
+    "photo": "data/photos/Ethan_Nwaneri.png",
+    "stats": [
+      {
+        "l": "Impact Off/90",
+        "v": "0.54",
+        "p": 46
+      },
+      {
+        "l": "Tirs/90",
+        "v": "2.73",
+        "p": 73
+      },
+      {
+        "l": "Act. Déf/90",
+        "v": "0.73",
+        "p": 15
+      },
+      {
+        "l": "Min%",
+        "v": "36.7%",
+        "p": 23
       }
     ]
   },
@@ -5381,8 +5189,8 @@
     "pos": "MF",
     "team": "Sunderland",
     "ligue": "Premier League",
-    "score": 2.3,
-    "rank": 169,
+    "score": 2.7,
+    "rank": 163,
     "photo": "data/photos/Chris_Rigg.png",
     "stats": [
       {
@@ -5413,8 +5221,8 @@
     "pos": "MF",
     "team": "Tottenham Hotspur",
     "ligue": "Premier League",
-    "score": 2.3,
-    "rank": 170,
+    "score": 2.7,
+    "rank": 164,
     "photo": "data/photos/Lucas_Bergvall.png",
     "stats": [
       {
@@ -5440,66 +5248,258 @@
     ]
   },
   {
-    "name": "Ibrahim Osman",
+    "name": "Alan Matturro",
     "age": 20,
-    "pos": "MF",
-    "team": "Auxerre",
-    "ligue": "Ligue 1",
-    "score": 2.3,
-    "rank": 171,
-    "photo": "data/photos/Ibrahim_Osman.png",
+    "pos": "DF",
+    "team": "Levante",
+    "ligue": "La Liga",
+    "score": 2.7,
+    "rank": 165,
+    "photo": "data/photos/Alan_Matturro.png",
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "1.01",
-        "p": 35
+        "v": "1.24",
+        "p": 62
       },
       {
         "l": "Interceptions/90",
-        "v": "0.86",
-        "p": 57
+        "v": "0.57",
+        "p": 12
       },
       {
-        "l": "Fautes subies/90",
-        "v": "2.02",
-        "p": 80
+        "l": "Centres/90",
+        "v": "0.00",
+        "p": 12
       },
       {
         "l": "Min%",
-        "v": "49.6%",
-        "p": 29
+        "v": "55.4%",
+        "p": 12
       }
     ]
   },
   {
-    "name": "Arthur Vermeeren",
-    "age": 20,
-    "pos": "MF",
-    "team": "Marseille",
+    "name": "Ibrahim Mbaye",
+    "age": 17,
+    "pos": "FW",
+    "team": "PSG",
     "ligue": "Ligue 1",
-    "score": 2.3,
-    "rank": 172,
-    "photo": "data/photos/Arthur_Vermeeren.png",
+    "score": 2.7,
+    "rank": 166,
+    "photo": "data/photos/Ibrahim_Mbaye.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.27",
+        "p": 39
+      },
+      {
+        "l": "Tirs/90",
+        "v": "2.15",
+        "p": 38
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.18",
+        "p": 69
+      },
+      {
+        "l": "Min%",
+        "v": "46.6%",
+        "p": 57
+      }
+    ]
+  },
+  {
+    "name": "Fabio Chiarodia",
+    "age": 20,
+    "pos": "DF",
+    "team": "Gladbach",
+    "ligue": "Bundesliga",
+    "score": 2.7,
+    "rank": 167,
+    "photo": "data/photos/Fabio_Chiarodia.png",
     "stats": [
       {
         "l": "Tacles/90",
         "v": "1.20",
-        "p": 53
+        "p": 54
       },
       {
         "l": "Interceptions/90",
-        "v": "1.20",
-        "p": 87
+        "v": "1.74",
+        "p": 92
       },
       {
-        "l": "Fautes subies/90",
-        "v": "0.11",
-        "p": 1
+        "l": "Centres/90",
+        "v": "0.00",
+        "p": 12
       },
       {
         "l": "Min%",
-        "v": "46.0%",
-        "p": 19
+        "v": "49.9%",
+        "p": 10
+      }
+    ]
+  },
+  {
+    "name": "Jan Ziółkowski",
+    "age": 20,
+    "pos": "DF",
+    "team": "Roma",
+    "ligue": "Serie A",
+    "score": 2.7,
+    "rank": 168,
+    "photo": "data/photos/Jan_Ziółkowski.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "2.44",
+        "p": 96
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.22",
+        "p": 60
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.00",
+        "p": 12
+      },
+      {
+        "l": "Min%",
+        "v": "31.9%",
+        "p": 2
+      }
+    ]
+  },
+  {
+    "name": "Joshua Acheampong",
+    "age": 20,
+    "pos": "DF",
+    "team": "Chelsea",
+    "ligue": "Premier League",
+    "score": 2.6,
+    "rank": 169,
+    "photo": "data/photos/Joshua_Acheampong.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.09",
+        "p": 48
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.64",
+        "p": 90
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.14",
+        "p": 40
+      },
+      {
+        "l": "Min%",
+        "v": "45.8%",
+        "p": 4
+      }
+    ]
+  },
+  {
+    "name": "Dro Fernández",
+    "age": 17,
+    "pos": "MF",
+    "team": "Barcelona",
+    "ligue": "La Liga",
+    "score": 2.6,
+    "rank": 170,
+    "photo": "data/photos/Dro_Fernández.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.58",
+        "p": 6
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.05",
+        "p": 74
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.51",
+        "p": 60
+      },
+      {
+        "l": "Min%",
+        "v": "53.8%",
+        "p": 39
+      }
+    ]
+  },
+  {
+    "name": "Roony Bardghji",
+    "age": 19,
+    "pos": "MF",
+    "team": "Barcelona",
+    "ligue": "La Liga",
+    "score": 2.6,
+    "rank": 171,
+    "photo": "data/photos/Roony_Bardghji.png",
+    "stats": [
+      {
+        "l": "Impact Off/90",
+        "v": "0.28",
+        "p": 12
+      },
+      {
+        "l": "Tirs/90",
+        "v": "3.06",
+        "p": 87
+      },
+      {
+        "l": "Act. Déf/90",
+        "v": "0.84",
+        "p": 31
+      },
+      {
+        "l": "Min%",
+        "v": "34.3%",
+        "p": 10
+      }
+    ]
+  },
+  {
+    "name": "Thiago Pinar",
+    "age": 17,
+    "pos": "MF",
+    "team": "Real Madrid",
+    "ligue": "La Liga",
+    "score": 2.6,
+    "rank": 172,
+    "photo": "data/photos/Thiago_Pinar.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.61",
+        "p": 8
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.06",
+        "p": 76
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.06",
+        "p": 39
+      },
+      {
+        "l": "Min%",
+        "v": "65.8%",
+        "p": 66
       }
     ]
   },
@@ -5509,7 +5509,7 @@
     "pos": "MF",
     "team": "Nice",
     "ligue": "Ligue 1",
-    "score": 2.3,
+    "score": 2.6,
     "rank": 173,
     "photo": "data/photos/Kaïl_Boudache.png",
     "stats": [
@@ -5536,141 +5536,13 @@
     ]
   },
   {
-    "name": "Luca Reggiani",
-    "age": 17,
-    "pos": "DF",
-    "team": "Dortmund",
-    "ligue": "Bundesliga",
-    "score": 2.3,
-    "rank": 174,
-    "photo": "data/photos/Luca_Reggiani.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.76",
-        "p": 87
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.35",
-        "p": 6
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.18",
-        "p": 49
-      },
-      {
-        "l": "Min%",
-        "v": "71.0%",
-        "p": 35
-      }
-    ]
-  },
-  {
-    "name": "Fabio Chiarodia",
-    "age": 20,
-    "pos": "DF",
-    "team": "Gladbach",
-    "ligue": "Bundesliga",
-    "score": 2.3,
-    "rank": 175,
-    "photo": "data/photos/Fabio_Chiarodia.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.20",
-        "p": 54
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "1.74",
-        "p": 92
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.00",
-        "p": 12
-      },
-      {
-        "l": "Min%",
-        "v": "49.9%",
-        "p": 10
-      }
-    ]
-  },
-  {
-    "name": "Francesco Camarda",
-    "age": 17,
-    "pos": "FW",
-    "team": "Lecce",
-    "ligue": "Serie A",
-    "score": 2.3,
-    "rank": 176,
-    "photo": "data/photos/Francesco_Camarda.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.13",
-        "p": 14
-      },
-      {
-        "l": "Tirs/90",
-        "v": "2.10",
-        "p": 35
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.00",
-        "p": 26
-      },
-      {
-        "l": "Min%",
-        "v": "36.3%",
-        "p": 38
-      }
-    ]
-  },
-  {
-    "name": "Alan Matturro",
-    "age": 20,
-    "pos": "DF",
-    "team": "Levante",
-    "ligue": "La Liga",
-    "score": 2.2,
-    "rank": 177,
-    "photo": "data/photos/Alan_Matturro.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.24",
-        "p": 62
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.57",
-        "p": 12
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.00",
-        "p": 12
-      },
-      {
-        "l": "Min%",
-        "v": "55.4%",
-        "p": 12
-      }
-    ]
-  },
-  {
     "name": "Mathis Amougou",
     "age": 19,
     "pos": "MF",
     "team": "Strasbourg",
     "ligue": "Ligue 1",
-    "score": 2.2,
-    "rank": 178,
+    "score": 2.6,
+    "rank": 174,
     "photo": "data/photos/Mathis_Amougou.png",
     "stats": [
       {
@@ -5696,13 +5568,109 @@
     ]
   },
   {
+    "name": "Arthur Vermeeren",
+    "age": 20,
+    "pos": "MF",
+    "team": "Marseille",
+    "ligue": "Ligue 1",
+    "score": 2.5,
+    "rank": 175,
+    "photo": "data/photos/Arthur_Vermeeren.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.20",
+        "p": 53
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "1.20",
+        "p": 87
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "0.11",
+        "p": 1
+      },
+      {
+        "l": "Min%",
+        "v": "46.0%",
+        "p": 19
+      }
+    ]
+  },
+  {
+    "name": "George Ilenikhena",
+    "age": 18,
+    "pos": "FW",
+    "team": "Monaco",
+    "ligue": "Ligue 1",
+    "score": 2.5,
+    "rank": 176,
+    "photo": "data/photos/George_Ilenikhena.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.47",
+        "p": 75
+      },
+      {
+        "l": "Tirs/90",
+        "v": "3.50",
+        "p": 76
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.00",
+        "p": 26
+      },
+      {
+        "l": "Min%",
+        "v": "28.5%",
+        "p": 21
+      }
+    ]
+  },
+  {
+    "name": "Luca Reggiani",
+    "age": 17,
+    "pos": "DF",
+    "team": "Dortmund",
+    "ligue": "Bundesliga",
+    "score": 2.5,
+    "rank": 177,
+    "photo": "data/photos/Luca_Reggiani.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.76",
+        "p": 87
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.35",
+        "p": 6
+      },
+      {
+        "l": "Centres/90",
+        "v": "0.18",
+        "p": 49
+      },
+      {
+        "l": "Min%",
+        "v": "71.0%",
+        "p": 35
+      }
+    ]
+  },
+  {
     "name": "Ezechiel Banzuzi",
     "age": 20,
     "pos": "MF",
     "team": "RB Leipzig",
     "ligue": "Bundesliga",
-    "score": 2.2,
-    "rank": 179,
+    "score": 2.5,
+    "rank": 178,
     "photo": "data/photos/Ezechiel_Banzuzi.png",
     "stats": [
       {
@@ -5728,141 +5696,13 @@
     ]
   },
   {
-    "name": "Ayden Heaven",
-    "age": 19,
-    "pos": "DF",
-    "team": "Manchester Utd",
-    "ligue": "Premier League",
-    "score": 2.1,
-    "rank": 180,
-    "photo": "data/photos/Ayden_Heaven.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.27",
-        "p": 66
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.10",
-        "p": 2
-      },
-      {
-        "l": "Centres/90",
-        "v": "0.10",
-        "p": 35
-      },
-      {
-        "l": "Min%",
-        "v": "60.4%",
-        "p": 23
-      }
-    ]
-  },
-  {
-    "name": "Gavi",
-    "age": 20,
-    "pos": "MF",
-    "team": "Barcelona",
-    "ligue": "La Liga",
-    "score": 2.1,
-    "rank": 181,
-    "photo": "data/photos/Gavi.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.26",
-        "p": 54
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.47",
-        "p": 22
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "2.20",
-        "p": 84
-      },
-      {
-        "l": "Min%",
-        "v": "57.9%",
-        "p": 56
-      }
-    ]
-  },
-  {
-    "name": "Rafael Gonçalves",
-    "age": 20,
-    "pos": "MF",
-    "team": "Strasbourg",
-    "ligue": "Ligue 1",
-    "score": 2.1,
-    "rank": 182,
-    "photo": "data/photos/Rafael_Gonçalves.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "1.53",
-        "p": 78
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.61",
-        "p": 35
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "0.31",
-        "p": 6
-      },
-      {
-        "l": "Min%",
-        "v": "54.4%",
-        "p": 41
-      }
-    ]
-  },
-  {
-    "name": "Myles Lewis-Skelly",
-    "age": 19,
-    "pos": "MF",
-    "team": "Arsenal",
-    "ligue": "Premier League",
-    "score": 2.0,
-    "rank": 183,
-    "photo": "data/photos/Myles_Lewis-Skelly.png",
-    "stats": [
-      {
-        "l": "Tacles/90",
-        "v": "0.73",
-        "p": 15
-      },
-      {
-        "l": "Interceptions/90",
-        "v": "0.58",
-        "p": 32
-      },
-      {
-        "l": "Fautes subies/90",
-        "v": "1.74",
-        "p": 70
-      },
-      {
-        "l": "Min%",
-        "v": "36.2%",
-        "p": 5
-      }
-    ]
-  },
-  {
     "name": "Lanroy Machine",
     "age": 19,
     "pos": "FW",
     "team": "Angers",
     "ligue": "Ligue 1",
-    "score": 2.0,
-    "rank": 184,
+    "score": 2.4,
+    "rank": 179,
     "photo": "data/photos/Lanroy_Machine.png",
     "stats": [
       {
@@ -5888,13 +5728,77 @@
     ]
   },
   {
+    "name": "João Neves",
+    "age": 20,
+    "pos": "MF",
+    "team": "PSG",
+    "ligue": "Ligue 1",
+    "score": 2.4,
+    "rank": 180,
+    "photo": "data/photos/João_Neves.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.98",
+        "p": 32
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.42",
+        "p": 19
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "0.91",
+        "p": 29
+      },
+      {
+        "l": "Min%",
+        "v": "68.1%",
+        "p": 69
+      }
+    ]
+  },
+  {
+    "name": "Rafael Gonçalves",
+    "age": 20,
+    "pos": "MF",
+    "team": "Strasbourg",
+    "ligue": "Ligue 1",
+    "score": 2.4,
+    "rank": 181,
+    "photo": "data/photos/Rafael_Gonçalves.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.53",
+        "p": 78
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.61",
+        "p": 35
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "0.31",
+        "p": 6
+      },
+      {
+        "l": "Min%",
+        "v": "54.4%",
+        "p": 41
+      }
+    ]
+  },
+  {
     "name": "Livan Burcu",
     "age": 20,
     "pos": "MF",
     "team": "Union Berlin",
     "ligue": "Bundesliga",
-    "score": 2.0,
-    "rank": 185,
+    "score": 2.4,
+    "rank": 182,
     "photo": "data/photos/Livan_Burcu.png",
     "stats": [
       {
@@ -5920,34 +5824,34 @@
     ]
   },
   {
-    "name": "Paco Cortés",
-    "age": 17,
-    "pos": "MF",
-    "team": "Levante",
-    "ligue": "La Liga",
-    "score": 1.9,
-    "rank": 186,
-    "photo": "data/photos/Paco_Cortés.png",
+    "name": "Ayden Heaven",
+    "age": 19,
+    "pos": "DF",
+    "team": "Manchester Utd",
+    "ligue": "Premier League",
+    "score": 2.3,
+    "rank": 183,
+    "photo": "data/photos/Ayden_Heaven.png",
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "0.19",
-        "p": 1
+        "v": "1.27",
+        "p": 66
       },
       {
         "l": "Interceptions/90",
-        "v": "0.38",
-        "p": 18
+        "v": "0.10",
+        "p": 2
       },
       {
-        "l": "Fautes subies/90",
-        "v": "1.15",
-        "p": 47
+        "l": "Centres/90",
+        "v": "0.10",
+        "p": 35
       },
       {
         "l": "Min%",
-        "v": "43.7%",
-        "p": 15
+        "v": "60.4%",
+        "p": 23
       }
     ]
   },
@@ -5957,8 +5861,8 @@
     "pos": "FW",
     "team": "Le Havre",
     "ligue": "Ligue 1",
-    "score": 1.9,
-    "rank": 187,
+    "score": 2.3,
+    "rank": 184,
     "photo": "data/photos/Kenny_Quetant.png",
     "stats": [
       {
@@ -5984,12 +5888,108 @@
     ]
   },
   {
+    "name": "Fabio Baldé",
+    "age": 20,
+    "pos": "FW",
+    "team": "Hamburger SV",
+    "ligue": "Bundesliga",
+    "score": 2.3,
+    "rank": 185,
+    "photo": "data/photos/Fabio_Baldé.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.20",
+        "p": 29
+      },
+      {
+        "l": "Tirs/90",
+        "v": "1.81",
+        "p": 21
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.20",
+        "p": 76
+      },
+      {
+        "l": "Min%",
+        "v": "31.1%",
+        "p": 24
+      }
+    ]
+  },
+  {
+    "name": "Gavi",
+    "age": 20,
+    "pos": "MF",
+    "team": "Barcelona",
+    "ligue": "La Liga",
+    "score": 2.2,
+    "rank": 186,
+    "photo": "data/photos/Gavi.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "1.26",
+        "p": 54
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.47",
+        "p": 22
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "2.20",
+        "p": 84
+      },
+      {
+        "l": "Min%",
+        "v": "57.9%",
+        "p": 56
+      }
+    ]
+  },
+  {
+    "name": "Paco Cortés",
+    "age": 17,
+    "pos": "MF",
+    "team": "Levante",
+    "ligue": "La Liga",
+    "score": 2.2,
+    "rank": 187,
+    "photo": "data/photos/Paco_Cortés.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.19",
+        "p": 1
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.38",
+        "p": 18
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.15",
+        "p": 47
+      },
+      {
+        "l": "Min%",
+        "v": "43.7%",
+        "p": 15
+      }
+    ]
+  },
+  {
     "name": "Noah Nartey",
     "age": 19,
     "pos": "MF",
     "team": "Lyon",
     "ligue": "Ligue 1",
-    "score": 1.9,
+    "score": 2.2,
     "rank": 188,
     "photo": "data/photos/Noah_Nartey.png",
     "stats": [
@@ -6021,7 +6021,7 @@
     "pos": "MF",
     "team": "Strasbourg",
     "ligue": "Ligue 1",
-    "score": 1.9,
+    "score": 2.2,
     "rank": 189,
     "photo": "data/photos/Kendry_Páez.png",
     "stats": [
@@ -6048,66 +6048,34 @@
     ]
   },
   {
-    "name": "Fabio Baldé",
-    "age": 20,
-    "pos": "FW",
-    "team": "Hamburger SV",
-    "ligue": "Bundesliga",
-    "score": 1.9,
-    "rank": 190,
-    "photo": "data/photos/Fabio_Baldé.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.20",
-        "p": 29
-      },
-      {
-        "l": "Tirs/90",
-        "v": "1.81",
-        "p": 21
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.20",
-        "p": 76
-      },
-      {
-        "l": "Min%",
-        "v": "31.1%",
-        "p": 24
-      }
-    ]
-  },
-  {
-    "name": "Badredine Bouanani",
-    "age": 20,
+    "name": "Myles Lewis-Skelly",
+    "age": 19,
     "pos": "MF",
-    "team": "Nice",
-    "ligue": "Ligue 1",
-    "score": 1.8,
-    "rank": 191,
-    "photo": "data/photos/Badredine_Bouanani.png",
+    "team": "Arsenal",
+    "ligue": "Premier League",
+    "score": 2.1,
+    "rank": 190,
+    "photo": "data/photos/Myles_Lewis-Skelly.png",
     "stats": [
       {
         "l": "Tacles/90",
-        "v": "0.49",
-        "p": 3
+        "v": "0.73",
+        "p": 15
       },
       {
         "l": "Interceptions/90",
-        "v": "0.81",
-        "p": 48
+        "v": "0.58",
+        "p": 32
       },
       {
         "l": "Fautes subies/90",
-        "v": "1.29",
-        "p": 53
+        "v": "1.74",
+        "p": 70
       },
       {
         "l": "Min%",
-        "v": "38.6%",
-        "p": 10
+        "v": "36.2%",
+        "p": 5
       }
     ]
   },
@@ -6117,8 +6085,8 @@
     "pos": "FW",
     "team": "Hoffenheim",
     "ligue": "Bundesliga",
-    "score": 1.8,
-    "rank": 192,
+    "score": 2.1,
+    "rank": 191,
     "photo": "data/photos/Max_Moerstedt.png",
     "stats": [
       {
@@ -6144,13 +6112,77 @@
     ]
   },
   {
+    "name": "Ibou Sané",
+    "age": 20,
+    "pos": "FW",
+    "team": "Metz",
+    "ligue": "Ligue 1",
+    "score": 2.0,
+    "rank": 192,
+    "photo": "data/photos/Ibou_Sané.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.17",
+        "p": 23
+      },
+      {
+        "l": "Tirs/90",
+        "v": "1.00",
+        "p": 7
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.17",
+        "p": 63
+      },
+      {
+        "l": "Min%",
+        "v": "37.6%",
+        "p": 43
+      }
+    ]
+  },
+  {
+    "name": "Badredine Bouanani",
+    "age": 20,
+    "pos": "MF",
+    "team": "Nice",
+    "ligue": "Ligue 1",
+    "score": 2.0,
+    "rank": 193,
+    "photo": "data/photos/Badredine_Bouanani.png",
+    "stats": [
+      {
+        "l": "Tacles/90",
+        "v": "0.49",
+        "p": 3
+      },
+      {
+        "l": "Interceptions/90",
+        "v": "0.81",
+        "p": 48
+      },
+      {
+        "l": "Fautes subies/90",
+        "v": "1.29",
+        "p": 53
+      },
+      {
+        "l": "Min%",
+        "v": "38.6%",
+        "p": 10
+      }
+    ]
+  },
+  {
     "name": "El Chadaille Bitshiabu",
     "age": 20,
     "pos": "DF",
     "team": "RB Leipzig",
     "ligue": "Bundesliga",
-    "score": 1.8,
-    "rank": 193,
+    "score": 2.0,
+    "rank": 194,
     "photo": "data/photos/El_Chadaille_Bitshiabu.png",
     "stats": [
       {
@@ -6181,8 +6213,8 @@
     "pos": "FW",
     "team": "RB Leipzig",
     "ligue": "Bundesliga",
-    "score": 1.8,
-    "rank": 194,
+    "score": 2.0,
+    "rank": 195,
     "photo": "data/photos/Tidiam_Gomis.png",
     "stats": [
       {
@@ -6208,44 +6240,12 @@
     ]
   },
   {
-    "name": "Ibou Sané",
-    "age": 20,
-    "pos": "FW",
-    "team": "Metz",
-    "ligue": "Ligue 1",
-    "score": 1.7,
-    "rank": 195,
-    "photo": "data/photos/Ibou_Sané.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.17",
-        "p": 23
-      },
-      {
-        "l": "Tirs/90",
-        "v": "1.00",
-        "p": 7
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.17",
-        "p": 63
-      },
-      {
-        "l": "Min%",
-        "v": "37.6%",
-        "p": 43
-      }
-    ]
-  },
-  {
     "name": "Alexander Røssing-Lelesiit",
     "age": 18,
     "pos": "FW",
     "team": "Hamburger SV",
     "ligue": "Bundesliga",
-    "score": 1.5,
+    "score": 1.8,
     "rank": 196,
     "photo": "data/photos/Alexander_Røssing-Lelesiit.png",
     "stats": [
@@ -6272,45 +6272,13 @@
     ]
   },
   {
-    "name": "Tyrique George",
-    "age": 20,
-    "pos": "FW",
-    "team": "Chelsea",
-    "ligue": "Premier League",
-    "score": 1.4,
-    "rank": 197,
-    "photo": "data/photos/Tyrique_George.png",
-    "stats": [
-      {
-        "l": "Buts/90",
-        "v": "0.00",
-        "p": 6
-      },
-      {
-        "l": "Tirs/90",
-        "v": "2.43",
-        "p": 50
-      },
-      {
-        "l": "Passes déc/90",
-        "v": "0.00",
-        "p": 26
-      },
-      {
-        "l": "Min%",
-        "v": "26.5%",
-        "p": 17
-      }
-    ]
-  },
-  {
     "name": "Nelson Weiper",
     "age": 20,
     "pos": "FW",
     "team": "Mainz 05",
     "ligue": "Bundesliga",
-    "score": 1.4,
-    "rank": 198,
+    "score": 1.7,
+    "rank": 197,
     "photo": "data/photos/Nelson_Weiper.png",
     "stats": [
       {
@@ -6336,12 +6304,44 @@
     ]
   },
   {
+    "name": "Tyrique George",
+    "age": 20,
+    "pos": "FW",
+    "team": "Chelsea",
+    "ligue": "Premier League",
+    "score": 1.6,
+    "rank": 198,
+    "photo": "data/photos/Tyrique_George.png",
+    "stats": [
+      {
+        "l": "Buts/90",
+        "v": "0.00",
+        "p": 6
+      },
+      {
+        "l": "Tirs/90",
+        "v": "2.43",
+        "p": 50
+      },
+      {
+        "l": "Passes déc/90",
+        "v": "0.00",
+        "p": 26
+      },
+      {
+        "l": "Min%",
+        "v": "26.5%",
+        "p": 17
+      }
+    ]
+  },
+  {
     "name": "Justin-Noël Kalumba",
     "age": 20,
     "pos": "FW",
     "team": "Mallorca",
     "ligue": "La Liga",
-    "score": 1.1,
+    "score": 1.3,
     "rank": 199,
     "photo": "data/photos/Justin-Noël_Kalumba.png",
     "stats": [

@@ -135,8 +135,10 @@ volontairement documentés plutôt que masqués :
   restent publiques. J'ai vérifié les alternatives (Sofascore, WhoScored via `soccerdata`,
   dataset Kaggle) : aucune n'expose ces variables au niveau saison via les outils gratuits
   actuels.
-- **Malus club approximatif.** Le coefficient d'exposition médiatique est basé sur le
-  nombre de points par match de l'équipe, avec des bornes (0.70–1.15) choisies à la main.
+- **Malus club approximatif.** Le coefficient d'exposition médiatique est calculé par
+  interpolation linéaire du PPM (points par match) de l'équipe entre le pire et le meilleur
+  club des 5 championnats — 0.70 pour le club en tête, 1.15 pour le dernier. Les bornes
+  elles-mêmes restent choisies à la main, pas optimisées.
 - **Validation prédictive testée, résultat non significatif.** J'ai recalculé l'ALTERSCORE
   (sans malus club) sur les U20 de la saison 2024-2025, puis regardé s'il prédisait un gain
   de temps de jeu en 2025-2026. Résultat : aucune corrélation significative, ni globalement
