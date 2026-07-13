@@ -29,11 +29,24 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 DB_PATH = ROOT_DIR / "alter11.db"
 
 FEATURES = ["buts_p90", "passes_p90", "tirs_p90", "tacles_p90",
-            "int_p90", "fd_p90", "min_pct", "ppm", "xg_p90", "xa_p90"]
+            "int_p90", "fd_p90", "min_pct", "ppm"]
 
 
 def load_dataset(db_path: Path) -> pd.DataFrame:
-    """Charge le même dataset que l'ACP du notebook (minutes >= 200, hors GK)."""
+    """Charge le même dataset que l'ACP du notebook (minutes >= 200, hors GK).
+
+    xG/xA ont été testés comme dimensions ACP (bruts, puis en écart au réel)
+    et retirés dans les deux cas :
+      - xg_p90/xa_p90 bruts corrèlent à 0.84 avec tirs_p90/buts_p90 (vérifié
+        empiriquement) — quasi redondants, gonflaient l'axe offensif.
+      - L'écart buts-xG/passes-xA est trop bruité sur le faible volume de
+        tirs/passes clés d'un jeune sur une saison — l'ACP traite ce bruit
+        comme un vrai trait de style, ce qui donnait des similarités moins
+        cohérentes (vérifié empiriquement sur Lamine Yamal).
+    xG/xA restent disponibles en base (voir scripts/scrape_understat.py) pour
+    de l'affichage informatif à côté du score de similarité, pas comme
+    composante du calcul de distance lui-même.
+    """
     q = """
         SELECT
             p.player_name, p.age, p.position, t.team_name,
@@ -44,15 +57,12 @@ def load_dataset(db_path: Path) -> pd.DataFrame:
             ROUND(f.interceptions / NULLIF(f.nineties, 0), 2) AS int_p90,
             ROUND(f.fouls_drawn / NULLIF(f.nineties, 0), 2)   AS fd_p90,
             ROUND(f.minutes * 100.0 / NULLIF(f.matches_played * 90.0, 0), 1) AS min_pct,
-            ROUND(f.points_per_match, 2)                      AS ppm,
-            ROUND(f.xg / NULLIF(f.nineties, 0), 2)            AS xg_p90,
-            ROUND(f.xa / NULLIF(f.nineties, 0), 2)            AS xa_p90
+            ROUND(f.points_per_match, 2)                      AS ppm
         FROM fact_stats f
         JOIN dim_player p ON f.player_id = p.player_id
         JOIN dim_team t ON p.team_id = t.team_id
         WHERE f.minutes >= 200
           AND p.position != 'GK'
-          AND f.xg IS NOT NULL
     """
     with sqlite3.connect(db_path) as conn:
         df = pd.read_sql(q, conn)
@@ -108,6 +118,20 @@ def find_similar(player_name: str, df_clean: pd.DataFrame, X_pca: np.ndarray,
     return ref_name, df_result.head(n)
 
 
+def load_xg_info(db_path: Path) -> pd.DataFrame:
+    """xG/xA affichés à titre informatif seulement — pas utilisés dans le
+    calcul de similarité (voir docstring de load_dataset pour pourquoi)."""
+    q = """
+        SELECT p.player_name,
+               ROUND(f.xg / NULLIF(f.nineties, 0), 2) AS xg_p90,
+               ROUND(f.xa / NULLIF(f.nineties, 0), 2) AS xa_p90
+        FROM fact_stats f
+        JOIN dim_player p ON f.player_id = p.player_id
+    """
+    with sqlite3.connect(db_path) as conn:
+        return pd.read_sql(q, conn)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Trouve les joueurs U20 similaires à un joueur donné.")
     parser.add_argument("player", help="Nom du joueur de référence (ex: 'Lamine Yamal')")
@@ -125,11 +149,15 @@ def main():
         return
 
     ref_name, df_top = result
+    df_xg = load_xg_info(DB_PATH)
+    df_top = df_top.merge(df_xg, on="player_name", how="left")
+
     print(f"\n🔵 Joueurs les plus similaires à {ref_name} :\n")
-    cols = ["player_name", "team_name", "age", "position", "similarite"]
+    cols = ["player_name", "team_name", "age", "position", "similarite", "xg_p90", "xa_p90"]
     df_top_display = df_top[cols].copy()
     df_top_display["similarite"] = (df_top_display["similarite"] * 100).round(1)
     print(df_top_display.to_string(index=False))
+    print("\n(xG/xA affichés à titre informatif — n'entrent pas dans le calcul de similarité)")
 
 
 if __name__ == "__main__":
