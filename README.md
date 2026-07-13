@@ -36,7 +36,8 @@ ALTER11/
 │   ├── 02_kpi_u20.sql        # Requêtes analytiques KPI
 │   └── 03_alterscore.sql     # Calcul ALTERSCORE
 ├── scripts/
-│   ├── find_similar_players.py   # Scoring de similarité entre joueurs (ACP)
+│   ├── find_similar_players.py   # Scoring de similarité entre joueurs (ACP + xG/xA)
+│   ├── scrape_understat.py       # Enrichit fact_stats avec xG/xA (Understat)
 │   ├── scrape_2024_2025.py       # Scraping saison 2024-25 (validation)
 │   ├── validate_alterscore.py    # Validation prédictive de l'ALTERSCORE
 │   ├── export_vitrine_data.py    # Génère players.json depuis alter11.db (vitrine)
@@ -121,20 +122,28 @@ volontairement documentés plutôt que masqués :
 - **Pondérations choisies à la main.** Les poids de l'ALTERSCORE (ex : 25% tirs, 25% buts
   pour un attaquant) sont fixés par jugement métier, pas appris ou optimisés sur une
   cible externe.
-- **8 variables seulement.** Le profil d'un joueur est réduit à 8 métriques par 90 minutes.
-  C'est volontairement simple pour rester interprétable, mais ça laisse de côté beaucoup
-  de dimensions du jeu (positionnement, passes progressives, duels aériens, etc.).
-- **Impossible d'enrichir ces variables pour l'instant — limite externe, pas un choix.**
-  J'ai identifié un cas concret où le scoring de similarité confond deux profils différents
+- **8 variables dans l'ALTERSCORE, 10 dans le scoring de similarité.** Le score lui-même
+  reste basé sur 8 métriques par 90 minutes, volontairement simple pour rester
+  interprétable. Le scoring de similarité (`scripts/find_similar_players.py`), lui,
+  intègre aussi le xG et le xA (voir point suivant) — mais ça reste un profil de jeu
+  limité, sans dribbles ni duels aériens (voir ci-dessous).
+- **Dribbles et duels aériens indisponibles — limite externe, pas un choix.** J'ai
+  identifié un cas concret où le scoring de similarité confondait deux profils différents
   (un dribbleur créatif et un pivot physique, tous deux avec un taux de fautes subies
   similaire). La solution évidente — ajouter les dribbles réussis et les duels aériens
   gagnés — est bloquée : **FBref a perdu l'accès à ses données avancées fournies par Opta
   le 20 janvier 2026**, suite à une rupture de contrat avec Stats Perform
   ([source](https://www.sports-reference.com/blog/2026/01/fbref-stathead-data-update/)).
-  Seules les stats basiques (standard, gardien, tirs, temps de jeu, quelques stats diverses)
-  restent publiques. J'ai vérifié les alternatives (Sofascore, WhoScored via `soccerdata`,
-  dataset Kaggle) : aucune n'expose ces variables au niveau saison via les outils gratuits
-  actuels.
+  J'ai vérifié les alternatives (Sofascore, WhoScored via `soccerdata`, dataset Kaggle) :
+  aucune n'expose ces variables au niveau saison via les outils gratuits actuels.
+- **xG/xA ajoutés à la similarité, pas encore à l'ALTERSCORE.** Contrairement à Opta,
+  Understat calcule son propre modèle xG (indépendant, non affecté par la coupure), donc
+  toujours accessible (`scripts/scrape_understat.py`). Je l'ai intégré au scoring de
+  similarité, mais **pas** à l'ALTERSCORE lui-même : un xG élevé ne prouve pas qu'un
+  joueur est meilleur (ça dépend beaucoup du système collectif de l'équipe), et
+  comparer buts réels vs xG sur un petit échantillon de tirs (souvent <20 sur une
+  saison pour un jeune) est trop bruité pour en tirer une vraie conclusion de
+  précocité. Question ouverte, pas tranchée.
 - **Malus club approximatif.** Le coefficient d'exposition médiatique est calculé par
   interpolation linéaire du PPM (points par match) de l'équipe entre le pire et le meilleur
   club des 5 championnats — 0.70 pour le club en tête, 1.15 pour le dernier. Les bornes
@@ -163,6 +172,9 @@ jupyter notebook notebooks/01_analysis.ipynb
 
 # Ou juste le scoring final, si la base est déjà construite :
 python run_alterscore.py
+
+# Enrichir la base avec xG/xA (Understat), utilisé par le scoring de similarité :
+python scripts/scrape_understat.py
 
 # Trouver des joueurs similaires à un profil donné :
 python scripts/find_similar_players.py "Lamine Yamal"

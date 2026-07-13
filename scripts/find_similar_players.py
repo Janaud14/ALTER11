@@ -29,7 +29,7 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 DB_PATH = ROOT_DIR / "alter11.db"
 
 FEATURES = ["buts_p90", "passes_p90", "tirs_p90", "tacles_p90",
-            "int_p90", "fd_p90", "min_pct", "ppm"]
+            "int_p90", "fd_p90", "min_pct", "ppm", "xg_p90", "xa_p90"]
 
 
 def load_dataset(db_path: Path) -> pd.DataFrame:
@@ -44,12 +44,15 @@ def load_dataset(db_path: Path) -> pd.DataFrame:
             ROUND(f.interceptions / NULLIF(f.nineties, 0), 2) AS int_p90,
             ROUND(f.fouls_drawn / NULLIF(f.nineties, 0), 2)   AS fd_p90,
             ROUND(f.minutes * 100.0 / NULLIF(f.matches_played * 90.0, 0), 1) AS min_pct,
-            ROUND(f.points_per_match, 2)                      AS ppm
+            ROUND(f.points_per_match, 2)                      AS ppm,
+            ROUND(f.xg / NULLIF(f.nineties, 0), 2)            AS xg_p90,
+            ROUND(f.xa / NULLIF(f.nineties, 0), 2)            AS xa_p90
         FROM fact_stats f
         JOIN dim_player p ON f.player_id = p.player_id
         JOIN dim_team t ON p.team_id = t.team_id
         WHERE f.minutes >= 200
           AND p.position != 'GK'
+          AND f.xg IS NOT NULL
     """
     with sqlite3.connect(db_path) as conn:
         df = pd.read_sql(q, conn)
