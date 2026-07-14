@@ -9,53 +9,54 @@ ALTER11 est un projet data football centré sur les jeunes joueurs U20 des 5 gra
 L'**ALTERSCORE** est un indice composite sur 10 qui évalue le potentiel d'un joueur selon :
 
 - Sa performance par poste (/90 min) — métriques différentes selon FW, MF, DF
+- Pour les attaquants : buts hors penalty, qualité des occasions (npxG), volume de tirs, précision de tir
 - Sa régularité (% du temps de jeu disponible)
 - Un bonus jeunesse (17→18→19→20 ans)
-- Un coefficient d'exposition médiatique (malus grands clubs)
+- Un coefficient d'exposition médiatique (malus/bonus club, basé sur le niveau réel de l'équipe)
 - Un coefficient de fiabilité (basé sur le volume de minutes)
 
 ## 🛠️ Stack technique
 
-- **Python** — nettoyage, ACP, clustering (pandas, scikit-learn)
+- **Python** — nettoyage, scraping (FBref, Transfermarkt, Understat), ACP, clustering (pandas, scikit-learn, BeautifulSoup, rembg)
 - **SQLite** — base de données relationnelle (3 tables + tables de référence)
 - **SQL** — requêtes analytiques, CTEs, window functions, scoring composite
-- **HTML/CSS/JS** — vitrine web interactive déployée sur GitHub Pages
+- **HTML/CSS/JS** — vitrine web interactive déployée sur GitHub Pages, données chargées dynamiquement (aucune valeur codée en dur)
 
 ## 📁 Structure du projet
 
 ```
 ALTER11/
 ├── data/
-│   ├── raw/                 # Dataset FBref 2025/2026
-│   ├── clean/                # Données nettoyées
-│   └── photos/                # Photos joueurs ALTER11
+│   ├── raw/                  # Datasets FBref bruts (2024-25, 2025-26)
+│   ├── clean/                 # Données nettoyées
+│   └── photos/                 # Photos joueurs (détourées, via Transfermarkt)
 ├── notebooks/
-│   └── 01_analysis.ipynb    # Pipeline complet : nettoyage → ACP → clustering → scoring
+│   └── 01_analysis.ipynb      # Pipeline complet : nettoyage → ACP → clustering → scoring
 ├── sql/
-│   ├── 01_schema.sql         # Création des tables
-│   ├── 02_kpi_u20.sql        # Requêtes analytiques KPI
-│   └── 03_alterscore.sql     # Calcul ALTERSCORE
+│   ├── 01_schema.sql          # Création des tables
+│   ├── 02_kpi_u20.sql         # Requêtes analytiques KPI
+│   └── 03_alterscore.sql      # Calcul ALTERSCORE (source de vérité de la formule)
 ├── scripts/
-│   ├── find_similar_players.py   # Scoring de similarité entre joueurs (ACP + xG/xA)
-│   ├── scrape_understat.py       # Enrichit fact_stats avec xG/xA (Understat)
-│   ├── scrape_2024_2025.py       # Scraping saison 2024-25 (validation)
-│   ├── validate_alterscore.py    # Validation prédictive de l'ALTERSCORE
-│   ├── export_vitrine_data.py    # Génère players.json depuis alter11.db (vitrine)
-│   └── generate_cards.py         # Récupère et détoure les photos joueurs (Transfermarkt)
-├── run_alterscore.py         # Exécute 03_alterscore.sql et affiche le top par poste
-├── alter11.db                # Base SQLite
-├── players.json               # Données de la vitrine, généré depuis alter11.db
-└── index.html                 # Vitrine web ALTER11 (charge players.json en fetch())
+│   ├── find_similar_players.py       # Scoring de similarité entre joueurs (ACP)
+│   ├── scrape_2024_2025.py           # Scraping saison 2024-25 (validation)
+│   ├── validate_alterscore.py        # Validation prédictive de l'ALTERSCORE
+│   ├── scrape_understat.py           # Enrichit fact_stats avec xG/xA/npxG (Understat)
+│   ├── generate_cards.py             # Récupère et détoure les photos joueurs (Transfermarkt)
+│   └── export_vitrine_data.py        # Génère players.json depuis alter11.db (vitrine)
+├── run_alterscore.py           # Exécute 03_alterscore.sql et affiche le top par poste
+├── alter11.db                  # Base SQLite
+├── players.json                 # Données de la vitrine, généré depuis alter11.db
+└── index.html                   # Vitrine web ALTER11 (charge players.json en fetch())
 ```
 
 ## 📊 Modèle de données
 
-| Table         | Description                          |
-| ------------- | ------------------------------------ |
-| `dim_team`    | 96 clubs des 5 grands championnats   |
-| `dim_player`  | 2627 joueurs toutes ligues           |
-| `fact_stats`  | Stats saison 2025/2026 par joueur    |
-| `malus_clubs` | Coefficients d'exposition médiatique |
+| Table         | Description                                          |
+| ------------- | ----------------------------------------------------- |
+| `dim_team`    | Clubs des 5 grands championnats                       |
+| `dim_player`  | ~2600 joueurs toutes ligues                           |
+| `fact_stats`  | Stats saison par joueur (FBref + Understat)           |
+| `malus_clubs` | Coefficients d'ajustement club (0.70 à 1.15)          |
 
 ## 🏆 Ligues couvertes
 
@@ -67,105 +68,98 @@ ALTER11/
 | Premier League | 🏴󠁧󠁢󠁥󠁮󠁧󠁿 Angleterre |
 | Bundesliga     | 🇩🇪 Allemagne       |
 
-## 🔵 ALTERSCORE — Top U20 par poste — Saison 2025/2026
-
-**Attaquants**
-
-| Joueur       | Âge | Club      | Ligue      | ALTERSCORE |
-| ------------ | --- | --------- | ---------- | ---------- |
-| Said El Mala | 19  | Köln      | Bundesliga | 5.8        |
-| Carlos Espí  | 20  | Levante   | La Liga    | 4.7        |
-| Lamine Yamal | 18  | Barcelona | La Liga    | 4.7        |
-
-**Milieux**
-
-| Joueur          | Âge | Club       | Ligue      | ALTERSCORE |
-| --------------- | --- | ---------- | ---------- | ---------- |
-| Johan Manzambi  | 20  | Freiburg   | Bundesliga | 4.6        |
-| Jesus Rodríguez | 20  | Como       | Serie A    | 5.3        |
-| Bazoumana Touré | 20  | Hoffenheim | Bundesliga | 5.2        |
-
-**Défenseurs**
-
-| Joueur           | Âge | Club          | Ligue      | ALTERSCORE |
-| ---------------- | --- | ------------- | ---------- | ---------- |
-| Noahkai Banks    | 19  | Augsburg      | Bundesliga | 4.2        |
-| Abdoul Coulibaly | 18  | Werder Bremen | Bundesliga | 3.9        |
-| Kacper Potulski  | 18  | Mainz 05      | Bundesliga | 3.8        |
-
 ## 🔍 Méthodologie ALTERSCORE
 
 Le score est calculé différemment selon le poste :
 
-- **FW** — tirs/90, buts/90, passes déc/90, régularité
-- **MF offensif** — tirs/90, impact off/90, activité défensive/90
-- **MF défensif** — tacles/90, interceptions/90, fautes subies/90
-- **DF** — tacles/90, interceptions/90, centres/90, fautes subies/90
+- **FW** — buts hors penalty/90 (25%), npxG/90 (7%), tirs/90 (8%), précision de tir (10%),
+  passes déc/90 (15%), min% (15%), PPM équipe (5%)
+- **MF offensif** — impact offensif/90, tirs/90, activité défensive/90, fautes subies/90,
+  PPM équipe, min%
+- **MF défensif** — tacles/90, interceptions/90, fautes subies/90, PPM équipe, min%
+- **DF** — tacles/90, interceptions/90, centres/90, fautes subies/90, PPM équipe, min%
 
-Tous les postes intègrent : bonus jeunesse + coefficient fiabilité + malus exposition club.
+Tous les postes intègrent un bonus jeunesse dégressif et un coefficient de fiabilité basé
+sur le volume de minutes jouées.
 
-Le détail de la démarche complète (ACP, biplot, clustering par profil de jeu) est
-documenté dans `notebooks/01_analysis.ipynb`.
+**Sur le choix np_goals + npxG plutôt que les buts bruts** : les penalties sont exclus pour
+ne pas avantager un tireur attitré sur des situations qu'il ne crée pas lui-même. Le npxG
+est ajouté en poids faible (7%, pas 25%) en complément du résultat réel — il corrèle à 0.83
+avec les buts hors penalty (vérifié empiriquement), donc un poids égal aurait été redondant ;
+un poids faible ajoute un signal de qualité sans dupliquer l'information.
+
+Le détail complet de la démarche (ACP, biplot, clustering par profil de jeu) est documenté
+dans `notebooks/01_analysis.ipynb`.
+
+## 🎯 Scoring de similarité
+
+`scripts/find_similar_players.py` trouve les joueurs au profil de jeu le plus proche d'un
+joueur donné, via une distance dans l'espace ACP (8 variables, mêmes que l'ALTERSCORE hors
+club/âge). Le xG/xA (Understat) est affiché à titre informatif à côté des résultats mais
+**n'entre pas** dans le calcul de similarité — testé et écarté à deux reprises : d'abord en
+valeur brute (corrélation 0.84 avec les stats déjà utilisées, redondant), puis en écart
+buts-xG (trop bruité sur le faible volume de tirs d'un jeune sur une saison, ce qui donnait
+des similarités moins cohérentes à l'usage).
+
+```bash
+python scripts/find_similar_players.py "Lamine Yamal"
+```
 
 ## ⚠️ Limites connues
 
 Ce projet est une V1 assumée comme telle. Les points suivants sont identifiés et
 volontairement documentés plutôt que masqués :
 
-- **Pas de validation prédictive.** L'ALTERSCORE n'a pas encore été confronté à une
-  mesure de réussite future (transferts, temps de jeu en pro, sélections espoirs...).
-  C'est un score de profil, pas encore un score prédictif validé.
-- **Clustering non stabilisé.** Le K-Means est lancé avec une seed fixe (`random_state=42`)
-  pour la reproductibilité, mais les clusters ne sont pas garantis stables si on relance
-  avec d'autres seeds ou si le dataset évolue. Pas de test de robustesse (bootstrap,
-  comparaison multi-seeds) à ce stade.
-- **Pondérations choisies à la main.** Les poids de l'ALTERSCORE (ex : 25% tirs, 25% buts
-  pour un attaquant) sont fixés par jugement métier, pas appris ou optimisés sur une
-  cible externe.
-- **8 variables dans l'ALTERSCORE, 10 dans le scoring de similarité.** Le score lui-même
-  reste basé sur 8 métriques par 90 minutes, volontairement simple pour rester
-  interprétable. Le scoring de similarité (`scripts/find_similar_players.py`), lui,
-  intègre aussi le xG et le xA (voir point suivant) — mais ça reste un profil de jeu
-  limité, sans dribbles ni duels aériens (voir ci-dessous).
-- **Dribbles et duels aériens indisponibles — limite externe, pas un choix.** J'ai
-  identifié un cas concret où le scoring de similarité confondait deux profils différents
-  (un dribbleur créatif et un pivot physique, tous deux avec un taux de fautes subies
-  similaire). La solution évidente — ajouter les dribbles réussis et les duels aériens
-  gagnés — est bloquée : **FBref a perdu l'accès à ses données avancées fournies par Opta
-  le 20 janvier 2026**, suite à une rupture de contrat avec Stats Perform
+- **Pas de validation prédictive convaincante.** J'ai recalculé l'ALTERSCORE (sans malus
+  club) sur les U20 de la saison 2024-2025, puis regardé s'il prédisait un gain de temps de
+  jeu en 2025-2026. Résultat : aucune corrélation significative, ni globalement (r=-0.10,
+  p=0.29) ni par poste (FW, MF, DF testés séparément). Deux limites à cette validation
+  elle-même : biais de survie (18% des joueurs ont quitté les 5 championnats et sortent de
+  l'échantillon), et échantillon réduit par poste (13 attaquants seulement). Voir
+  `scripts/validate_alterscore.py`.
+- **Clustering non stabilisé.** Le K-Means est lancé avec une seed fixe pour la
+  reproductibilité, mais les clusters ne sont pas garantis stables si on relance avec
+  d'autres seeds. Pas de test de robustesse (multi-seeds, bootstrap) à ce stade.
+- **Pondérations choisies à la main.** Les poids de l'ALTERSCORE sont fixés par jugement
+  métier, pas appris ou optimisés sur une cible externe.
+- **Variables limitées, et ce n'est pas (que) un choix.** FBref a perdu l'accès à ses
+  données avancées fournies par Opta le 20 janvier 2026, suite à une rupture de contrat
+  avec Stats Perform
   ([source](https://www.sports-reference.com/blog/2026/01/fbref-stathead-data-update/)).
-  J'ai vérifié les alternatives (Sofascore, WhoScored via `soccerdata`, dataset Kaggle) :
-  aucune n'expose ces variables au niveau saison via les outils gratuits actuels.
-- **xG/xA ajoutés à la similarité, pas encore à l'ALTERSCORE.** Contrairement à Opta,
-  Understat calcule son propre modèle xG (indépendant, non affecté par la coupure), donc
-  toujours accessible (`scripts/scrape_understat.py`). Je l'ai intégré au scoring de
-  similarité, mais **pas** à l'ALTERSCORE lui-même : un xG élevé ne prouve pas qu'un
-  joueur est meilleur (ça dépend beaucoup du système collectif de l'équipe), et
-  comparer buts réels vs xG sur un petit échantillon de tirs (souvent <20 sur une
-  saison pour un jeune) est trop bruité pour en tirer une vraie conclusion de
-  précocité. Question ouverte, pas tranchée.
-- **Malus club approximatif.** Le coefficient d'exposition médiatique est calculé par
-  interpolation linéaire du PPM (points par match) de l'équipe entre le pire et le meilleur
-  club des 5 championnats — 0.70 pour le club en tête, 1.15 pour le dernier. Les bornes
-  elles-mêmes restent choisies à la main, pas optimisées.
-- **Validation prédictive testée, résultat non significatif.** J'ai recalculé l'ALTERSCORE
-  (sans malus club) sur les U20 de la saison 2024-2025, puis regardé s'il prédisait un gain
-  de temps de jeu en 2025-2026. Résultat : aucune corrélation significative, ni globalement
-  (r=-0.10, p=0.29) ni par poste (FW, MF, DF testés séparément). Deux limites à cette
-  validation elle-même : biais de survie (18% des joueurs ont quitté les 5 championnats et
-  sortent de l'échantillon), et échantillon réduit par poste (13 attaquants seulement). Le
-  scoring de similarité entre joueurs (voir `scripts/find_similar_players.py`), en revanche,
-  fonctionne comme prévu.
-
-L'objectif de cette V1 est de poser une méthode explicite et discutable, pas de livrer
-un score définitif.
+  Les dribbles réussis et les duels aériens (qui auraient permis de mieux distinguer un
+  profil dribbleur créatif d'un profil pivot physique — cas concret identifié sur le
+  scoring de similarité) ne sont donc plus disponibles publiquement. Alternatives
+  vérifiées et écartées : Sofascore et WhoScored via `soccerdata` ne donnent pas accès à
+  ces stats au niveau saison via les outils gratuits actuels ; un dataset Kaggle annoncé
+  plus complet s'est avéré être une version antérieure à la coupure.
+- **xG/xA disponibles via Understat**, une source indépendante d'Opta donc non affectée
+  par la coupure (`scripts/scrape_understat.py`). Le matching des noms entre les deux
+  sources a nécessité plusieurs passes (normalisation des accents, score combiné
+  nom+club, puis vérification manuelle ligne par ligne) pour atteindre 100% de couverture
+  sur les joueurs à minutes suffisantes — un cas concret où le fuzzy matching seul créait
+  des faux positifs (ex : deux joueurs différents nommés "Rayan" tous deux matchés sur un
+  candidat "Rayan" générique via `partial_ratio`).
+- **Malus club recalibré en cours de route.** La formule initiale ne descendait jamais
+  sous 1.0 pour les clubs faibles (ils étaient "un peu moins pénalisés" plutôt que
+  vraiment boostés), malgré une plage annoncée de 0.70 à 1.15. Corrigée en interpolation
+  linéaire entre le meilleur et le pire club des 5 championnats, sur leur PPM réel — la
+  plage complète est maintenant vraiment utilisée.
+- **Deux bugs de données silencieux trouvés et corrigés en cours de projet**, qui
+  faussaient les scores sans jamais générer d'erreur visible : ~22% des joueurs avaient un
+  poste stocké au format `"MF,FW"` au lieu de `"FW"` (le score devenait `NULL` et le
+  joueur disparaissait silencieusement du classement) ; ~20% avaient un âge stocké au
+  format FBref `"19-290"` (années-jours) plutôt qu'un entier simple, ce qui pouvait fausser
+  les comparaisons SQL du bonus âge. Les deux ont été détectés en creusant une incohérence
+  précise (Lamine Yamal absent du classement malgré des stats qui auraient dû le classer
+  très haut) plutôt que par un audit systématique — signe qu'un audit de qualité de
+  données plus large serait utile avant d'aller plus loin.
 
 ## 🚀 Lancer le projet
 
 ```bash
 git clone https://github.com/Janaud14/ALTER11.git
 cd ALTER11
-pip install pandas jupyter ipykernel scikit-learn matplotlib beautifulsoup4 rapidfuzz scipy soccerdata
+pip install pandas jupyter ipykernel scikit-learn matplotlib beautifulsoup4 rapidfuzz scipy soccerdata rembg pillow
 
 # Pipeline complet (nettoyage, ACP, clustering, scoring) :
 jupyter notebook notebooks/01_analysis.ipynb
@@ -188,10 +182,14 @@ python scripts/validate_alterscore.py
 
 **[janaud14.github.io/ALTER11](https://janaud14.github.io/ALTER11)**
 
-`index.html` ne contient aucune donnée codée en dur — il charge `players.json`
-au démarrage, qui est généré à partir de la vraie base (mêmes calculs que
-`sql/03_alterscore.sql`), pour tous les U20 éligibles. Pour régénérer la
-vitrine après une mise à jour des stats ou des photos :
+`index.html` ne contient aucune donnée codée en dur — il charge `players.json` au
+démarrage, généré à partir de la vraie base (mêmes calculs que `sql/03_alterscore.sql`),
+pour tous les U20 éligibles. Chaque carte affiche 6 statistiques spécifiques au poste du
+joueur, avec un glossaire en info-bulle et un bouton "Comment ça marche" qui explique la
+méthodologie en langage clair — pensé pour qu'un visiteur non-initié comprenne les scores
+sans avoir à lire ce README.
+
+Pour régénérer la vitrine après une mise à jour des stats ou des photos :
 
 ```bash
 python scripts/export_vitrine_data.py   # génère players.json depuis alter11.db
@@ -199,16 +197,16 @@ python scripts/generate_cards.py        # récupère les photos manquantes (Tran
 python scripts/export_vitrine_data.py   # relance pour prendre en compte les nouvelles photos
 ```
 
-Les photos sont récupérées sur Transfermarkt (photo de profil, pas la
-vignette de recherche) puis détourées en local avec `rembg`
-(modèle `u2net_human_seg`, spécialisé silhouettes humaines) — aucune clé API
-n'est nécessaire.
+Les photos sont récupérées sur Transfermarkt (photo de profil haute résolution, pas la
+vignette de recherche) puis détourées en local avec `rembg` (modèle `u2net_human_seg`,
+spécialisé silhouettes humaines, avec alpha matting pour préserver les mèches de cheveux)
+— aucune clé API nécessaire.
 
 ## 📡 Source des données
 
-- [FBref](https://fbref.com) — statistiques saison 2025/2026
-- [Transfermarkt](https://transfermarkt.com) — position détaillée et valeur marchande
-- Ligues : Ligue 1, La Liga, Serie A, Premier League, Bundesliga
+- [FBref](https://fbref.com) — statistiques saison, standard/tirs/temps de jeu/discipline
+- [Transfermarkt](https://transfermarkt.com) — position détaillée, valeur marchande, photos
+- [Understat](https://understat.com) — xG, xA, npxG (modèle indépendant d'Opta)
 
 ---
 
