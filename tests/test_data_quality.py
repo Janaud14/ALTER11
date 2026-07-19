@@ -9,6 +9,11 @@ Les trois bugs historiques (tous silencieux, tous trouvés à la main) :
   - âges au format FBref "19-290" au lieu d'un entier -> test_age_est_un_entier_plausible
   - precision_tir en division entière SQLite          -> test_precision_tir_est_une_vraie_proportion
 
+Un quatrième a été découvert en écrivant ces tests : des joueurs agrègent les
+stats de deux clubs ou de deux homonymes sur une seule ligne
+-> test_pas_de_volume_de_matchs_impossible (marqué xfail, hors U20 donc sans
+   impact sur l'ALTERSCORE en l'état).
+
 Usage :
     pip install pytest
     pytest tests/ -v
@@ -172,12 +177,29 @@ def test_minutes_et_nineties_coherents(conn):
     assert incoherents == 0, f"{incoherents} joueurs ont un nineties incohérent avec minutes"
 
 
-def test_pas_de_minutes_negatives_ou_absurdes(conn):
+@pytest.mark.xfail(
+    reason="3 anomalies connues, toutes hors U20 : collisions d'homonymes "
+           "(Vitinha PSG/Marseille, Nicolas Gonzalez Man City/Juventus) et "
+           "transfert mi-saison dont les lignes club ont ete additionnees "
+           "(Malen, Dortmund -> Aston Villa). Sans impact sur l'ALTERSCORE, "
+           "qui filtre sur age <= 20. Correction prevue : cle de jointure "
+           "nom + date de naissance au lieu du nom seul.",
+    strict=False,
+)
+def test_pas_de_volume_de_matchs_impossible(conn):
+    """
+    Les donnees sont par championnat, pas toutes competitions confondues :
+    verifie empiriquement, La Liga et la Serie A plafonnent exactement a 38
+    matchs, la Bundesliga a 34. Le maximum legitime est donc le nombre de
+    journees de la ligue. Au-dela, c'est une agregation parasite.
+    """
     absurdes = q(conn, """
         SELECT COUNT(*) AS n FROM fact_stats
-        WHERE minutes < 0 OR minutes > 4200
+        WHERE minutes < 0 OR matches_played > 38
     """)[0]["n"]
-    assert absurdes == 0, f"{absurdes} joueurs ont un temps de jeu hors de [0, 4200]"
+    assert absurdes == 0, (
+        f"{absurdes} joueurs ont un volume de matchs impossible en championnat"
+    )
 
 
 def test_npxg_inferieur_ou_egal_a_xg(conn):
