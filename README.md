@@ -80,7 +80,10 @@ ALTER11/
 
 ## 🔍 Méthodologie ALTERSCORE
 
-Le score est calculé différemment selon le poste :
+Le score est calculé différemment selon le poste (FW = attaquant, MF = milieu,
+DF = défenseur) — un défenseur et un attaquant ne sont pas évalués sur les mêmes
+critères. Les termes techniques (npxG, PPM, min%…) sont définis dans le
+[glossaire](#-glossaire) en fin de README :
 
 - **FW** — buts hors penalty/90 (25%), npxG/90 (7%), tirs/90 (8%), précision de tir (10%),
   passes déc/90 (15%), min% (15%), PPM équipe (5%)
@@ -104,8 +107,10 @@ dans `notebooks/01_analysis.ipynb`.
 ## 🎯 Scoring de similarité
 
 `scripts/find_similar_players.py` trouve les joueurs au profil de jeu le plus proche d'un
-joueur donné, via une distance dans l'espace ACP (8 variables, mêmes que l'ALTERSCORE hors
-club/âge). Le xG/xA (Understat) est affiché à titre informatif à côté des résultats mais
+joueur donné, via une distance dans l'espace ACP (analyse en composantes principales :
+les 8 statistiques de jeu sont résumées en quelques axes synthétiques, et deux joueurs
+proches sur ces axes ont un profil de jeu comparable — mêmes variables que l'ALTERSCORE
+hors club/âge). Le xG/xA (Understat) est affiché à titre informatif à côté des résultats mais
 **n'entre pas** dans le calcul de similarité — testé et écarté à deux reprises : d'abord en
 valeur brute (corrélation 0.84 avec les stats déjà utilisées, redondant), puis en écart
 buts-xG (trop bruité sur le faible volume de tirs d'un jeune sur une saison, ce qui donnait
@@ -125,14 +130,17 @@ volontairement documentés plutôt que masqués :
   s'il prédisait leur évolution de temps de jeu en 2025-2026. Premier résultat :
   corrélation *négative* et significative (Spearman r=-0.32, p<0.001, n=117) — les joueurs
   les mieux notés voyaient leur temps de jeu baisser. En creusant, c'est un artefact de
-  régression vers la moyenne : la variable cible (Δ% temps de jeu) est fortement
+  régression vers la moyenne (un joueur déjà à 90% de temps de jeu ne peut quasiment que
+  baisser, faute de marge au-dessus) : la variable cible (Δ% temps de jeu) est fortement
   anti-corrélée au temps de jeu initial (r=-0.50), qui entre lui-même dans la formule du
   score via `min_pct`. Testé sur une cible non biaisée (% de temps de jeu absolu en
   2025-2026) : **r=-0.001, p=0.99** — aucune corrélation, ni positive ni négative.
   Conclusion assumée : l'ALTERSCORE décrit une performance passée, il ne prédit pas le
   temps de jeu futur — qui dépend largement de facteurs hors données (mercato, choix du
-  coach, blessures). Limites de la validation elle-même : biais de survie (18% d'attrition)
-  et échantillon réduit par poste (13 attaquants). Voir `scripts/validate_alterscore.py`.
+  coach, blessures). Limites de la validation elle-même : biais de survie (18% des joueurs
+  ont quitté les 5 championnats entre les deux saisons et sortent donc de l'échantillon —
+  or ce sont probablement les moins performants, ce qui tronque la mesure) et échantillon
+  réduit par poste (13 attaquants). Voir `scripts/validate_alterscore.py`.
 - **Clustering non stabilisé.** Le K-Means est lancé avec une seed fixe pour la
   reproductibilité, mais les clusters ne sont pas garantis stables si on relance avec
   d'autres seeds. Pas de test de robustesse (multi-seeds, bootstrap) à ce stade.
@@ -224,6 +232,37 @@ Les photos sont récupérées sur Transfermarkt (photo de profil haute résoluti
 vignette de recherche) puis détourées en local avec `rembg` (modèle `u2net_human_seg`,
 spécialisé silhouettes humaines, avec alpha matting pour préserver les mèches de cheveux)
 — aucune clé API nécessaire.
+
+## 📖 Glossaire
+
+Le projet croise du vocabulaire football et du vocabulaire data. Les termes qui reviennent
+le plus souvent, pour que le README se lise sans connaître les deux domaines :
+
+**Football**
+
+| Terme | Signification |
+| ----- | ------------- |
+| **FW / MF / DF** | Attaquant / Milieu / Défenseur (notation FBref) |
+| **/90** | Statistique ramenée à 90 minutes jouées, pour comparer un titulaire et un remplaçant sur la même base |
+| **xG** | *Expected goals* — nombre de buts qu'une occasion "aurait dû" produire, estimé d'après sa qualité (distance, angle, type d'action) |
+| **npxG** | xG hors penalty (*non-penalty xG*) |
+| **xA** | *Expected assists* — même logique que le xG, appliquée aux passes menant à un tir |
+| **Buts hors penalty** | Buts marqués hors coups de pied de réparation, pour ne pas gonfler le total d'un tireur attitré |
+| **PPM** | Points par match de l'équipe sur la saison — proxy du niveau collectif dans lequel évolue le joueur |
+| **min%** | Part du temps de jeu disponible effectivement jouée |
+| **U20** | Joueurs de 20 ans ou moins |
+
+**Data**
+
+| Terme | Signification |
+| ----- | ------------- |
+| **ACP** | Analyse en composantes principales — réduit une dizaine de statistiques à 2-3 axes synthétiques, pour visualiser et comparer des profils de jeu |
+| **K-Means** | Algorithme de clustering : regroupe automatiquement les joueurs aux statistiques proches, sans étiquette prédéfinie |
+| **Corrélation de Spearman** | Mesure entre -1 et +1 de la force d'un lien entre deux variables (0 = aucun lien). Comparée à la corrélation de Pearson, elle travaille sur les rangs et résiste mieux aux valeurs extrêmes |
+| **p-value** | Probabilité d'observer un tel résultat si aucun lien n'existait réellement. Sous 0.05, on considère le résultat difficilement attribuable au hasard |
+| **Régression vers la moyenne** | Tendance des valeurs extrêmes à se rapprocher de la moyenne à la mesure suivante. Un joueur à 95% de temps de jeu ne peut quasiment que baisser — pas parce qu'il régresse, mais parce qu'il n'y a plus de marge au-dessus |
+| **Biais de survie** | Ne mesurer que les cas encore observables, en oubliant ceux qui ont disparu de l'échantillon (ici : les joueurs partis hors des 5 championnats) |
+| **Fuzzy matching** | Rapprochement de chaînes de caractères non identiques mais proches, pour relier un même joueur entre deux sources qui l'orthographient différemment |
 
 ## 📡 Source des données
 
