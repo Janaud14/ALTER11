@@ -134,7 +134,7 @@ def compute_score_brut(df: pd.DataFrame) -> pd.DataFrame:
         else:
             scores.append(None)
     df["score_brut"] = scores
-    df["alterscore_sans_malus"] = (df["score_brut"] * df["age"].apply(coef_fiab)).round(1)
+    df["alterscore_sans_malus"] = (df["score_brut"] * df["minutes"].apply(coef_fiab)).round(1)
     return df
 
 

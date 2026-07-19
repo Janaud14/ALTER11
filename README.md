@@ -15,11 +15,20 @@ L'**ALTERSCORE** est un indice composite sur 10 qui évalue le potentiel d'un jo
 - Un coefficient d'exposition médiatique (malus/bonus club, basé sur le niveau réel de l'équipe)
 - Un coefficient de fiabilité (basé sur le volume de minutes)
 
+## 📊 Dashboard Power BI
+
+![Dashboard ALTER11](docs/dashboard_powerbi.png)
+
+Top 10 ALTERSCORE filtrable par poste, et analyse de finition
+(buts réels vs buts attendus hors penaltys) sur 251 joueurs U20.
+Généré depuis `scripts/export_power_bi.py`.
+
 ## 🛠️ Stack technique
 
 - **Python** — nettoyage, scraping (FBref, Transfermarkt, Understat), ACP, clustering (pandas, scikit-learn, BeautifulSoup, rembg)
 - **SQLite** — base de données relationnelle (3 tables + tables de référence)
 - **SQL** — requêtes analytiques, CTEs, window functions, scoring composite
+- **Power BI** — dashboard interactif (slicers, KPI, nuage de points avec ligne de symétrie)
 - **HTML/CSS/JS** — vitrine web interactive déployée sur GitHub Pages, données chargées dynamiquement (aucune valeur codée en dur)
 
 ## 📁 Structure du projet
@@ -42,6 +51,7 @@ ALTER11/
 │   ├── validate_alterscore.py        # Validation prédictive de l'ALTERSCORE
 │   ├── scrape_understat.py           # Enrichit fact_stats avec xG/xA/npxG (Understat)
 │   ├── generate_cards.py             # Récupère et détoure les photos joueurs (Transfermarkt)
+│   ├── export_power_bi.py            # Génère alter11_power_bi.csv (dashboard Power BI)
 │   └── export_vitrine_data.py        # Génère players.json depuis alter11.db (vitrine)
 ├── run_alterscore.py           # Exécute 03_alterscore.sql et affiche le top par poste
 ├── alter11.db                  # Base SQLite
@@ -110,13 +120,19 @@ python scripts/find_similar_players.py "Lamine Yamal"
 Ce projet est une V1 assumée comme telle. Les points suivants sont identifiés et
 volontairement documentés plutôt que masqués :
 
-- **Pas de validation prédictive convaincante.** J'ai recalculé l'ALTERSCORE (sans malus
-  club) sur les U20 de la saison 2024-2025, puis regardé s'il prédisait un gain de temps de
-  jeu en 2025-2026. Résultat : aucune corrélation significative, ni globalement (r=-0.10,
-  p=0.29) ni par poste (FW, MF, DF testés séparément). Deux limites à cette validation
-  elle-même : biais de survie (18% des joueurs ont quitté les 5 championnats et sortent de
-  l'échantillon), et échantillon réduit par poste (13 attaquants seulement). Voir
-  `scripts/validate_alterscore.py`.
+- **Pas de validation prédictive convaincante — et le premier résultat était un piège.**
+  J'ai recalculé l'ALTERSCORE (sans malus club) sur les U20 de 2024-2025, puis regardé
+  s'il prédisait leur évolution de temps de jeu en 2025-2026. Premier résultat :
+  corrélation *négative* et significative (Spearman r=-0.32, p<0.001, n=117) — les joueurs
+  les mieux notés voyaient leur temps de jeu baisser. En creusant, c'est un artefact de
+  régression vers la moyenne : la variable cible (Δ% temps de jeu) est fortement
+  anti-corrélée au temps de jeu initial (r=-0.50), qui entre lui-même dans la formule du
+  score via `min_pct`. Testé sur une cible non biaisée (% de temps de jeu absolu en
+  2025-2026) : **r=-0.001, p=0.99** — aucune corrélation, ni positive ni négative.
+  Conclusion assumée : l'ALTERSCORE décrit une performance passée, il ne prédit pas le
+  temps de jeu futur — qui dépend largement de facteurs hors données (mercato, choix du
+  coach, blessures). Limites de la validation elle-même : biais de survie (18% d'attrition)
+  et échantillon réduit par poste (13 attaquants). Voir `scripts/validate_alterscore.py`.
 - **Clustering non stabilisé.** Le K-Means est lancé avec une seed fixe pour la
   reproductibilité, mais les clusters ne sont pas garantis stables si on relance avec
   d'autres seeds. Pas de test de robustesse (multi-seeds, bootstrap) à ce stade.
@@ -144,7 +160,7 @@ volontairement documentés plutôt que masqués :
   vraiment boostés), malgré une plage annoncée de 0.70 à 1.15. Corrigée en interpolation
   linéaire entre le meilleur et le pire club des 5 championnats, sur leur PPM réel — la
   plage complète est maintenant vraiment utilisée.
-- **Deux bugs de données silencieux trouvés et corrigés en cours de projet**, qui
+- **Trois bugs de données silencieux trouvés et corrigés en cours de projet**, qui
   faussaient les scores sans jamais générer d'erreur visible : ~22% des joueurs avaient un
   poste stocké au format `"MF,FW"` au lieu de `"FW"` (le score devenait `NULL` et le
   joueur disparaissait silencieusement du classement) ; ~20% avaient un âge stocké au
@@ -152,7 +168,11 @@ volontairement documentés plutôt que masqués :
   les comparaisons SQL du bonus âge. Les deux ont été détectés en creusant une incohérence
   précise (Lamine Yamal absent du classement malgré des stats qui auraient dû le classer
   très haut) plutôt que par un audit systématique — signe qu'un audit de qualité de
-  données plus large serait utile avant d'aller plus loin.
+  données plus large serait utile avant d'aller plus loin. Enfin, la précision de tir était
+  calculée en division entière SQLite (`shots_on_target / shots` sur deux INTEGER),
+  renvoyant 0 pour 97% des joueurs et 1 pour les rares ayant cadré tous leurs tirs — ce qui
+  annulait silencieusement une composante de 10% du score des attaquants. Cause racine : la
+  formule était dupliquée dans trois fichiers et un seul n'avait pas la correction.
 
 ## 🚀 Lancer le projet
 
@@ -172,6 +192,9 @@ python scripts/scrape_understat.py
 
 # Trouver des joueurs similaires à un profil donné :
 python scripts/find_similar_players.py "Lamine Yamal"
+
+# Exporter le CSV du dashboard Power BI :
+python scripts/export_power_bi.py
 
 # Validation prédictive de l'ALTERSCORE (2024-25 vs 2025-26) :
 python scripts/scrape_2024_2025.py
