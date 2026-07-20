@@ -23,11 +23,51 @@ Top 10 ALTERSCORE filtrable par poste, et analyse de finition
 (buts réels vs buts attendus hors penaltys) sur 251 joueurs U20.
 Généré depuis `scripts/export_power_bi.py`.
 
+## ⚙️ Pipeline et contrôles qualité
+
+![Pipeline Prefect](docs/pipeline_prefect.png)
+
+Le pipeline est orchestré avec **Prefect** (`flows/pipeline_alter11.py`) : scraping,
+enrichissement xG/xA, contrôles qualité, puis exports vers la vitrine et le dashboard.
+
+```bash
+pip install prefect pytest
+python flows/pipeline_alter11.py                 # exécution complète
+python flows/pipeline_alter11.py --skip-scraping # repart de la base existante
+```
+
+**Les contrôles qualité sont une étape bloquante.** Si un test échoue, tout l'aval est
+annulé : ni `players.json` ni `alter11_power_bi.csv` ne sont régénérés. C'est la raison
+d'être de cette orchestration — les quatre bugs de données du projet étaient tous
+silencieux (aucune erreur levée, des scores simplement faux) et ont tous été publiés
+avant d'être découverts, à la main, en creusant une incohérence.
+
+La suite `tests/test_data_quality.py` (13 tests, `pytest tests/ -v`) couvre :
+
+| Famille | Exemples |
+| ------- | -------- |
+| Intégrité relationnelle | pas de stats orphelines, pas de doublon joueur |
+| Régressions historiques | postes canoniques, âge entier, precision_tir ∈ ]0,1[ |
+| Invariantes métier | npxG ≤ xG, tirs cadrés ≤ tirs, `nineties` = minutes/90, malus club dans [0.70, 1.15] |
+| Fraîcheur des sources | couverture Understat ≥ 95% des joueurs à 200+ minutes |
+
+Un test est volontairement marqué `xfail` : trois joueurs agrègent les stats de deux clubs
+ou de deux homonymes sur une seule ligne (`matches_played` > nombre de journées du
+championnat). Aucun n'est U20, donc l'ALTERSCORE n'est pas affecté — le test reste en
+place pour détecter toute nouvelle collision, avec la raison documentée dans le code.
+
+Le flow gère aussi deux détails que la version manuelle imposait : des retries sur les
+tâches réseau (FBref et Understat coupent régulièrement sur du rate limiting), et la
+dépendance photos → vitrine, qui rendait nécessaire de lancer `export_vitrine_data.py`
+deux fois de suite.
+
 ## 🛠️ Stack technique
 
 - **Python** — nettoyage, scraping (FBref, Transfermarkt, Understat), ACP, clustering (pandas, scikit-learn, BeautifulSoup, rembg)
 - **SQLite** — base de données relationnelle (3 tables + tables de référence)
 - **SQL** — requêtes analytiques, CTEs, window functions, scoring composite
+- **Prefect** — orchestration du pipeline (DAG, retries, contrôles qualité bloquants)
+- **pytest** — 13 tests de qualité de données sur la base SQLite
 - **Power BI** — dashboard interactif (slicers, KPI, nuage de points avec ligne de symétrie)
 - **HTML/CSS/JS** — vitrine web interactive déployée sur GitHub Pages, données chargées dynamiquement (aucune valeur codée en dur)
 
@@ -53,8 +93,14 @@ ALTER11/
 │   ├── generate_cards.py             # Récupère et détoure les photos joueurs (Transfermarkt)
 │   ├── export_power_bi.py            # Génère alter11_power_bi.csv (dashboard Power BI)
 │   └── export_vitrine_data.py        # Génère players.json depuis alter11.db (vitrine)
+├── flows/
+│   └── pipeline_alter11.py     # Orchestration Prefect du pipeline complet
+├── tests/
+│   └── test_data_quality.py    # 13 tests de qualité de données (pytest)
+├── docs/                       # Captures dashboard et pipeline
 ├── run_alterscore.py           # Exécute 03_alterscore.sql et affiche le top par poste
 ├── alter11.db                  # Base SQLite
+├── alter11_power_bi.csv         # Table plate pour Power BI, généré depuis alter11.db
 ├── players.json                 # Données de la vitrine, généré depuis alter11.db
 └── index.html                   # Vitrine web ALTER11 (charge players.json en fetch())
 ```
@@ -181,13 +227,32 @@ volontairement documentés plutôt que masqués :
   renvoyant 0 pour 97% des joueurs et 1 pour les rares ayant cadré tous leurs tirs — ce qui
   annulait silencieusement une composante de 10% du score des attaquants. Cause racine : la
   formule était dupliquée dans trois fichiers et un seul n'avait pas la correction.
+- **Un quatrième bug, découvert en écrivant les tests de qualité.** Trois joueurs ont un
+  `matches_played` supérieur au nombre de journées de leur championnat : deux collisions
+  d'homonymes (deux Vitinha, deux Nicolás González, fusionnés en une seule ligne par la
+  clé de jointure sur le nom) et un transfert mi-saison dont les lignes des deux clubs ont
+  été additionnées. Aucun n'a 20 ans ou moins, donc l'ALTERSCORE, la vitrine et le
+  dashboard ne sont pas affectés en l'état. La correction propre passe par une clé de
+  jointure nom + date de naissance ; en attendant, le test correspondant reste en place,
+  marqué `xfail` avec la raison documentée.
+- **La formule de l'ALTERSCORE est encore dupliquée** entre `sql/03_alterscore.sql`,
+  `scripts/export_power_bi.py`, `scripts/export_vitrine_data.py` et
+  `scripts/validate_alterscore.py`. C'est la cause racine du bug de précision de tir
+  ci-dessus : une correction appliquée à trois fichiers sur quatre. Une source unique de
+  vérité (vue SQL ou module Python partagé) est le prochain chantier structurant.
 
 ## 🚀 Lancer le projet
 
 ```bash
 git clone https://github.com/Janaud14/ALTER11.git
 cd ALTER11
-pip install pandas jupyter ipykernel scikit-learn matplotlib beautifulsoup4 rapidfuzz scipy soccerdata rembg pillow
+pip install pandas jupyter ipykernel scikit-learn matplotlib beautifulsoup4 rapidfuzz scipy soccerdata rembg pillow prefect pytest
+
+# Tout le pipeline, orchestré (scraping -> qualité -> exports) :
+python flows/pipeline_alter11.py
+
+# Contrôles qualité seuls :
+pytest tests/ -v
 
 # Pipeline complet (nettoyage, ACP, clustering, scoring) :
 jupyter notebook notebooks/01_analysis.ipynb
@@ -220,12 +285,19 @@ joueur, avec un glossaire en info-bulle et un bouton "Comment ça marche" qui ex
 méthodologie en langage clair — pensé pour qu'un visiteur non-initié comprenne les scores
 sans avoir à lire ce README.
 
-Pour régénérer la vitrine après une mise à jour des stats ou des photos :
+Pour régénérer la vitrine après une mise à jour des stats ou des photos, le plus simple
+est de laisser le flow gérer l'ordre des étapes :
 
 ```bash
-python scripts/export_vitrine_data.py   # génère players.json depuis alter11.db
+python flows/pipeline_alter11.py --skip-scraping
+```
+
+Manuellement, l'ordre compte — `players.json` doit être généré après les photos, sinon il
+référence des images qui n'existent pas encore :
+
+```bash
 python scripts/generate_cards.py        # récupère les photos manquantes (Transfermarkt)
-python scripts/export_vitrine_data.py   # relance pour prendre en compte les nouvelles photos
+python scripts/export_vitrine_data.py   # génère players.json depuis alter11.db
 ```
 
 Les photos sont récupérées sur Transfermarkt (photo de profil haute résolution, pas la
