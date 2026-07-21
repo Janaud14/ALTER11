@@ -28,7 +28,10 @@ Généré depuis `scripts/export_power_bi.py`.
 ![Pipeline Prefect](docs/pipeline_prefect.png)
 
 Le pipeline est orchestré avec **Prefect** (`flows/pipeline_alter11.py`) : scraping,
-enrichissement xG/xA, contrôles qualité, puis exports vers la vitrine et le dashboard.
+enrichissement xG/xA, création de la vue de scoring, contrôles qualité, puis exports vers
+la vitrine et le dashboard. La vue `v_alterscore` est recréée à chaque exécution, ce qui
+garantit que la base reflète toujours la formule versionnée dans git plutôt qu'une
+version figée lors d'un run passé.
 
 ```bash
 pip install prefect pytest
@@ -82,9 +85,10 @@ ALTER11/
 ├── notebooks/
 │   └── 01_analysis.ipynb      # Pipeline complet : nettoyage → ACP → clustering → scoring
 ├── sql/
+│   ├── 00_view_alterscore.sql # VUE v_alterscore : source unique de la formule
 │   ├── 01_schema.sql          # Création des tables
 │   ├── 02_kpi_u20.sql         # Requêtes analytiques KPI
-│   └── 03_alterscore.sql      # Calcul ALTERSCORE (source de vérité de la formule)
+│   └── 03_alterscore.sql      # Top 10 par poste (consomme la vue)
 ├── scripts/
 │   ├── find_similar_players.py       # Scoring de similarité entre joueurs (ACP)
 │   ├── scrape_2024_2025.py           # Scraping saison 2024-25 (validation)
@@ -140,6 +144,12 @@ critères. Les termes techniques (npxG, PPM, min%…) sont définis dans le
 
 Tous les postes intègrent un bonus jeunesse dégressif et un coefficient de fiabilité basé
 sur le volume de minutes jouées.
+
+**La formule est définie une seule fois**, dans la vue SQL `v_alterscore`
+(`sql/00_view_alterscore.sql`). Le top 10 SQL, l'export Power BI et l'export vitrine
+lisent cette vue plutôt que de recopier le calcul — voir "Limites connues" pour le bug
+qui a motivé ce choix. La vue est volontairement large (tous les U20 non-gardiens, sans
+filtre de minutes) : c'est à chaque consommateur de filtrer selon son besoin.
 
 **Sur le choix np_goals + npxG plutôt que les buts bruts** : les penalties sont exclus pour
 ne pas avantager un tireur attitré sur des situations qu'il ne crée pas lui-même. Le npxG
@@ -235,11 +245,16 @@ volontairement documentés plutôt que masqués :
   dashboard ne sont pas affectés en l'état. La correction propre passe par une clé de
   jointure nom + date de naissance ; en attendant, le test correspondant reste en place,
   marqué `xfail` avec la raison documentée.
-- **La formule de l'ALTERSCORE est encore dupliquée** entre `sql/03_alterscore.sql`,
-  `scripts/export_power_bi.py`, `scripts/export_vitrine_data.py` et
-  `scripts/validate_alterscore.py`. C'est la cause racine du bug de précision de tir
-  ci-dessus : une correction appliquée à trois fichiers sur quatre. Une source unique de
-  vérité (vue SQL ou module Python partagé) est le prochain chantier structurant.
+- **La formule de l'ALTERSCORE était dupliquée dans quatre fichiers** — c'est la cause
+  racine du bug de précision de tir ci-dessus : une correction appliquée à trois d'entre
+  eux seulement, et le dashboard s'est mis à afficher un classement différent de la
+  vitrine pendant plusieurs semaines, sans qu'aucune erreur ne soit levée. Résolu depuis
+  par une vue SQL, `sql/00_view_alterscore.sql`, qui est désormais la source unique de
+  vérité : le top 10 SQL, l'export Power BI et l'export vitrine la consomment au lieu de
+  recopier le calcul, et le pipeline la recrée à chaque exécution pour que la base
+  reflète toujours la version versionnée dans git. Seul `validate_alterscore.py` garde
+  sa propre implémentation, en Python : il rejoue le score sur un CSV de la saison
+  précédente qui n'est pas chargé dans la base, la vue ne peut donc pas le servir.
 
 ## 🚀 Lancer le projet
 
