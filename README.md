@@ -13,7 +13,7 @@ L'**ALTERSCORE** est un indice composite sur 10 qui évalue le potentiel d'un jo
 - Sa régularité (% du temps de jeu disponible)
 - Un bonus jeunesse (17→18→19→20 ans)
 - Un coefficient d'exposition médiatique (malus/bonus club, basé sur le niveau réel de l'équipe)
-- Un coefficient de fiabilité (basé sur le volume de minutes)
+- Un coefficient de fiabilité (basé sur le volume de minutes, avec un seuil qui descend avec l'âge)
 
 ## 📊 Dashboard Power BI
 
@@ -145,6 +145,32 @@ critères. Les termes techniques (npxG, PPM, min%…) sont définis dans le
 Tous les postes intègrent un bonus jeunesse dégressif et un coefficient de fiabilité basé
 sur le volume de minutes jouées.
 
+**Sur le coefficient de fiabilité et son seuil dépendant de l'âge** : une statistique par
+90 minutes calculée sur 400 minutes est bien moins fiable que la même sur 2500. Le
+coefficient (`0.5 + minutes / seuil`, plafonné à 1.0) décote donc les petits échantillons.
+Il ne dit pas "ce joueur est moins bon", mais "je n'ai pas encore assez de données pour me
+prononcer".
+
+Dans sa première version, le seuil de pleine confiance était fixe à 1500 minutes pour tout
+le monde — et ça allait directement contre l'objectif du projet. Un joueur de 16 ans joue
+peu *parce qu'il a 16 ans*, pas parce qu'il est mauvais. En comparant le classement avec et
+sans ce coefficient, cinq des six joueurs les plus décotés avaient 16 ou 17 ans : le bonus
+jeunesse (×1.4 à 17 ans) et le coefficient de fiabilité (×0.65) se neutralisaient l'un
+l'autre. Le seuil descend donc maintenant avec l'âge :
+
+| Âge | Minutes pour atteindre la pleine confiance |
+| --- | ----------------------------------------- |
+| ≤ 17 | 600 |
+| 18 | 900 |
+| 19 | 1200 |
+| ≥ 20 | 1500 |
+
+Effet concret : Nathan Mbala (17 ans, 441 minutes à Metz) passe de 4.6 à 6.2 et entre dans
+le top 3 ; Wael Mohya (16 ans, 552 minutes en Bundesliga) passe de 3.9 à 5.5. Les joueurs
+de 20 ans sont inchangés. L'arbitrage reste réel et assumé : détecter tôt suppose
+d'accepter un échantillon plus mince, exactement là où le risque de surinterpréter est le
+plus fort.
+
 **La formule est définie une seule fois**, dans la vue SQL `v_alterscore`
 (`sql/00_view_alterscore.sql`). Le top 10 SQL, l'export Power BI et l'export vitrine
 lisent cette vue plutôt que de recopier le calcul — voir "Limites connues" pour le bug
@@ -201,7 +227,12 @@ volontairement documentés plutôt que masqués :
   reproductibilité, mais les clusters ne sont pas garantis stables si on relance avec
   d'autres seeds. Pas de test de robustesse (multi-seeds, bootstrap) à ce stade.
 - **Pondérations choisies à la main.** Les poids de l'ALTERSCORE sont fixés par jugement
-  métier, pas appris ou optimisés sur une cible externe.
+  métier, pas appris ou optimisés sur une cible externe. C'est aussi vrai des seuils du
+  coefficient de fiabilité par âge (600 / 900 / 1200 / 1500 minutes) : ils traduisent une
+  intuition défendable — un joueur de 16 ans qui atteint 600 minutes dans un grand
+  championnat a déjà prouvé quelque chose — mais ils ne sont calibrés sur aucune donnée.
+  Une version plus rigoureuse mesurerait à partir de quel volume de minutes une statistique
+  par 90 se stabilise réellement, par tranche d'âge.
 - **Variables limitées, et ce n'est pas (que) un choix.** FBref a perdu l'accès à ses
   données avancées fournies par Opta le 20 janvier 2026, suite à une rupture de contrat
   avec Stats Perform
