@@ -87,9 +87,16 @@ WITH base AS (
         END AS bonus_age,
 
         -- Coef de fiabilité : monte avec le volume de minutes (plafond à 1.0).
-        -- Limite connue et documentée : pénalise les 16-17 ans, qui jouent peu
-        -- par construction. Voir "Limites connues" dans le README.
-        MIN(1.0, 0.5 + (f.minutes / 3000.0)) AS coef_fiab,
+		-- Le seuil de pleine confiance descend avec l'âge (600 min à 17 ans,
+		-- 1500 à 20+) pour ne pas pénaliser les très jeunes, qui jouent peu par
+		-- construction — c'est précisément la cible du projet.
+        MIN(1.0, 0.5 + (f.minutes /
+		CASE
+			WHEN CAST(p.age AS INTEGER) <= 17 THEN 1200.0
+			WHEN CAST(p.age AS INTEGER) <= 18 THEN 1800.0
+			WHEN CAST(p.age AS INTEGER) <= 19 THEN 2400.0
+			ELSE 3000.0
+		END)) AS coef_fiab,
 
         -- Split milieux offensifs / défensifs : ratio activité défensive vs offensive
         CASE
