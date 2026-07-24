@@ -126,35 +126,36 @@ scored AS (
             WHEN 'FW' THEN
                 CASE WHEN minutes < 300 THEN NULL ELSE
                 ROUND(
-                    (MIN(np_goals_p90, 1.0) / 1.0 * 10 * 0.25)
-                  + (MIN(npxg_p90, 1.0) / 1.0 * 10 * 0.07)
-                  + (MIN(tirs_p90, 5.0) / 5.0 * 10 * 0.08)
+                    (MIN(np_goals_p90, 0.6) / 0.6 * 10 * 0.25)
+                  + (MIN(npxg_p90, 0.7) / 0.7 * 10 * 0.07)
+                  + (MIN(tirs_p90, 4.0) / 4.0 * 10 * 0.08)
                   + (COALESCE(precision_tir, 0.35) * 10 * 0.10)
-                  + (MIN(passes_p90, 0.8) / 0.8 * 10 * 0.15)
+                  + (MIN(passes_p90, 0.3) / 0.3 * 10 * 0.15)
                   + (MIN(min_pct, 100) / 100.0 * 10 * 0.15)
                   + (MIN(ppm, 3.0) / 3.0 * 10 * 0.05)
                   + (bonus_age * 0.15 * 10 / 2.0)
                 , 1) END
 
             -- MILIEU (min 400 min), formule différenciée selon le profil
+			-- Plafonds calibres sur le p95 des U20 2025-2026 (max reel : 2.48 tacles/90,
+			-- 2.13 interceptions/90). Les valeurs precedentes (4.0 et 3.0) etaient
+			-- inatteignables et bridaient structurellement les MF_DEF.
             WHEN 'MF' THEN
                 CASE WHEN minutes < 400 THEN NULL ELSE
                 ROUND(
                     CASE mf_type
                     WHEN 'MF_DEF' THEN
-                        (MIN(tacles_p90, 4.0) / 4.0 * 10 * 0.25)
-                      + (MIN(int_p90, 3.0) / 3.0 * 10 * 0.25)
+                        (MIN(tacles_p90, 2.2) / 2.2 * 10 * 0.25)
+                      + (MIN(int_p90, 1.7) / 1.7 * 10 * 0.25)
                       + (MIN(fd_p90, 3.0) / 3.0 * 10 * 0.10)
-                      + (MIN(fls_p90, 4.0) / 4.0 * 10 * 0.05)
+                      + (MIN(fls_p90, 2.3) / 2.3 * 10 * 0.05)
                       + (MIN(ppm, 3.0) / 3.0 * 10 * 0.10)
                       + (MIN(min_pct, 100) / 100.0 * 10 * 0.10)
                       + (bonus_age * 0.15 * 10 / 2.0)
                     ELSE
-                        (MIN(tacles_p90, 4.0) / 4.0 * 10 * 0.10)
-                      + (MIN(int_p90, 3.0) / 3.0 * 10 * 0.10)
-                      + (MIN(buts_p90 + passes_p90, 1.0) / 1.0 * 10 * 0.25)
+						(MIN(buts_p90 + passes_p90, 1.0) / 1.0 * 10 * 0.25)
                       + (MIN(tirs_p90, 3.0) / 3.0 * 10 * 0.20)
-                      + (MIN(fd_p90, 3.0) / 3.0 * 10 * 0.10)
+                      + (MIN(fd_p90, 2.5) / 2.5 * 10 * 0.10)
                       + (MIN(ppm, 3.0) / 3.0 * 10 * 0.05)
                       + (MIN(min_pct, 100) / 100.0 * 10 * 0.10)
                       + (bonus_age * 0.15 * 10 / 2.0)
@@ -165,10 +166,10 @@ scored AS (
             WHEN 'DF' THEN
                 CASE WHEN minutes < 500 THEN NULL ELSE
                 ROUND(
-                    (MIN(tacles_p90, 4.0) / 4.0 * 10 * 0.22)
-                  + (MIN(int_p90, 3.0) / 3.0 * 10 * 0.20)
-                  + (MIN(fd_p90, 3.0) / 3.0 * 10 * 0.08)
-                  + (MIN(fls_p90, 4.0) / 4.0 * 10 * 0.05)
+                    (MIN(tacles_p90, 2.3) / 2.3 * 10 * 0.22)
+                  + (MIN(int_p90, 1.8) / 1.8 * 10 * 0.20)
+                  + (MIN(fd_p90, 1.3) / 1.3 * 10 * 0.08)
+                  + (MIN(fls_p90, 2.0) / 2.0 * 10 * 0.05)
                   + (MIN(crs_p90, 3.0) / 3.0 * 10 * 0.10)
                   + (MIN(ppm, 3.0) / 3.0 * 10 * 0.10)
                   + (MIN(min_pct, 100) / 100.0 * 10 * 0.10)
@@ -179,5 +180,5 @@ scored AS (
     FROM base
 )
 SELECT *,
-    ROUND(score_brut * coef_fiab * coef_club, 1) AS alterscore
+    ROUND(score_brut * coef_fiab * (coef_club + (1 - coef_club) * MIN(0.5, minutes / 3060.0) * 0.5), 1) AS alterscore
 FROM scored;
