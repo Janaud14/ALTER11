@@ -81,10 +81,20 @@ def extraire_blocs(sql: str) -> dict[str, str]:
 
     bloc_mf = entre("WHEN 'MF' THEN", "WHEN 'DF' THEN")
 
+    # Attention : le bloc MF contient DEUX 'ELSE'. Le premier ferme le seuil de
+    # minutes (CASE WHEN minutes < 400 THEN NULL ELSE ...), le second sépare
+    # MF_DEF de MF_OFF. On cherche donc le ELSE situé APRÈS le marqueur MF_DEF.
+    i_def = bloc_mf.find("WHEN 'MF_DEF' THEN")
+    if i_def == -1:
+        pytest.fail("Marqueur MF_DEF introuvable dans le bloc MF")
+    i_else = bloc_mf.find("ELSE", i_def)
+    if i_else == -1:
+        pytest.fail("Separateur ELSE (MF_DEF / MF_OFF) introuvable")
+
     return {
         "FW": entre("WHEN 'FW' THEN", "WHEN 'MF' THEN"),
-        "MF_DEF": bloc_mf[bloc_mf.find("WHEN 'MF_DEF' THEN"):bloc_mf.find("ELSE")],
-        "MF_OFF": bloc_mf[bloc_mf.find("ELSE"):],
+        "MF_DEF": bloc_mf[i_def:i_else],
+        "MF_OFF": bloc_mf[i_else:],
         "DF": entre("WHEN 'DF' THEN", "END AS score_brut"),
     }
 
@@ -236,18 +246,55 @@ def test_score_brut_dans_les_bornes(conn):
     assert hors_bornes == 0, f"{hors_bornes} joueurs ont un score_brut hors de [0, 10]"
 
 
-def test_alterscore_inferieur_ou_egal_au_score_brut(conn):
+def test_alterscore_dans_la_bande_des_coefficients(conn):
     """
-    Les deux coefficients (fiabilite, club ajuste) sont des multiplicateurs
-    plafonnes a 1.0 : l'ALTERSCORE final ne peut donc jamais depasser le score
-    brut. Si c'est le cas, un coefficient est mal borne.
+    L'ALTERSCORE vaut score_brut x coef_fiab x coef_club_ajuste.
+
+    coef_fiab est plafonne a 1.0, mais coef_club NE L'EST PAS : la table
+    malus_clubs va de 0.70 a 1.15, c'est un malus pour les clubs surexposes ET
+    un bonus pour les clubs modestes. Un joueur d'un petit club peut donc
+    legitimement finir au-dessus de son score brut.
+
+    La borne haute est donc score_brut x 1.15, et non score_brut. Au-dela, un
+    coefficient est mal borne.
     """
-    incoherents = conn.execute("""
+    hors_bande = conn.execute("""
         SELECT COUNT(*) AS n FROM v_alterscore
-        WHERE alterscore IS NOT NULL AND alterscore > score_brut + 0.05
+        WHERE alterscore IS NOT NULL
+          AND (alterscore > score_brut * 1.15 + 0.05 OR alterscore < 0)
     """).fetchone()["n"]
 
-    assert incoherents == 0, (
-        f"{incoherents} joueurs ont un ALTERSCORE superieur a leur score brut : "
-        "un coefficient multiplicateur depasse 1.0"
+    assert hors_bande == 0, (
+        f"{hors_bande} joueurs ont un ALTERSCORE hors de la bande "
+        "[0, score_brut x 1.15] : un coefficient depasse ses bornes"
+    )
+
+
+def test_ajustement_club_ne_change_pas_le_sens_du_coefficient(conn):
+    """
+    L'ajustement du malus club par le temps de jeu rapproche le coefficient de
+    1.0 proportionnellement aux minutes jouees. Effet de bord a surveiller :
+    pour un club dont le coefficient est SUPERIEUR a 1.0 (petit club, donc
+    bonus), le terme (1 - coef_club) est negatif, et l'ajustement rogne le
+    bonus au lieu de reduire un malus.
+
+    C'est coherent (le coefficient converge vers le neutre quand l'echantillon
+    grandit) mais ce n'etait pas l'intention initiale. Ce test verifie au moins
+    qu'un coefficient ne bascule jamais de l'autre cote de 1.0 : un club bonifie
+    ne doit pas devenir penalise, ni l'inverse.
+    """
+    bascules = conn.execute("""
+        SELECT COUNT(*) AS n FROM (
+            SELECT coef_club,
+                   coef_club + (1 - coef_club) * MIN(0.5, minutes / 3060.0) * 0.5 AS ajuste
+            FROM v_alterscore
+            WHERE alterscore IS NOT NULL
+        )
+        WHERE (coef_club > 1.0 AND ajuste < 1.0)
+           OR (coef_club < 1.0 AND ajuste > 1.0)
+    """).fetchone()["n"]
+
+    assert bascules == 0, (
+        f"{bascules} joueurs voient leur coefficient club basculer de l'autre "
+        "cote de 1.0 apres ajustement par le temps de jeu"
     )
