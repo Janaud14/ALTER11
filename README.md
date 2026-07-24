@@ -41,11 +41,12 @@ python flows/pipeline_alter11.py --skip-scraping # repart de la base existante
 
 **Les contrôles qualité sont une étape bloquante.** Si un test échoue, tout l'aval est
 annulé : ni `players.json` ni `alter11_power_bi.csv` ne sont régénérés. C'est la raison
-d'être de cette orchestration — les quatre bugs de données du projet étaient tous
-silencieux (aucune erreur levée, des scores simplement faux) et ont tous été publiés
-avant d'être découverts, à la main, en creusant une incohérence.
+d'être de cette orchestration — les cinq bugs de données et de formule du projet étaient
+tous silencieux (aucune erreur levée, des scores simplement faux) et ont presque tous été
+publiés avant d'être découverts, à la main, en creusant une incohérence.
 
-La suite `tests/test_data_quality.py` (13 tests, `pytest tests/ -v`) couvre :
+La suite de tests (27 tests, `pytest tests/ -v`) couvre deux niveaux. Les données brutes
+(`tests/test_data_quality.py`) :
 
 | Famille | Exemples |
 | ------- | -------- |
@@ -53,6 +54,20 @@ La suite `tests/test_data_quality.py` (13 tests, `pytest tests/ -v`) couvre :
 | Régressions historiques | postes canoniques, âge entier, precision_tir ∈ ]0,1[ |
 | Invariantes métier | npxG ≤ xG, tirs cadrés ≤ tirs, `nineties` = minutes/90, malus club dans [0.70, 1.15] |
 | Fraîcheur des sources | couverture Understat ≥ 95% des joueurs à 200+ minutes |
+
+Et la formule elle-même (`tests/test_formule.py`), qui lit `00_view_alterscore.sql` et
+vérifie sa cohérence interne :
+
+| Famille | Ce qui est vérifié |
+| ------- | ------------------ |
+| Barème | les poids de chaque profil (FW/MF_DEF/MF_OFF/DF) totalisent bien 1.00 |
+| Cohérence des plafonds | dans `MIN(stat, X) / Y`, X et Y sont identiques |
+| Calibrage | aucun plafond ne dépasse de plus de 30 % le max observé (se recalibre seul chaque saison) |
+| Bornes de sortie | score_brut ∈ [0,10], et l'ALTERSCORE reste dans la bande des coefficients |
+
+Cette seconde famille n'est pas décorative : le test de barème a rattrapé, en une fraction
+de seconde, un profil dont les poids totalisaient 1.05 puis 0.85 au fil des ajustements —
+une erreur qu'un humain avait validée deux fois à l'œil.
 
 Un test est volontairement marqué `xfail` : trois joueurs agrègent les stats de deux clubs
 ou de deux homonymes sur une seule ligne (`matches_played` > nombre de journées du
@@ -70,7 +85,7 @@ deux fois de suite.
 - **SQLite** — base de données relationnelle (3 tables + tables de référence)
 - **SQL** — requêtes analytiques, CTEs, window functions, scoring composite
 - **Prefect** — orchestration du pipeline (DAG, retries, contrôles qualité bloquants)
-- **pytest** — 13 tests de qualité de données sur la base SQLite
+- **pytest** — 27 tests : qualité des données (base SQLite) et cohérence de la formule (vue SQL)
 - **Power BI** — dashboard interactif (slicers, KPI, nuage de points avec ligne de symétrie)
 - **HTML/CSS/JS** — vitrine web interactive déployée sur GitHub Pages, données chargées dynamiquement (aucune valeur codée en dur)
 
@@ -100,7 +115,8 @@ ALTER11/
 ├── flows/
 │   └── pipeline_alter11.py     # Orchestration Prefect du pipeline complet
 ├── tests/
-│   └── test_data_quality.py    # 13 tests de qualité de données (pytest)
+│   ├── test_data_quality.py    # tests de qualité des données brutes (pytest)
+│   └── test_formule.py         # tests de cohérence de la formule ALTERSCORE
 ├── docs/                       # Captures dashboard et pipeline
 ├── run_alterscore.py           # Exécute 03_alterscore.sql et affiche le top par poste
 ├── alter11.db                  # Base SQLite
@@ -165,11 +181,34 @@ l'autre. Le seuil descend donc maintenant avec l'âge :
 | 19 | 1200 |
 | ≥ 20 | 1500 |
 
-Effet concret : Nathan Mbala (17 ans, 441 minutes à Metz) passe de 4.6 à 6.2 et entre dans
-le top 3 ; Wael Mohya (16 ans, 552 minutes en Bundesliga) passe de 3.9 à 5.5. Les joueurs
-de 20 ans sont inchangés. L'arbitrage reste réel et assumé : détecter tôt suppose
-d'accepter un échantillon plus mince, exactement là où le risque de surinterpréter est le
-plus fort.
+Effet concret : Nathan Mbala (17 ans, 441 minutes à Metz) et Wael Mohya (16 ans, 552
+minutes en Bundesliga) remontent nettement dans le classement, là où le seuil fixe les
+enterrait. Les joueurs de 20 ans sont inchangés. L'arbitrage reste réel et assumé :
+détecter tôt suppose d'accepter un échantillon plus mince, exactement là où le risque de
+surinterpréter est le plus fort.
+
+**Sur le malus club et son atténuation par le temps de jeu** : le coefficient club (0.70 à
+1.15) décote les joueurs des équipes les plus exposées médiatiquement et bonifie ceux des
+clubs modestes — l'idée étant de faire ressortir les profils que personne ne regarde. Mais
+un remplaçant anonyme dans un grand club et un titulaire indiscutable dans ce même club ne
+méritent pas la même décote : jouer beaucoup dans une grosse équipe est un signal de niveau,
+pas seulement d'exposition. Le malus est donc atténué proportionnellement au temps de jeu,
+et cette atténuation est elle-même plafonnée à la moitié de la saison pour ne pas faire
+remonter les titulaires déjà installés (un joueur à 74 % de temps de jeu au sommet d'un très
+grand club n'est pas un talent « sous-radar »). C'est un arbitrage entre récompenser la
+percée d'un jeune et ne pas transformer l'outil en classement des stars déjà connues.
+
+**Sur les plafonds des composantes** : chaque statistique entre dans le score sous la forme
+`MIN(stat, plafond) / plafond`, ce qui la ramène à une proportion entre 0 et 1. Le choix du
+plafond est déterminant : trop haut, il bride la composante — personne ne peut l'atteindre,
+et l'écart entre un bon et un excellent joueur est écrasé. Les plafonds sont calibrés sur le
+95e percentile observé par poste sur la saison 2025-2026, une valeur atteinte par les
+meilleurs sans être hors de portée. Ils sont propres à chaque poste (un défenseur central
+fait structurellement plus de tacles qu'un milieu offensif) et **devront être revérifiés à
+chaque nouvelle saison** ; un test automatique signale tout plafond devenu inatteignable
+(voir "Pipeline et contrôles qualité"). Conséquence méthodologique assumée : en calibrant
+par poste, l'ALTERSCORE mesure à quel point un joueur est remarquable **dans son rôle**, pas
+une valeur absolue directement comparable d'un poste à l'autre.
 
 **La formule est définie une seule fois**, dans la vue SQL `v_alterscore`
 (`sql/00_view_alterscore.sql`). Le top 10 SQL, l'export Power BI et l'export vitrine
@@ -185,6 +224,35 @@ un poids faible ajoute un signal de qualité sans dupliquer l'information.
 
 Le détail complet de la démarche (ACP, biplot, clustering par profil de jeu) est documenté
 dans `notebooks/01_analysis.ipynb`.
+
+## 🔬 Cas d'étude : Aladji Bamba, ou ce que le modèle rate
+
+En juillet 2026, Newcastle recrute Aladji Bamba (milieu défensif, 20 ans, Monaco) pour
+environ 40 M€. C'est un test grandeur nature du modèle sur un cas où le marché a tranché.
+Verdict initial : l'ALTERSCORE le classait **100e sur 199**, à peine au-dessus de la médiane.
+
+Plutôt que de rejeter ce résultat, il a servi à disséquer les faiblesses du score. Trois
+causes cumulées, corrigées ou documentées :
+
+1. **Le malus club le pénalisait pour évoluer à Monaco**, alors que jouer 816 minutes à cet
+   âge dans ce club (Ligue des champions comprise) est un signal de niveau. C'est ce cas qui
+   a motivé l'atténuation du malus par le temps de jeu.
+2. **Le coefficient de fiabilité le décotait pour ses 816 minutes** — un arbitrage assumé,
+   mais qui joue contre un jeune en cours de percée.
+3. **Surtout, sa formule repose sur les tacles et interceptions**, alors que sa valeur tient
+   à des qualités de position et de relance (passes progressives, conservation sous pression)
+   que les données ne capturent plus depuis la coupure Opta de janvier 2026. Ses statistiques
+   disponibles disent quand même quelque chose — 2.21 tacles/90 (dans les 5 % du poste), 1.98
+   fautes subies/90 (un joueur qu'on n'arrête qu'à la faute, proxy d'un porteur de balle) —
+   mais l'essentiel de son jeu est hors de portée du modèle.
+
+Après recalibrage des plafonds (qui bridaient artificiellement les milieux défensifs) et
+atténuation du malus, Bamba remonte autour de la 55e place. Le score reste imparfait sur son
+cas, et **c'est la bonne conclusion** : un outil de détection n'a pas à classer parfaitement,
+il a à ne pas enterrer un joueur au point qu'un recruteur ne le regarde jamais. Passer de la
+100e à la 55e place suffit à le faire réapparaître dans le champ de vision ; l'œil humain
+fait le reste. Le vrai enseignement est ailleurs : sans les variables Opta, ce profil précis
+restera toujours sous-évalué, et aucun réglage ne compensera une donnée absente.
 
 ## 🎯 Scoring de similarité
 
@@ -276,6 +344,23 @@ volontairement documentés plutôt que masqués :
   dashboard ne sont pas affectés en l'état. La correction propre passe par une clé de
   jointure nom + date de naissance ; en attendant, le test correspondant reste en place,
   marqué `xfail` avec la raison documentée.
+- **Un cinquième bug, trouvé par une simple addition.** Les poids de la formule des milieux
+  offensifs totalisaient 1.05 au lieu de 1.00 — ce profil était donc noté sur 10.5 pendant
+  que tous les autres l'étaient sur 10, soit 5 % d'avantage structurel, et ce depuis les
+  tout premiers commits. Invisible à l'œil, parce qu'aucun joueur réel n'atteignait le
+  plafond sur toutes ses composantes à la fois. Découvert en additionnant les poids poste
+  par poste, puis transformé en test automatique (`tests/test_formule.py`) qui vérifie
+  désormais que chaque barème vaut exactement 1.00 — ce même test a d'ailleurs rattrapé une
+  sur-correction ultérieure qui l'avait fait tomber à 0.85.
+- **Les plafonds des composantes étaient calibrés à l'intuition, pas sur les données.**
+  Plusieurs plafonds (`MIN(stat, X)`) étaient très au-dessus du maximum réellement observé —
+  4.0 tacles/90 quand le record U20 des 5 championnats est 2.48, 1.0 passe décisive/90 pour
+  un attaquant quand le max réel est 0.51. Résultat : ces composantes étaient bridées,
+  personne ne pouvait approcher le plafond, et l'écart entre un bon et un excellent joueur
+  était écrasé. Les milieux défensifs perdaient ainsi ~1.5 point de moyenne face aux
+  offensifs, pour une raison purement mécanique. Recalibrés sur le 95e percentile par poste,
+  avec un test automatique qui signalera tout plafond redevenu inatteignable la saison
+  prochaine.
 - **La formule de l'ALTERSCORE était dupliquée dans quatre fichiers** — c'est la cause
   racine du bug de précision de tir ci-dessus : une correction appliquée à trois d'entre
   eux seulement, et le dashboard s'est mis à afficher un classement différent de la
