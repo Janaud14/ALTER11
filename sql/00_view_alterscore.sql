@@ -99,12 +99,14 @@ WITH base AS (
 		END)) AS coef_fiab,
 
         -- Split milieux offensifs / défensifs : ratio activité défensive vs offensive
-        CASE
-            WHEN (f.tackles_won + f.interceptions) / NULLIF(f.nineties, 0)
-               > (f.goals + f.assists) / NULLIF(f.nineties, 0) * 3
-            THEN 'MF_DEF'
-            ELSE 'MF_OFF'
-        END AS mf_type
+		CASE WHEN p.position = 'MF' THEN
+		CASE
+        WHEN (f.tackles_won + f.interceptions) / NULLIF(f.nineties, 0)
+           > (f.goals + f.assists) / NULLIF(f.nineties, 0) * 3
+        THEN 'MF_DEF'
+        ELSE 'MF_OFF'
+		END
+		ELSE NULL END AS mf_type
 
     FROM fact_stats f
     JOIN dim_player p ON f.player_id = p.player_id
