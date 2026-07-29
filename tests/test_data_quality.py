@@ -12,7 +12,8 @@ Les trois bugs historiques (tous silencieux, tous trouvés à la main) :
 Un quatrième a été découvert en écrivant ces tests : des joueurs agrègent les
 stats de deux clubs ou de deux homonymes sur une seule ligne
 -> test_pas_de_volume_de_matchs_impossible (marqué xfail, hors U20 donc sans
-   impact sur l'ALTERSCORE en l'état).
+   impact sur l'ALTERSCORE ; corrigé à la source dans le notebook, en attente
+   de reconstruction de la base).
 
 Usage :
     pip install pytest
@@ -182,8 +183,10 @@ def test_minutes_et_nineties_coherents(conn):
            "(Vitinha PSG/Marseille, Nicolas Gonzalez Man City/Juventus) et "
            "transfert mi-saison dont les lignes club ont ete additionnees "
            "(Malen, Dortmund -> Aston Villa). Sans impact sur l'ALTERSCORE, "
-           "qui filtre sur age <= 20. Correction prevue : cle de jointure "
-           "nom + date de naissance au lieu du nom seul.",
+           "qui filtre sur age <= 20. Corrige a la source dans "
+           "notebooks/01_analysis.ipynb (deduplication et jointure sur "
+           "nom + birth_year au lieu du nom seul) ; ces lignes disparaitront "
+           "a la prochaine reconstruction complete de la base (saison 2026-27).",
     strict=False,
 )
 def test_pas_de_volume_de_matchs_impossible(conn):
