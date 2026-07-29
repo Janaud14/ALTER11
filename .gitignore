@@ -7,6 +7,8 @@ __pycache__/
 *.pyc
 .venv/
 venv/
+find_*.py
+check_*.py
 
 # ── Jupyter ──────────────────────────────────────────────────────
 .ipynb_checkpoints/
