@@ -75,7 +75,7 @@ def get_tm_photo_url(player_name: str, team_name: str, headers: dict = HEADERS):
 
             score_name = fuzz.token_sort_ratio(player_name.lower(), tm_name.lower())
             score_club = fuzz.partial_ratio(team_name.lower(), tm_club.lower())
-            score_total = score_name * 0.7 + score_club * 0.3
+            score_total = score_name * 0.9 + score_club * 0.1
 
             if score_total > best_score:
                 best_score = score_total
@@ -92,7 +92,7 @@ def get_tm_photo_url(player_name: str, team_name: str, headers: dict = HEADERS):
 
         # Deuxième requête : la fiche joueur, pour la vraie photo (pas la vignette)
         time.sleep(1.0)
-        r_profil = requests.get(best_link, headers=headers, timeout=10)
+        r_profil = requests.get(best_link, headers=headers, timeout=30)
         soup_profil = BeautifulSoup(r_profil.text, "lxml")
         img_profil = soup_profil.find("img", {"class": "data-header__profile-image"})
 
@@ -100,8 +100,12 @@ def get_tm_photo_url(player_name: str, team_name: str, headers: dict = HEADERS):
             photo_url = img_profil.get("src") or img_profil.get("data-src")
             # L'URL Transfermarkt encode la taille dans le chemin
             # (small/medium/header) — on force la plus grande disponible.
-            if photo_url and "/small/" in photo_url:
-                photo_url = photo_url.replace("/small/", "/header/")
+            # Transfermarkt encode la taille dans le chemin de l'URL.
+            # "big" (~4x le poids de "header") est le plus grand format
+            # disponible : "large"/"original" renvoient du 404.
+            if photo_url:
+                for taille in ("/header/", "/medium/", "/small/"):
+                    photo_url = photo_url.replace(taille, "/big/")
             return photo_url, best_score
 
         return None, best_score
@@ -129,7 +133,7 @@ def generer_carte(player_name: str, team_name: str, age: int,
         return None
 
     try:
-        r_photo = requests.get(img_url, headers=HEADERS, timeout=10)
+        r_photo = requests.get(img_url, headers=HEADERS, timeout=30)
         r_photo.raise_for_status()
     except requests.RequestException:
         print(f"❌ {player_name} — téléchargement photo échoué")

@@ -61,7 +61,7 @@ body { background: var(--bg); font-family: 'Oxanium', sans-serif; color: var(--t
 .photo { width: 100%; aspect-ratio: 3/3.5; background: linear-gradient(170deg, #06102a, #02040f); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
 .photo-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,102,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,102,255,0.04) 1px, transparent 1px); background-size: 18px 18px; z-index: 0; }
 .avatar { font-family: 'Oxanium', sans-serif; font-size: 38px; font-weight: 800; color: var(--neon); opacity: 0.10; letter-spacing: 3px; user-select: none; position: relative; z-index: 1; }
-.player-img { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); height: 92%; object-fit: cover; object-position: top; z-index: 2; filter: contrast(1.05); }
+.player-img { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); height: 92%; width: 100%; object-fit: contain; object-position: bottom; z-index: 2; filter: contrast(1.05); }
 .photo-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 45%; background: linear-gradient(to bottom, transparent, var(--card)); z-index: 3; pointer-events: none; }
 .rank { position: absolute; top: 8px; left: 10px; font-size: 9px; font-weight: 600; color: var(--muted); letter-spacing: 1px; z-index: 4; }
 .score-badge { position: absolute; top: 8px; right: 8px; background: rgba(2,4,15,0.92); border: 0.5px solid var(--neon); border-radius: 2px; padding: 3px 8px; z-index: 4; text-align: center; }
