@@ -168,6 +168,10 @@ def build_players_json(df: pd.DataFrame) -> list:
             "score": row["alterscore"],
             "rank": int(row["rank"]),
             "photo": find_local_photo(row["player_name"]),
+            "score_brut": round(row["score_brut"], 1),
+            "coef_fiab": round(row["coef_fiab"], 2),
+            "coef_club": round(row["coef_club"], 2),
+            "bonus_age": round(row["bonus_age"], 1),
             "stats": stats_for_row(row),
         })
     return players

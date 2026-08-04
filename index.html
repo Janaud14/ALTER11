@@ -199,7 +199,11 @@ ${statsHtml}
 </div>
 </div>`;
 }
-
+function slugify(name){
+  return name.toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+    .replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+}
 function render(f){
 const grid=document.getElementById('grid');
 const vp=document.getElementById('vp');
@@ -212,8 +216,11 @@ const visible=filtered.slice(0,showing);
 grid.innerHTML=visible.map(p=>buildCard(p,players.indexOf(p))).join('');
 document.getElementById('count').textContent=`${visible.length}/${filtered.length} Joueurs`;
 vp.style.display=filtered.length>showing?'block':'none';
-grid.querySelectorAll('.card').forEach(c=>{
-c.addEventListener('click',()=>{if(!c.classList.contains('flipped'))c.classList.add('flipped')});
+grid.querySelectorAll('.card').forEach((c,i)=>{
+  c.style.cursor='pointer';
+  c.addEventListener('click',()=>{
+    location.href='joueur.html?id='+slugify(visible[i].name);
+  });
 });
 }
 

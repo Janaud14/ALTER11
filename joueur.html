@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALTER11 — Fiche joueur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+--bg: #02040f;
+--card: #060a1a;
+--neon: #0066ff;
+--neon-dim: rgba(0,102,255,0.10);
+--neon-glow: 0 0 14px rgba(0,102,255,0.5);
+--text: #e8eef5;
+--muted: #3a5080;
+--border: rgba(0,102,255,0.18);
+--good: #16c784;
+--mid: #f5a623;
+--low: #e04f5f;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); font-family: 'Oxanium', sans-serif; color: var(--text); min-height: 100vh; }
+.root { max-width: 780px; margin: 0 auto; padding: 28px 20px 60px; }
+
+/* Barre du haut */
+.topbar { display: flex; align-items: baseline; gap: 14px; margin-bottom: 24px; }
+.logo { font-size: 24px; font-weight: 800; letter-spacing: 5px; color: var(--neon); text-shadow: var(--neon-glow); text-decoration: none; }
+.logo span { color: #fff; text-shadow: none; }
+.back-link { margin-left: auto; font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: 1px; padding: 5px 12px; border: 0.5px solid var(--border); border-radius: 2px; transition: all .2s; }
+.back-link:hover { color: var(--neon); border-color: var(--neon); }
+
+/* En-tete joueur */
+.hero { display: flex; gap: 22px; align-items: flex-end; background: var(--card); border: 0.5px solid var(--border); border-radius: 4px; padding: 0 22px 22px 0; overflow: hidden; position: relative; margin-bottom: 20px; }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,102,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,102,255,0.04) 1px, transparent 1px); background-size: 20px 20px; z-index: 0; }
+.hero-photo { width: 190px; min-width: 190px; aspect-ratio: 3/3.5; background: linear-gradient(170deg, #06102a, #02040f); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; z-index: 1; }
+.hero-photo img { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); height: 96%; width: 100%; object-fit: contain; object-position: bottom; filter: contrast(1.05); }
+.hero-photo .avatar { font-size: 44px; font-weight: 800; color: var(--neon); opacity: 0.12; letter-spacing: 3px; }
+.hero-info { flex: 1; z-index: 1; padding-top: 22px; }
+.hero-rank { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--muted); letter-spacing: 2px; margin-bottom: 4px; }
+.hero-name { font-size: 30px; font-weight: 800; line-height: 1.05; margin-bottom: 10px; }
+.hero-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.tag { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 1px; padding: 3px 9px; border: 0.5px solid var(--border); border-radius: 2px; color: var(--neon); background: var(--neon-dim); }
+.tag.muted { color: var(--muted); background: transparent; }
+
+/* Score en grand */
+.score-hero { display: flex; align-items: baseline; gap: 10px; }
+.score-hero .num { font-size: 52px; font-weight: 800; color: var(--neon); text-shadow: var(--neon-glow); line-height: 1; }
+.score-hero .max { font-size: 16px; color: var(--muted); }
+.score-hero .lbl { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 2px; margin-left: 4px; }
+
+/* Sections */
+.section { background: var(--card); border: 0.5px solid var(--border); border-radius: 4px; padding: 20px; margin-bottom: 16px; }
+.section-title { font-size: 12px; font-weight: 700; color: var(--neon); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+.section-sub { font-size: 11px; color: var(--muted); line-height: 1.5; margin-bottom: 18px; }
+
+/* Decomposition du score */
+.calc { display: flex; align-items: stretch; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.calc-box { flex: 1; min-width: 88px; text-align: center; padding: 12px 8px; border: 0.5px solid var(--border); border-radius: 3px; background: var(--bg); }
+.calc-box .cv { font-size: 22px; font-weight: 700; color: var(--text); line-height: 1; margin-bottom: 5px; }
+.calc-box .cl { font-family: 'Share Tech Mono', monospace; font-size: 8.5px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; line-height: 1.3; }
+.calc-op { display: flex; align-items: center; font-size: 18px; color: var(--muted); font-weight: 700; }
+.calc-box.result { border-color: var(--neon); background: var(--neon-dim); }
+.calc-box.result .cv { color: var(--neon); }
+.calc-explain { font-size: 12px; color: var(--text); line-height: 1.65; padding: 12px 14px; background: var(--bg); border-left: 2px solid var(--neon); border-radius: 2px; }
+
+/* Barres de stats */
+.stat-row { margin-bottom: 15px; }
+.stat-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+.stat-name { font-size: 12px; color: var(--text); }
+.stat-val { font-family: 'Share Tech Mono', monospace; font-size: 13px; font-weight: 500; color: #fff; }
+.stat-bar { height: 7px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; position: relative; }
+.stat-fill { height: 100%; border-radius: 4px; transition: width .5s ease; }
+.stat-pct { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: var(--muted); margin-top: 3px; letter-spacing: 1px; }
+
+.err { text-align: center; padding: 80px 20px; color: var(--muted); }
+.err a { color: var(--neon); }
+</style>
+</head>
+<body>
+<div class="root">
+  <div class="topbar">
+    <a href="index.html" class="logo">ALTER<span>11</span></a>
+    <a href="index.html" class="back-link">&larr; RETOUR</a>
+  </div>
+  <div id="content"></div>
+</div>
+
+<script>
+const LIGUE_FLAG = { "Ligue 1":"🇫🇷", "Premier League":"🏴", "La Liga":"🇪🇸", "Bundesliga":"🇩🇪", "Serie A":"🇮🇹" };
+
+// slug identique a celui utilise dans index.html pour construire le lien
+function slugify(name) {
+  return name.toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+function pctColor(p) {
+  if (p >= 70) return "var(--good)";
+  if (p >= 40) return "var(--mid)";
+  return "var(--low)";
+}
+
+function buildExplain(pl) {
+  const parts = [];
+  // Effet club
+  if (pl.coef_club > 1.02) {
+    const pctBonus = Math.round((pl.coef_club - 1) * 100);
+    parts.push(`${pl.team} etant un club a faible exposition mediatique, ${pl.name} est bonifie de ${pctBonus}% — l'ALTERSCORE valorise les talents la ou personne ne les regarde.`);
+  } else if (pl.coef_club < 0.98) {
+    const pctMalus = Math.round((1 - pl.coef_club) * 100);
+    parts.push(`${pl.team} etant un grand club surexpose, un malus de ${pctMalus}% est applique : le score cherche les profils sous-radar, pas les stars deja connues.`);
+  } else {
+    parts.push(`Le contexte de ${pl.team} est neutre, sans bonus ni malus notable.`);
+  }
+  // Effet fiabilite
+  if (pl.coef_fiab >= 0.99) {
+    parts.push("Son volume de minutes est suffisant : aucune decote de fiabilite, le score reflete pleinement sa performance.");
+  } else {
+    const pctDecote = Math.round((1 - pl.coef_fiab) * 100);
+    parts.push(`Avec un echantillon de minutes encore limite pour son age, une decote de fiabilite de ${pctDecote}% est appliquee — le score reste prudent tant que les donnees sont minces.`);
+  }
+  return parts.join(" ");
+}
+
+function render(pl) {
+  const flag = LIGUE_FLAG[pl.ligue] || "";
+  const initials = pl.name.split(" ").map(w => w[0]).join("").slice(0,2).toUpperCase();
+
+  const photoBlock = pl.photo
+    ? `<img src="${pl.photo}" alt="${pl.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"><span class="avatar" style="display:none">${initials}</span>`
+    : `<span class="avatar">${initials}</span>`;
+
+  const statsHTML = pl.stats.map(s => `
+    <div class="stat-row">
+      <div class="stat-head">
+        <span class="stat-name">${s.l}</span>
+        <span class="stat-val">${s.v}</span>
+      </div>
+      <div class="stat-bar">
+        <div class="stat-fill" style="width:${s.p}%; background:${pctColor(s.p)}"></div>
+      </div>
+      <div class="stat-pct">MEILLEUR QUE ${s.p}% DES JOUEURS DE SON POSTE</div>
+    </div>
+  `).join("");
+
+  document.getElementById("content").innerHTML = `
+    <div class="hero">
+      <div class="hero-grid"></div>
+      <div class="hero-photo">${photoBlock}</div>
+      <div class="hero-info">
+        <div class="hero-rank">RANG #${pl.rank}</div>
+        <div class="hero-name">${pl.name}</div>
+        <div class="hero-tags">
+          <span class="tag">${pl.pos}</span>
+          <span class="tag muted">${flag} ${pl.ligue}</span>
+          <span class="tag muted">${pl.team}</span>
+          <span class="tag muted">${pl.age} ANS</span>
+        </div>
+        <div class="score-hero">
+          <span class="num">${pl.score.toFixed(1)}</span><span class="max">/10</span>
+          <span class="lbl">ALTERSCORE</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">D'ou vient ce score</div>
+      <div class="section-sub">L'ALTERSCORE n'est pas une boite noire. Voici sa decomposition exacte.</div>
+      <div class="calc">
+        <div class="calc-box">
+          <div class="cv">${pl.score_brut.toFixed(1)}</div>
+          <div class="cl">Performance<br>brute</div>
+        </div>
+        <div class="calc-op">×</div>
+        <div class="calc-box">
+          <div class="cv">${pl.coef_fiab.toFixed(1)}</div>
+          <div class="cl">Fiabilite<br>(minutes)</div>
+        </div>
+        <div class="calc-op">×</div>
+        <div class="calc-box">
+          <div class="cv">${pl.coef_club}</div>
+          <div class="cl">Contexte<br>club</div>
+        </div>
+        <div class="calc-op">=</div>
+        <div class="calc-box result">
+          <div class="cv">${pl.score.toFixed(1)}</div>
+          <div class="cl">ALTER<br>SCORE</div>
+        </div>
+      </div>
+      <div class="calc-explain">${buildExplain(pl)}</div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Statistiques cles</div>
+      <div class="section-sub">Chaque barre situe le joueur par rapport aux autres joueurs de son poste (percentile).</div>
+      ${statsHTML}
+    </div>
+  `;
+  document.title = `${pl.name} — ALTER11`;
+}
+
+async function main() {
+  const id = new URLSearchParams(location.search).get("id");
+  let players;
+  try {
+    players = await (await fetch("players.json")).json();
+  } catch (e) {
+    document.getElementById("content").innerHTML = `<div class="err">Impossible de charger les donnees.<br><a href="index.html">Retour a la grille</a></div>`;
+    return;
+  }
+  const pl = players.find(p => slugify(p.name) === id);
+  if (!pl) {
+    document.getElementById("content").innerHTML = `<div class="err">Joueur introuvable.<br><a href="index.html">Retour a la grille</a></div>`;
+    return;
+  }
+  render(pl);
+}
+main();
+</script>
+</body>
+</html>
