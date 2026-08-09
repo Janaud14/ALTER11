@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: fct_alterscore
+    description: >
+      Table finale de l'ALTERSCORE par joueur U20. Une ligne par joueur,
+      score calcule par poste (FW/MF/DF) puis pondere par les coefficients
+      de fiabilite et de club. alterscore NULL si le joueur est sous le
+      seuil de minutes de son poste.
+    columns:
+      - name: player_id
+        description: Identifiant unique du joueur.
+        data_tests:
+          - unique
+          - not_null
+      - name: player_name
+        description: Nom du joueur.
+        data_tests:
+          - not_null
+      - name: alterscore
+        description: Score final sur 10 (NULL si sous le seuil de minutes).
+        data_tests:
+          - dbt_utils.accepted_range:
+              arguments:
+                min_value: 0
+                max_value: 10
+                inclusive: true
+      - name: position
+        description: Poste (FW, MF ou DF - jamais GK).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['FW', 'MF', 'DF']

@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:16
+    container_name: alter11_pg
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: alter11
+      POSTGRES_PASSWORD: alter11
+      POSTGRES_DB: alter11
+    ports:
+      # hote:conteneur — on expose Postgres sur le port 5432 de ta machine
+      - "5433:5432"
+    volumes:
+      # les donnees survivent meme si le conteneur est supprime/recree
+      - alter11_pgdata:/var/lib/postgresql/data
+
+volumes:
+  alter11_pgdata:

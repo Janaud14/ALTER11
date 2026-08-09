@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: alter11
+    schema: public
+    tables:
+      - name: fact_stats
+      - name: dim_player
+      - name: dim_team
+      - name: malus_clubs

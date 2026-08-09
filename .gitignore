@@ -17,3 +17,11 @@ check_*.py
 .DS_Store
 Thumbs.db
 .vscode/
+
+# Scripts de debug PostgreSQL
+test_pg*.py
+check_pg.py
+diag_*.py
+
+# Logs dbt a la racine
+logs/
